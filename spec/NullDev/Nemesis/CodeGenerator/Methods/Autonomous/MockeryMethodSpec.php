@@ -13,11 +13,11 @@ class MockeryMethodSpec extends ObjectBehavior
     }
 
     /**
-     * @param ReflectionClass $class
+     * @param ReflectionClass  $class
      * @param ReflectionMethod $method
      */
-    public function let($class,$method)
+    public function let($class, $method)
     {
-        $this->beConstructedWith($class,$method);
+        $this->beConstructedWith($class, $method);
     }
 }
