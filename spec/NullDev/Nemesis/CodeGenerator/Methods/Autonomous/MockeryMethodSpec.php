@@ -11,4 +11,13 @@ class MockeryMethodSpec extends ObjectBehavior
     {
         $this->shouldHaveType('NullDev\Nemesis\CodeGenerator\Methods\Autonomous\MockeryMethod');
     }
+
+    /**
+     * @param ReflectionClass $class
+     * @param ReflectionMethod $method
+     */
+    public function let($class,$method)
+    {
+        $this->beConstructedWith($class,$method);
+    }
 }
