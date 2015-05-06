@@ -8,7 +8,7 @@ interface CalculatorInterface
 
 class BasicCalculator implements CalculatorInterface
 {
-    protected $varA;
+    protected $varA=true;
 
     public function __construct()
     {
@@ -28,5 +28,7 @@ class BasicCalculator implements CalculatorInterface
     public function setVarA($varA)
     {
         $this->varA = $varA;
+
+        return $this;
     }
 }

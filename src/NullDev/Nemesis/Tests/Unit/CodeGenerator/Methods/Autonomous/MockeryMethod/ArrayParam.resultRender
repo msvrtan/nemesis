@@ -1,0 +1,6 @@
+public function testGetVarA()
+{
+    $mockParam1 = array();
+    $result = $this->target->getVarA($mockParam1);
+    $this->assertNotNull($result);
+}

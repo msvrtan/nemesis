@@ -1,0 +1,7 @@
+public function testGetVarA()
+{
+    $mockParam1 = m::mock('Vendor\\Namespace\\Class');
+    $mockParam2 = m::mock('Vendor\\Namespace\\Class2');
+    $result = $this->target->getVarA($mockParam1, $mockParam2);
+    $this->assertNotNull($result);
+}

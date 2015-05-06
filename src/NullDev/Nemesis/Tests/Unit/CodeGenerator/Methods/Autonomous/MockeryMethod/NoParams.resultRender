@@ -1,0 +1,6 @@
+public function testGetVarA()
+{
+    $target = new Class();
+    $result = $target->getVarA();
+    $this->assertNotNull($result);
+}

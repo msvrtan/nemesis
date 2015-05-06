@@ -16,18 +16,22 @@
         <testsuite name="UnitTests">
             <directory>tests/Unit</directory>
             <directory>src/NullDev/Nemesis/Tests/Unit</directory>
+            <directory>tests/files/Tests/Unit</directory>
         </testsuite>
         <testsuite name="IntegrationTests">
             <directory>tests/Integration</directory>
             <directory>src/NullDev/Nemesis/Tests/Integration</directory>
+            <directory>tests/files/Tests/Integration</directory>
         </testsuite>
         <testsuite name="FunctionalTests">
             <directory>tests/Functional</directory>
             <directory>src/NullDev/Nemesis/Tests/Functional</directory>
+            <directory>tests/files/Tests/Functional</directory>
         </testsuite>
         <testsuite name="AllTests">
             <directory>tests</directory>
             <directory>src/NullDev/Nemesis/Tests</directory>
+            <directory>tests/files/Tests</directory>
         </testsuite>
     </testsuites>
 

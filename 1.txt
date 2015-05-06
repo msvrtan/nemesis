@@ -1,0 +1,302 @@
+[H[2JPHPUnit 4.5.0 by Sebastian Bergmann and contributors.
+
+Configuration read from /vagrant/nemesis/dev/phpunit.xml
+
+The Xdebug extension is not loaded. No code coverage will be generated.
+
+.array(1) {
+  [0]=>
+  object(PhpParser\Node\Stmt\Namespace_)#18 (4) {
+    ["name"]=>
+    object(PhpParser\Node\Name)#17 (3) {
+      ["parts"]=>
+      array(1) {
+        [0]=>
+        string(10) "Calculator"
+      }
+      ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+      NULL
+      ["attributes":protected]=>
+      array(2) {
+        ["startLine"]=>
+        int(2)
+        ["endLine"]=>
+        int(2)
+      }
+    }
+    ["stmts"]=>
+    array(1) {
+      [0]=>
+      object(PhpParser\Node\Stmt\Class_)#32 (7) {
+        ["type"]=>
+        int(0)
+        ["extends"]=>
+        NULL
+        ["implements"]=>
+        array(0) {
+        }
+        ["name"]=>
+        string(16) "SimpleCalculator"
+        ["stmts"]=>
+        array(2) {
+          [0]=>
+          object(PhpParser\Node\Stmt\Property)#15 (4) {
+            ["type"]=>
+            int(2)
+            ["props"]=>
+            array(1) {
+              [0]=>
+              object(PhpParser\Node\Stmt\PropertyProperty)#19 (4) {
+                ["name"]=>
+                string(4) "arg1"
+                ["default"]=>
+                NULL
+                ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                NULL
+                ["attributes":protected]=>
+                array(2) {
+                  ["startLine"]=>
+                  int(6)
+                  ["endLine"]=>
+                  int(6)
+                }
+              }
+            }
+            ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+            NULL
+            ["attributes":protected]=>
+            array(2) {
+              ["startLine"]=>
+              int(6)
+              ["endLine"]=>
+              int(6)
+            }
+          }
+          [1]=>
+          object(PhpParser\Node\Stmt\ClassMethod)#31 (8) {
+            ["type"]=>
+            int(1)
+            ["byRef"]=>
+            bool(false)
+            ["name"]=>
+            string(11) "__construct"
+            ["params"]=>
+            array(1) {
+              [0]=>
+              object(PhpParser\Node\Param)#21 (7) {
+                ["type"]=>
+                NULL
+                ["byRef"]=>
+                bool(false)
+                ["variadic"]=>
+                bool(false)
+                ["name"]=>
+                string(4) "arg1"
+                ["default"]=>
+                NULL
+                ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                NULL
+                ["attributes":protected]=>
+                array(2) {
+                  ["startLine"]=>
+                  int(8)
+                  ["endLine"]=>
+                  int(8)
+                }
+              }
+            }
+            ["returnType"]=>
+            NULL
+            ["stmts"]=>
+            array(1) {
+              [0]=>
+              object(PhpParser\Node\Expr\Assign)#30 (4) {
+                ["var"]=>
+                object(PhpParser\Node\Expr\PropertyFetch)#23 (4) {
+                  ["var"]=>
+                  object(PhpParser\Node\Expr\Variable)#22 (3) {
+                    ["name"]=>
+                    string(4) "this"
+                    ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                    NULL
+                    ["attributes":protected]=>
+                    array(2) {
+                      ["startLine"]=>
+                      int(10)
+                      ["endLine"]=>
+                      int(10)
+                    }
+                  }
+                  ["name"]=>
+                  string(4) "arg1"
+                  ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                  NULL
+                  ["attributes":protected]=>
+                  array(2) {
+                    ["startLine"]=>
+                    int(10)
+                    ["endLine"]=>
+                    int(10)
+                  }
+                }
+                ["expr"]=>
+                object(PhpParser\Node\Expr\New_)#29 (4) {
+                  ["class"]=>
+                  object(PhpParser\Node\Name)#24 (3) {
+                    ["parts"]=>
+                    array(1) {
+                      [0]=>
+                      string(15) "BasicCalculator"
+                    }
+                    ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                    NULL
+                    ["attributes":protected]=>
+                    array(2) {
+                      ["startLine"]=>
+                      int(10)
+                      ["endLine"]=>
+                      int(10)
+                    }
+                  }
+                  ["args"]=>
+                  array(2) {
+                    [0]=>
+                    object(PhpParser\Node\Arg)#26 (5) {
+                      ["value"]=>
+                      object(PhpParser\Node\Scalar\String_)#25 (3) {
+                        ["value"]=>
+                        string(1) "a"
+                        ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                        NULL
+                        ["attributes":protected]=>
+                        array(2) {
+                          ["startLine"]=>
+                          int(10)
+                          ["endLine"]=>
+                          int(10)
+                        }
+                      }
+                      ["byRef"]=>
+                      bool(false)
+                      ["unpack"]=>
+                      bool(false)
+                      ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                      NULL
+                      ["attributes":protected]=>
+                      array(2) {
+                        ["startLine"]=>
+                        int(10)
+                        ["endLine"]=>
+                        int(10)
+                      }
+                    }
+                    [1]=>
+                    object(PhpParser\Node\Arg)#28 (5) {
+                      ["value"]=>
+                      object(PhpParser\Node\Scalar\String_)#27 (3) {
+                        ["value"]=>
+                        string(1) "b"
+                        ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                        NULL
+                        ["attributes":protected]=>
+                        array(2) {
+                          ["startLine"]=>
+                          int(10)
+                          ["endLine"]=>
+                          int(10)
+                        }
+                      }
+                      ["byRef"]=>
+                      bool(false)
+                      ["unpack"]=>
+                      bool(false)
+                      ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                      NULL
+                      ["attributes":protected]=>
+                      array(2) {
+                        ["startLine"]=>
+                        int(10)
+                        ["endLine"]=>
+                        int(10)
+                      }
+                    }
+                  }
+                  ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                  NULL
+                  ["attributes":protected]=>
+                  array(2) {
+                    ["startLine"]=>
+                    int(10)
+                    ["endLine"]=>
+                    int(10)
+                  }
+                }
+                ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+                NULL
+                ["attributes":protected]=>
+                array(2) {
+                  ["startLine"]=>
+                  int(10)
+                  ["endLine"]=>
+                  int(10)
+                }
+              }
+            }
+            ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+            NULL
+            ["attributes":protected]=>
+            array(2) {
+              ["startLine"]=>
+              int(8)
+              ["endLine"]=>
+              int(12)
+            }
+          }
+        }
+        ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+        NULL
+        ["attributes":protected]=>
+        array(2) {
+          ["startLine"]=>
+          int(4)
+          ["endLine"]=>
+          int(13)
+        }
+      }
+    }
+    ["subNodeNames":"PhpParser\NodeAbstract":private]=>
+    NULL
+    ["attributes":protected]=>
+    array(2) {
+      ["startLine"]=>
+      int(2)
+      ["endLine"]=>
+      int(2)
+    }
+  }
+}
+
+
+Time: 165 ms, Memory: 3.25Mb
+
+OK (1 test, 0 assertions)
+
+
+0 specs
+0 examples 
+0ms
+Fixed all files in 0.300 seconds, 3.500 MB memory used
+Fixed all files in 0.006 seconds, 2.750 MB memory used
+
+/vagrant/nemesis/dev/src/NullDev/Nemesis/Tests/Integration/ParserTest.php:25	Avoid unused local variables such as '$factory'.
+/vagrant/nemesis/dev/src/NullDev/Nemesis/Tests/Integration/ParserTest.php:48	Avoid unused local variables such as '$reflection'.
+
+FILE: ...nemesis/dev/src/NullDev/Nemesis/Tests/Integration/ParserTest.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 36 | ERROR | The use of function var_dump() is forbidden
+----------------------------------------------------------------------
+
+Time: 179ms; Memory: 2.75Mb
+

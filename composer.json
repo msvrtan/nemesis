@@ -40,7 +40,8 @@
       "NullDev\\Nemesis":         "src/"
     },
     "psr-4": {
-      "Tests\\":                  "tests/"
+      "Calculator\\":                  "tests/files/Calculator/",
+      "Tests\\":                  "tests/files/Tests/"
     }
   },
   "config": {

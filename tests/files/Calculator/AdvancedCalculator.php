@@ -1,6 +1,7 @@
 <?php
 
 namespace Calculator;
+use stdClass;
 
 require 'AbstractCalculator.php';
 
@@ -8,7 +9,7 @@ class AdvancedCalculator extends AbstractCalculator
 {
     protected $engine;
 
-    public function __construct($engine)
+    public function __construct(stdClass $engine)
     {
         $this->engine = $engine;
     }

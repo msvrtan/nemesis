@@ -2,11 +2,13 @@
 
 namespace Calculator;
 
+use DateTime;
+
 final class FinalCalculator
 {
-    protected $varA;
-    protected $varB;
-    protected $varC;
+    protected $varA='a';
+    protected $varB='b';
+    protected $varC='c';
 
     /**
      * @return mixed
@@ -22,6 +24,8 @@ final class FinalCalculator
     public function setVarA($varA)
     {
         $this->varA = $varA;
+
+        return $this;
     }
 
     /**
@@ -35,9 +39,11 @@ final class FinalCalculator
     /**
      * @param mixed $varB
      */
-    public function setVarB($varB)
+    public function setVarB(DateTime $varB)
     {
         $this->varB = $varB;
+
+        return $this;
     }
 
     /**
@@ -54,5 +60,7 @@ final class FinalCalculator
     public function setVarC($varC)
     {
         $this->varC = $varC;
+
+        return $this;
     }
 }
