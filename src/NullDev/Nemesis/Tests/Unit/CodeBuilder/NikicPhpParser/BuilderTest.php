@@ -12,19 +12,27 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     /**
      * @var Builder
      */
-    protected $object;
+    protected $target;
 
     /**
      */
     protected function setUp()
     {
-        $this->object = new Builder();
+        $this->target = new Builder();
     }
+
     /**
      *
      */
     public function testNothing()
     {
         $this->markTestIncomplete('TODO');
+
+        $mockConstructor = m::mock();
+        $mockMethod      = m::mock();
+
+        $this->target->method('setUp')->construct($mockConstructor);
+
+        $this->target->method('testSomething')->construct($mockConstructor)->test($mockMethod)->assertNotNull();
     }
 }
