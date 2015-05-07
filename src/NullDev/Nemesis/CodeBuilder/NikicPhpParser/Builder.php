@@ -105,7 +105,7 @@ class Builder
             new Variable('this->target'),
             new PhpParser\Node\Expr\New_(
                 new PhpParser\Node\Name($objClass->getTargetClassName()),
-                $this->getMethodParamsList()
+                $this->getMethodParamsList($objClass)
             )
         );
         $this->data->addStmt($stmt1);

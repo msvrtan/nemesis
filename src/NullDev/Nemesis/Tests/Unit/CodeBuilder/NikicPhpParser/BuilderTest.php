@@ -46,7 +46,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
     {
         $mockClass = m::mock();
         $mockClass->shouldReceive('getTargetClassName')->once()->andReturn('stdClass');
-        $mockClass->shouldReceive('getParameters')->once()->andReturn([]);
+        $mockClass->shouldReceive('getParameters')->twice()->andReturn([]);
 
         $result = $this->target->createMethod('setUp')->addConstruct($mockClass);
 
@@ -68,12 +68,12 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
         $mockParam2 = m::mock();
 
         $mockClass->shouldReceive('getTargetClassName')->once()->andReturn('stdClass');
-        $mockClass->shouldReceive('getParameters')->once()->andReturn([$mockParam1, $mockParam2]);
+        $mockClass->shouldReceive('getParameters')->twice()->andReturn([$mockParam1, $mockParam2]);
 
-        $mockParam1->shouldReceive('getName')->once()->andReturn('param1');
+        $mockParam1->shouldReceive('getName')->twice()->andReturn('param1');
         $mockParam1->shouldReceive('isArray')->once()->andReturn(false);
         $mockParam1->shouldReceive('getClass')->once()->andReturn(false);
-        $mockParam2->shouldReceive('getName')->once()->andReturn('param2');
+        $mockParam2->shouldReceive('getName')->twice()->andReturn('param2');
         $mockParam2->shouldReceive('isArray')->once()->andReturn(false);
         $mockParam2->shouldReceive('getClass')->once()->andReturn(false);
 
