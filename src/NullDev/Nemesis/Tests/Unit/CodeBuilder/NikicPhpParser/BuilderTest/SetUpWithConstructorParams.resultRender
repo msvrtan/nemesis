@@ -1,0 +1,6 @@
+public function setUp()
+{
+    $mockParam1 = m::mock();
+    $mockParam2 = m::mock();
+    $this->target = new stdClass($mockParam1, $mockParam2);
+}
