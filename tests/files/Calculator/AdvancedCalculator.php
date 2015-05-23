@@ -1,6 +1,7 @@
 <?php
 
 namespace Calculator;
+
 use stdClass;
 
 require 'AbstractCalculator.php';

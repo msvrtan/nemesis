@@ -4,6 +4,7 @@ namespace Tests\Unit\Calculator;
 
 use Calculator\SimpleCalculator;
 use Mockery as m;
+
 class SimpleCalculatorTest extends \PHPUnit_Framework_TestCase
 {
     protected $target;

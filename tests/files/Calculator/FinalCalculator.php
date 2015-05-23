@@ -6,9 +6,9 @@ use DateTime;
 
 final class FinalCalculator
 {
-    protected $varA='a';
-    protected $varB='b';
-    protected $varC='c';
+    protected $varA = 'a';
+    protected $varB = 'b';
+    protected $varC = 'c';
 
     /**
      * @return mixed
