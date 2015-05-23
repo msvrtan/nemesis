@@ -21,6 +21,9 @@ class Builder
         return $this->data->getNode();
     }
 
+    /**
+     * @param string $methodName
+     */
     public function createMethod($methodName)
     {
         $this->data = $this->factory->method($methodName)->makePublic();
@@ -90,6 +93,9 @@ class Builder
         return $methodParamsList;
     }
 
+    /**
+     * @param \Mockery\MockInterface $objClass
+     */
     public function addConstruct($objClass)
     {
         foreach ($objClass->getParameters() as $param) {

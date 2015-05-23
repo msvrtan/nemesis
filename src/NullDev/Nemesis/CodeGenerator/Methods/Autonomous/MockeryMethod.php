@@ -32,6 +32,9 @@ class MockeryMethod
         return 'test'.ucfirst($this->method->getName());
     }
 
+    /**
+     * @param \ReflectionParameter $param
+     */
     public function getMethodParamVariableName($param)
     {
         return 'mock'.ucfirst($param->getName());
@@ -48,6 +51,9 @@ class MockeryMethod
         return $methodParamsList;
     }
 
+    /**
+     * @param \ReflectionParameter $param
+     */
     public function getParamCalling($param)
     {
         if ($param->isArray()) {

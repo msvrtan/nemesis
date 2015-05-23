@@ -28,6 +28,9 @@ class Factory
         return new PhpParser\Node\Expr\Array_();
     }
 
+    /**
+     * @param string $variableName
+     */
     public function assign($variableName, $expression)
     {
         return new PhpParser\Node\Expr\Assign(
@@ -47,6 +50,9 @@ class Factory
         );
     }
 
+    /**
+     * @param string $variableName
+     */
     public function mockeryAssertNotNull($variableName)
     {
         return new PhpParser\Node\Expr\MethodCall(
@@ -58,6 +64,10 @@ class Factory
         );
     }
 
+    /**
+     * @param string $variableName
+     * @param string $methodName
+     */
     public function methodCall($variableName, $methodName, $params)
     {
         return new PhpParser\Node\Expr\MethodCall(
@@ -67,11 +77,17 @@ class Factory
         );
     }
 
+    /**
+     * @param string $methodName
+     */
     public function method($methodName)
     {
         return $this->factory->method($methodName);
     }
 
+    /**
+     * @param string $class
+     */
     public function newInstance($class, array $params = [])
     {
         return new PhpParser\Node\Expr\New_(
