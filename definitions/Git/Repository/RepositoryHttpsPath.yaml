@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: Git\Repository\RepositoryHttpsPath
+  parent: Git\Repository\RepositoryPath
+  constants: []
+  methods: []

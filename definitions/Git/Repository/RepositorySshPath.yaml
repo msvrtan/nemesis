@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: Git\Repository\RepositorySshPath
+  parent: Git\Repository\RepositoryPath
+  constants: []
+  methods: []

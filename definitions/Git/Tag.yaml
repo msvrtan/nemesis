@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: Git\Tag
+  parent: Git\Reference
+  constants: []
+  methods: []

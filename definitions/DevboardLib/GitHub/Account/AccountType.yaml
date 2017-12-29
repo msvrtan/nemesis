@@ -1,0 +1,13 @@
+definition:
+  type: SingleValueObject
+  instanceOf: DevboardLib\GitHub\Account\AccountType
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    type:
+      instanceOf: string
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['User', 'Organization', 'Bot']

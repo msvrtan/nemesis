@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: Git\Branch
+  parent: Git\Reference
+  constants: []
+  methods: []

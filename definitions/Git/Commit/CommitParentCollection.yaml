@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: Git\Commit\CommitParentCollection
+  parent: ~
+  constants: []
+  methods: []

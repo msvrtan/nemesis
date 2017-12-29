@@ -1,0 +1,13 @@
+definition:
+  type: DateTimeValueObject
+  instanceOf: DevboardLib\Git\Commit\CommitDate
+  parent: DateTime
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    value:
+      instanceOf: string
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['2018-01-02 11:12:13']

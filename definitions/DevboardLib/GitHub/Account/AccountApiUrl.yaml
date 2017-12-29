@@ -1,0 +1,13 @@
+definition:
+  type: SingleValueObject
+  instanceOf: DevboardLib\GitHub\Account\AccountApiUrl
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    url:
+      instanceOf: string
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['https://api.github.com/users/baxterthehacker']

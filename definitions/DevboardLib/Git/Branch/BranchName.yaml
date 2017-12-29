@@ -1,0 +1,14 @@
+definition:
+  type: SingleValueObject
+  instanceOf: DevboardLib\Git\Branch\BranchName
+  parent: null
+  interfaces:
+    - Git\Reference\ReferenceName
+  traits: {  }
+  constructor:
+    name:
+      instanceOf: string
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['master', 'trunk', 'dev', 'production']

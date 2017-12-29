@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: Git\Commit\CommitSha
+  parent: ~
+  constants: []
+  methods: []

@@ -1,0 +1,13 @@
+definition:
+  type: SingleValueObject
+  instanceOf: DevboardLib\Git\Commit\Author\AuthorName
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    name:
+      instanceOf: string
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['John Smith', 'Amy Johnson']

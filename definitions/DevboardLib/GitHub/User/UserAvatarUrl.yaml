@@ -1,0 +1,13 @@
+definition:
+  type: SingleValueObject
+  instanceOf: DevboardLib\GitHub\User\UserAvatarUrl
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    avatarUrl:
+      instanceOf: string
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['https://avatars3.githubusercontent.com/u/583231?v=4']

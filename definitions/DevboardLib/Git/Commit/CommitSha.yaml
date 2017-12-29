@@ -1,0 +1,13 @@
+definition:
+  type: SingleValueObject
+  instanceOf: DevboardLib\Git\Commit\CommitSha
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    sha:
+      instanceOf: string
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['e54c3c97b4024b4a9b270b62921c6b830d780bd3']

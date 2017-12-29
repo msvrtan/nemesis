@@ -1,0 +1,13 @@
+definition:
+  type: SimpleIdentifier
+  instanceOf: DevboardLib\GitHub\User\UserId
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: int
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: [583231]
