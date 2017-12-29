@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NullDev\Theater\ReadSide;
 
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 
 /**
  * @see ReadSideConfigFactorySpec
@@ -25,10 +25,10 @@ class ReadSideConfigFactory
             $name,
             $namespace,
             $implementation,
-            ClassType::createFromFullyQualified($base.'Entity'),
-            ClassType::createFromFullyQualified($base.'Repository'),
-            ClassType::createFromFullyQualified($base.'Projector'),
-            ClassType::createFromFullyQualified($base.'Factory'),
+            ClassDefinition::createFromFullyQualified($base.'Entity'),
+            ClassDefinition::createFromFullyQualified($base.'Repository'),
+            ClassDefinition::createFromFullyQualified($base.'Projector'),
+            ClassDefinition::createFromFullyQualified($base.'Factory'),
             $properties
         );
     }
@@ -38,7 +38,7 @@ class ReadSideConfigFactory
         $factory = null;
 
         if (true === array_key_exists('factory', $data['classes']) && null !== $data['classes']['factory']) {
-            $factory = ClassType::createFromFullyQualified($data['classes']['factory']);
+            $factory = ClassDefinition::createFromFullyQualified($data['classes']['factory']);
         }
 
         $properties = [];
@@ -50,9 +50,9 @@ class ReadSideConfigFactory
             new ReadSideName($name),
             new ReadSideNamespace($data['namespace']),
             new ReadSideImplementation($data['implementation']),
-            ClassType::createFromFullyQualified($data['classes']['entity']),
-            ClassType::createFromFullyQualified($data['classes']['repository']),
-            ClassType::createFromFullyQualified($data['classes']['projector']),
+            ClassDefinition::createFromFullyQualified($data['classes']['entity']),
+            ClassDefinition::createFromFullyQualified($data['classes']['repository']),
+            ClassDefinition::createFromFullyQualified($data['classes']['projector']),
             $factory,
             $properties
         );

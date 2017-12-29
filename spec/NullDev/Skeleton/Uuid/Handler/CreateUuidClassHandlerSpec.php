@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace spec\NullDev\Skeleton\Uuid\Handler;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use NullDev\Skeleton\Uuid\Command\CreateUuidClass;
 use NullDev\Skeleton\Uuid\Handler\CreateUuidClassHandler;
@@ -25,11 +25,11 @@ class CreateUuidClassHandlerSpec extends ObjectBehavior
 
     public function it_will_handle_creating_uuid_class(
         CreateUuidClass $command,
-        ClassType $classType,
+        ClassDefinition $classType,
         Uuid4IdentitySourceFactory $sourceFactory,
         ImprovedClassSource $classSource
     ) {
-        $command->getClassType()
+        $command->getClassDefinition()
             ->shouldBeCalled()
             ->willReturn($classType);
 

@@ -6,13 +6,13 @@ namespace spec\NullDev\Skeleton\Definition\PHP;
 
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PhpSpec\ObjectBehavior;
 use Throwable;
 
 class PropertySpec extends ObjectBehavior
 {
-    public function let(ClassType $type)
+    public function let(ClassDefinition $type)
     {
         $this->beConstructedWith($name = 'property', $type);
     }
@@ -49,7 +49,7 @@ class PropertySpec extends ObjectBehavior
         $this->getName()->shouldReturn('property');
     }
 
-    public function it_exposes_Property_class_type(ClassType $type)
+    public function it_exposes_Property_class_type(ClassDefinition $type)
     {
         $this->getType()->shouldReturn($type);
     }
@@ -59,7 +59,7 @@ class PropertySpec extends ObjectBehavior
         $this->hasType()->shouldReturn(true);
     }
 
-    public function it_exposes_Propertys_class_name_without_namespace(ClassType $type)
+    public function it_exposes_Propertys_class_name_without_namespace(ClassDefinition $type)
     {
         $type->getName()->shouldBeCalled()->willReturn('ClassName');
 

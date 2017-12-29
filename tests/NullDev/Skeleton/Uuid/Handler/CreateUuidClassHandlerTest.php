@@ -6,7 +6,7 @@ namespace Tests\NullDev\Skeleton\Uuid\Handler;
 
 use League\Tactician\CommandBus;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Uuid\Command\CreateUuidClass;
 use NullDev\Skeleton\Uuid\Handler\CreateUuidClassHandler;
 use Tests\NullDev\ContainerSupportedTestCase;
@@ -32,7 +32,7 @@ class CreateUuidClassHandlerTest extends ContainerSupportedTestCase
 
     public function testSourcesWillMatchExpectedOutput(): void
     {
-        $command = new CreateUuidClass(ClassType::createFromFullyQualified('Something\CreateUserCommand'));
+        $command = new CreateUuidClass(ClassDefinition::createFromFullyQualified('Something\CreateUserCommand'));
 
         $result = $this->commandBus->handle($command);
 

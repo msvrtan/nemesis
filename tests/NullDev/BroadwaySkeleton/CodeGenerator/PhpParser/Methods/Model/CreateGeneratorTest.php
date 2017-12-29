@@ -6,7 +6,7 @@ namespace Tests\NullDev\BroadwaySkeleton\CodeGenerator\PhpParser\Methods\Model;
 
 use NullDev\BroadwaySkeleton\CodeGenerator\PhpParser\Methods\Model\CreateGenerator;
 use NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model\CreateMethod;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PhpParser\BuilderFactory;
 use Tests\NullDev\Skeleton\CodeGenerator\PhpParser\Methods\BaseOutputGeneratorTestCase;
 
@@ -24,7 +24,7 @@ class CreateGeneratorTest extends BaseOutputGeneratorTestCase
     /**
      * @dataProvider provideParameters
      */
-    public function testOutput(ClassType $classType, array $params, string $fileName): void
+    public function testOutput(ClassDefinition $classType, array $params, string $fileName): void
     {
         $method = new CreateMethod($classType, $params);
 
@@ -33,7 +33,7 @@ class CreateGeneratorTest extends BaseOutputGeneratorTestCase
 
     public function provideParameters(): array
     {
-        $classType = ClassType::createFromFullyQualified('Something\\Xxx');
+        $classType = ClassDefinition::createFromFullyQualified('Something\\Xxx');
 
         return [
             [$classType, [], '0-no-param'],

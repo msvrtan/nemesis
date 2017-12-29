@@ -9,7 +9,7 @@ use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayDoctrineOrmReadProjector;
 use NullDev\BroadwaySkeleton\Handler\BroadwayDoctrineOrmReadProjectorHandler;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use Tests\NullDev\ContainerSupportedTestCase;
 
 /**
@@ -36,9 +36,9 @@ class BroadwayDoctrineOrmReadProjectorHandlerTest extends ContainerSupportedTest
      */
     public function testSourcesWillMatchExpectedOutput(string $className, array $parameters): void
     {
-        $readProjectorClassType = ClassType::createFromFullyQualified($className.'Projector');
+        $readProjectorClassDefinition = ClassDefinition::createFromFullyQualified($className.'Projector');
 
-        $command = new CreateBroadwayDoctrineOrmReadProjector($readProjectorClassType, $parameters);
+        $command = new CreateBroadwayDoctrineOrmReadProjector($readProjectorClassDefinition, $parameters);
 
         $result = $this->commandBus->handle($command);
 

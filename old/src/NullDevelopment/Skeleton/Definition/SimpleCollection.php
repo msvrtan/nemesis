@@ -7,7 +7,7 @@ namespace NullDevelopment\Skeleton\Definition;
 use NullDevelopment\PhpStructure\Behaviour\Method\ConstructorMethod;
 use NullDevelopment\PhpStructure\CustomType\CollectionOf;
 use NullDevelopment\PhpStructure\DataTypeName\ClassName;
-use NullDevelopment\PhpStructure\Type\ClassType;
+use NullDevelopment\PhpStructure\Type\ClassDefinition;
 use NullDevelopment\Skeleton\SourceCode;
 
 /**

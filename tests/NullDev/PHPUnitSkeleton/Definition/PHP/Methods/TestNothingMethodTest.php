@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\NullDev\PHPUnitSkeleton\Definition\PHP\Methods;
 
 use NullDev\PHPUnitSkeleton\Definition\PHP\Methods\TestNothingMethod;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use PHPUnit\Framework\TestCase;
 
@@ -20,7 +20,7 @@ class TestNothingMethodTest extends TestCase
 
     public function setUp(): void
     {
-        $this->testNothingMethod = new TestNothingMethod(new ImprovedClassSource(new ClassType('name', 'namespace')));
+        $this->testNothingMethod = new TestNothingMethod(new ImprovedClassSource(new ClassDefinition('name', 'namespace')));
     }
 
     public function testNothing(): void

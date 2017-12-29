@@ -6,7 +6,7 @@ namespace NullDev\BroadwaySkeleton\SourceFactory\Read\ElasticSearch;
 
 use Broadway\ReadModel\ElasticSearch\ElasticSearchRepository;
 use NullDev\BroadwaySkeleton\Definition\PHP\DefinitionFactory;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 use NullDev\Skeleton\SourceFactory\SourceFactory;
 
@@ -23,12 +23,12 @@ class ReadRepositorySourceFactory implements SourceFactory
         $this->definitionFactory = $definitionFactory;
     }
 
-    public function create(ClassType $classType)
+    public function create(ClassDefinition $classType)
     {
         $source = $this->sourceFactory->create($classType);
 
         //Adds ElasticSearchRepository as parent.
-        $source->addParent(ClassType::createFromFullyQualified(ElasticSearchRepository::class));
+        $source->addParent(ClassDefinition::createFromFullyQualified(ElasticSearchRepository::class));
 
         return $source;
     }

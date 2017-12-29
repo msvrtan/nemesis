@@ -9,7 +9,7 @@ use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayCommand;
 use NullDev\BroadwaySkeleton\Handler\BroadwayCommandHandler;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use Tests\NullDev\ContainerSupportedTestCase;
 
 /**
@@ -34,7 +34,7 @@ class BroadwayCommandHandlerTest extends ContainerSupportedTestCase
     /**
      * @dataProvider provideData
      */
-    public function testSourcesWillMatchExpectedOutput(ClassType $classType, array $parameters, string $folderName): void
+    public function testSourcesWillMatchExpectedOutput(ClassDefinition $classType, array $parameters, string $folderName): void
     {
         $command = new CreateBroadwayCommand($classType, $parameters);
 
@@ -51,12 +51,12 @@ class BroadwayCommandHandlerTest extends ContainerSupportedTestCase
     {
         return [
             [
-                ClassType::createFromFullyQualified('Something\CreateUserCommand'),
+                ClassDefinition::createFromFullyQualified('Something\CreateUserCommand'),
                 [],
                 'no-params',
             ],
             [
-                ClassType::createFromFullyQualified('Something\CreateUserCommand'),
+                ClassDefinition::createFromFullyQualified('Something\CreateUserCommand'),
                 [
                     Parameter::create('name', 'string'),
                     Parameter::create('age', 'int'),

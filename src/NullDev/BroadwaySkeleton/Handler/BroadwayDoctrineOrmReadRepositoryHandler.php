@@ -24,7 +24,7 @@ class BroadwayDoctrineOrmReadRepositoryHandler
     public function handleCreateBroadwayDoctrineOrmReadRepository(CreateBroadwayDoctrineOrmReadRepository $command): array
     {
         return [
-            $this->readRepositorySourceFactory->create($command->getRepositoryClassType()),
+            $this->readRepositorySourceFactory->create($command->getRepositoryClassDefinition()),
         ];
     }
 }

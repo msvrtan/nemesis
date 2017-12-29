@@ -7,7 +7,7 @@ namespace Tests\NullDev\Skeleton\Source;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\MockInterface;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ImprovedTestSource;
 use PHPUnit\Framework\TestCase;
 
@@ -18,18 +18,18 @@ use PHPUnit\Framework\TestCase;
 class ImprovedTestSourceTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
-    /** @var MockInterface|ClassType */
+    /** @var MockInterface|ClassDefinition */
     private $classType;
     /** @var ImprovedTestSource */
     private $sut;
 
     public function setUp()
     {
-        $this->classType = Mockery::mock(ClassType::class);
+        $this->classType = Mockery::mock(ClassDefinition::class);
         $this->sut       = new ImprovedTestSource($this->classType);
     }
 
-    public function testGetClassType()
+    public function testGetClassDefinition()
     {
         $this->markTestSkipped('Skipping');
     }

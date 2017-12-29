@@ -6,29 +6,29 @@ namespace NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model;
 
 use Exception;
 use NullDev\Skeleton\Definition\PHP\Methods\Method;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 
 class RepositoryConstructorMethod implements Method
 {
     private $params = [];
-    private $modelClassType;
+    private $modelClassDefinition;
 
-    public function __construct(ClassType $modelClassType)
+    public function __construct(ClassDefinition $modelClassDefinition)
     {
-        $this->modelClassType = $modelClassType;
+        $this->modelClassDefinition = $modelClassDefinition;
     }
 
-    public function getModelClassType(): ClassType
+    public function getModelClassDefinition(): ClassDefinition
     {
-        return $this->modelClassType;
+        return $this->modelClassDefinition;
     }
 
-    public function getParamsAsClassTypes(): array
+    public function getParamsAsClassDefinitions(): array
     {
         $result = [];
         foreach ($this->params as $param) {
             if (true === $param->hasType()) {
-                $result[] = $param->getClassType();
+                $result[] = $param->getClassDefinition();
             }
         }
 

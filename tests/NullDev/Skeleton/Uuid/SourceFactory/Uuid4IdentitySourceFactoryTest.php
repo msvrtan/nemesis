@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\NullDev\Skeleton\Uuid\SourceFactory;
 
 use Generator;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 use NullDev\Skeleton\Uuid\SourceFactory\Uuid4IdentitySourceFactory;
 use Tests\NullDev\ContainerSupportedTestCase;
@@ -27,9 +27,9 @@ class Uuid4IdentitySourceFactoryTest extends ContainerSupportedTestCase
     /**
      * @dataProvider provideData
      */
-    public function testOutput(ClassType $inputClassType, string $fileName): void
+    public function testOutput(ClassDefinition $inputClassDefinition, string $fileName): void
     {
-        $source = $this->sourceFactory->create($inputClassType);
+        $source = $this->sourceFactory->create($inputClassDefinition);
 
         $this->assertClassSourceOutputMatches($fileName, $source);
     }
@@ -42,7 +42,7 @@ class Uuid4IdentitySourceFactoryTest extends ContainerSupportedTestCase
 
         foreach ($data as $className => $fileName) {
             yield [
-                ClassType::createFromFullyQualified($className),
+                ClassDefinition::createFromFullyQualified($className),
                 __DIR__.'/sample-output/'.$fileName.'.output',
             ];
         }

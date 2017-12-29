@@ -7,7 +7,7 @@ namespace spec\NullDev\BroadwaySkeleton\Handler;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayDoctrineOrmReadFactory;
 use NullDev\BroadwaySkeleton\Handler\BroadwayDoctrineOrmReadFactoryHandler;
 use NullDev\BroadwaySkeleton\SourceFactory\Read\DoctrineOrm\ReadFactorySourceFactory;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use PhpSpec\ObjectBehavior;
 
@@ -26,10 +26,10 @@ class BroadwayDoctrineOrmReadFactoryHandlerSpec extends ObjectBehavior
     public function it_will_handle_creating_broadway_doctrine_orm_read_factory(
         CreateBroadwayDoctrineOrmReadFactory $command,
         ReadFactorySourceFactory $readFactorySourceFactory,
-        ClassType $factoryType,
+        ClassDefinition $factoryType,
         ImprovedClassSource $factoryClass
     ) {
-        $command->getFactoryClassType()->shouldBeCalled()->willReturn($factoryType);
+        $command->getFactoryClassDefinition()->shouldBeCalled()->willReturn($factoryType);
 
         $readFactorySourceFactory->create($factoryType)->shouldBeCalled()->willReturn($factoryClass);
 

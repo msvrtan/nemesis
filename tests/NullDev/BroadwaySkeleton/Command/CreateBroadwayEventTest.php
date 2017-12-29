@@ -8,7 +8,7 @@ use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\MockInterface;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayEvent;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 class CreateBroadwayEventTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
-    /** @var MockInterface|ClassType */
+    /** @var MockInterface|ClassDefinition */
     private $classType;
     /** @var array */
     private $parameters;
@@ -27,14 +27,14 @@ class CreateBroadwayEventTest extends TestCase
 
     public function setUp()
     {
-        $this->classType  = Mockery::mock(ClassType::class);
+        $this->classType  = Mockery::mock(ClassDefinition::class);
         $this->parameters = [];
         $this->sut        = new CreateBroadwayEvent($this->classType, $this->parameters);
     }
 
-    public function testGetClassType()
+    public function testGetClassDefinition()
     {
-        self::assertEquals($this->classType, $this->sut->getClassType());
+        self::assertEquals($this->classType, $this->sut->getClassDefinition());
     }
 
     public function testGetParameters()

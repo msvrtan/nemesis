@@ -24,7 +24,7 @@ class BroadwayDoctrineOrmReadEntityHandler
     public function handleCreateBroadwayDoctrineOrmReadEntity(CreateBroadwayDoctrineOrmReadEntity $command): array
     {
         return [
-            $this->readEntitySourceFactory->create($command->getEntityClassType(), $command->getEntityParameters()),
+            $this->readEntitySourceFactory->create($command->getEntityClassDefinition(), $command->getEntityParameters()),
         ];
     }
 }

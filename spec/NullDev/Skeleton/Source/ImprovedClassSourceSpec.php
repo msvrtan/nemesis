@@ -8,7 +8,7 @@ use Exception;
 use NullDev\Skeleton\Definition\PHP\Methods\ConstructorMethod;
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\InterfaceType;
 use NullDev\Skeleton\Definition\PHP\Types\TraitType;
 use NullDev\Skeleton\Definition\PHP\Types\TypeDeclaration\TypeDeclaration;
@@ -17,7 +17,7 @@ use PhpSpec\ObjectBehavior;
 
 class ImprovedClassSourceSpec extends ObjectBehavior
 {
-    public function let(ClassType $className)
+    public function let(ClassDefinition $className)
     {
         $this->beConstructedWith($className);
     }
@@ -27,14 +27,14 @@ class ImprovedClassSourceSpec extends ObjectBehavior
         $this->shouldHaveType(ImprovedClassSource::class);
     }
 
-    public function it_can_have_parent(ClassType $parent)
+    public function it_can_have_parent(ClassDefinition $parent)
     {
         $this->addParent($parent)->shouldReturn($this);
         $this->hasParent()->shouldReturn(true);
         $this->getParent()->shouldReturn($parent);
     }
 
-    public function it_cant_have_more_then_one_parent(ClassType $parent, ClassType $secondParent)
+    public function it_cant_have_more_then_one_parent(ClassDefinition $parent, ClassDefinition $secondParent)
     {
         $this->addParent($parent)->shouldReturn($this);
 
@@ -47,7 +47,7 @@ class ImprovedClassSourceSpec extends ObjectBehavior
         $this->getParent()->shouldReturn(null);
     }
 
-    public function it_will_show_parent_in_all_imports(ClassType $parent)
+    public function it_will_show_parent_in_all_imports(ClassDefinition $parent)
     {
         $this->addParent($parent)->shouldReturn($this);
         $this->getImports()->shouldReturn([$parent]);
@@ -126,26 +126,26 @@ class ImprovedClassSourceSpec extends ObjectBehavior
     public function it_has_constructor_params_in_imports(
         ConstructorMethod $constructor,
         Parameter $param,
-        ClassType $paramClassType
+        ClassDefinition $paramClassDefinition
     ) {
         $constructor->getMethodParameters()->willReturn([$param]);
         $param->getName()->willReturn('paramName');
         $param->hasType()->willReturn(true);
-        $param->getType()->willReturn($paramClassType);
+        $param->getType()->willReturn($paramClassDefinition);
 
         $this->addConstructorMethod($constructor)->shouldReturn($this);
-        $this->getImports()->shouldReturn([$paramClassType]);
+        $this->getImports()->shouldReturn([$paramClassDefinition]);
     }
 
     public function it_will_not_put_constructor_parameters_as_class_properties(
         ConstructorMethod $constructor,
         Parameter $param,
-        ClassType $paramClassType
+        ClassDefinition $paramClassDefinition
     ) {
         $constructor->getMethodParameters()->willReturn([$param]);
         $param->getName()->willReturn('paramName');
         $param->hasType()->willReturn(true);
-        $param->getType()->willReturn($paramClassType);
+        $param->getType()->willReturn($paramClassDefinition);
 
         $this->addConstructorMethod($constructor)->shouldReturn($this);
     }

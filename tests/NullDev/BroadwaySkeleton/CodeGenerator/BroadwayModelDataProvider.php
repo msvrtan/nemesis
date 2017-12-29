@@ -11,7 +11,7 @@ use NullDev\BroadwaySkeleton\SourceFactory\EventSourcedAggregateRootSourceFactor
 use NullDev\BroadwaySkeleton\SourceFactory\EventSourceFactory;
 use NullDev\BroadwaySkeleton\SourceFactory\EventSourcingRepositorySourceFactory;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use NullDev\Skeleton\Uuid\SourceFactory\Uuid4IdentitySourceFactory;
@@ -21,7 +21,7 @@ class BroadwayModelDataProvider
 {
     public function provideUuidIdentifier(): ImprovedClassSource
     {
-        $classType = new ClassType('SomeClass', 'SomeNamespace');
+        $classType = new ClassDefinition('SomeClass', 'SomeNamespace');
 
         $factory = new Uuid4IdentitySourceFactory(new ClassSourceFactory());
 
@@ -30,7 +30,7 @@ class BroadwayModelDataProvider
 
     public function provideBroadwayCommand(): ImprovedClassSource
     {
-        $classType  = new ClassType('CreateProduct', 'MyShop\Command');
+        $classType  = new ClassDefinition('CreateProduct', 'MyShop\Command');
         $parameters = [
             Parameter::create('productId', Uuid::class),
             Parameter::create('title', 'string'),
@@ -43,7 +43,7 @@ class BroadwayModelDataProvider
 
     public function provideBroadwayEvent(): ImprovedClassSource
     {
-        $classType  = new ClassType('ProductCreated', 'MyShop\Event');
+        $classType  = new ClassDefinition('ProductCreated', 'MyShop\Event');
         $parameters = [
             Parameter::create('productId', Uuid::class),
             Parameter::create('title', 'string'),
@@ -59,7 +59,7 @@ class BroadwayModelDataProvider
 
     public function provideBroadwayModel(): ImprovedClassSource
     {
-        $classType = new ClassType('ProductModel', 'MyShop\Model');
+        $classType = new ClassDefinition('ProductModel', 'MyShop\Model');
         $parameter = Parameter::create('productId', 'MyShop\Model\ProductUuid');
 
         $factory = new EventSourcedAggregateRootSourceFactory(new ClassSourceFactory(), new DefinitionFactory());
@@ -69,11 +69,11 @@ class BroadwayModelDataProvider
 
     public function provideBroadwayModelRepository(): ImprovedClassSource
     {
-        $classType      = ClassType::createFromFullyQualified('MyShop\Model\ProductModelRepository');
-        $modelClassType = ClassType::createFromFullyQualified('MyShop\Model\ProductModel');
+        $classType            = ClassDefinition::createFromFullyQualified('MyShop\Model\ProductModelRepository');
+        $modelClassDefinition = ClassDefinition::createFromFullyQualified('MyShop\Model\ProductModel');
 
         $factory = new EventSourcingRepositorySourceFactory(new ClassSourceFactory(), new DefinitionFactory());
 
-        return $factory->create($classType, $modelClassType);
+        return $factory->create($classType, $modelClassDefinition);
     }
 }

@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace spec\NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model;
 
 use NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model\RepositoryConstructorMethod;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PhpSpec\ObjectBehavior;
 
 class RepositoryConstructorMethodSpec extends ObjectBehavior
 {
-    public function let(ClassType $classType)
+    public function let(ClassDefinition $classType)
     {
         $this->beConstructedWith($classType);
     }

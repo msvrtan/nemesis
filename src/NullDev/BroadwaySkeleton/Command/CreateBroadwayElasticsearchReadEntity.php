@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NullDev\BroadwaySkeleton\Command;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 
 /**
  * @see CreateBroadwayElasticsearchReadEntitySpec
@@ -12,20 +12,20 @@ use NullDev\Skeleton\Definition\PHP\Types\ClassType;
  */
 class CreateBroadwayElasticsearchReadEntity
 {
-    /** @var ClassType */
-    private $entityClassType;
+    /** @var ClassDefinition */
+    private $entityClassDefinition;
     /** @var array */
     private $entityParameters;
 
-    public function __construct(ClassType $entityClassType, array $entityParameters)
+    public function __construct(ClassDefinition $entityClassDefinition, array $entityParameters)
     {
-        $this->entityClassType  = $entityClassType;
-        $this->entityParameters = $entityParameters;
+        $this->entityClassDefinition  = $entityClassDefinition;
+        $this->entityParameters       = $entityParameters;
     }
 
-    public function getEntityClassType(): ClassType
+    public function getEntityClassDefinition(): ClassDefinition
     {
-        return $this->entityClassType;
+        return $this->entityClassDefinition;
     }
 
     public function getEntityParameters(): array

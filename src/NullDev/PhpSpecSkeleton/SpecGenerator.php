@@ -8,7 +8,7 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use NullDev\PhpSpecSkeleton\Definition\PHP\Methods\ExposeGettersMethodFactory;
 use NullDev\PhpSpecSkeleton\Definition\PHP\Methods\InitializableMethodFactory;
 use NullDev\PhpSpecSkeleton\Definition\PHP\Methods\LetMethodFactory;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\TraitType;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 use NullDev\Skeleton\Source\ImprovedClassSource;
@@ -44,12 +44,12 @@ class SpecGenerator
 
     public function generate(ImprovedClassSource $classSource)
     {
-        $specClassType = ClassType::createFromFullyQualified('spec\\'.$classSource->getFullName().'Spec');
+        $specClassDefinition = ClassDefinition::createFromFullyQualified('spec\\'.$classSource->getFullName().'Spec');
 
-        $specSource = $this->factory->createSpec($specClassType);
+        $specSource = $this->factory->createSpec($specClassDefinition);
 
         $specSource->addImports(...$this->getImports($classSource));
-        $specSource->addParent(ClassType::createFromFullyQualified(ObjectBehavior::class));
+        $specSource->addParent(ClassDefinition::createFromFullyQualified(ObjectBehavior::class));
 
         $specSource->addMethod(
             $this->letMethodFactory->create($classSource)
@@ -68,8 +68,8 @@ class SpecGenerator
     private function getImports(ImprovedClassSource $classSource): array
     {
         $imports = [
-            $classSource->getClassType(),
-            ClassType::createFromFullyQualified(Argument::class),
+            $classSource->getClassDefinition(),
+            ClassDefinition::createFromFullyQualified(Argument::class),
         ];
 
         // Add all imports from source class (except traits).

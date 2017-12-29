@@ -8,7 +8,7 @@ use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\MockInterface;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayDoctrineOrmReadEntity;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,8 +18,8 @@ use PHPUnit\Framework\TestCase;
 class CreateBroadwayDoctrineOrmReadEntityTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
-    /** @var MockInterface|ClassType */
-    private $entityClassType;
+    /** @var MockInterface|ClassDefinition */
+    private $entityClassDefinition;
     /** @var array */
     private $entityParameters;
     /** @var CreateBroadwayDoctrineOrmReadEntity */
@@ -27,14 +27,14 @@ class CreateBroadwayDoctrineOrmReadEntityTest extends TestCase
 
     public function setUp()
     {
-        $this->entityClassType  = Mockery::mock(ClassType::class);
-        $this->entityParameters = [];
-        $this->sut              = new CreateBroadwayDoctrineOrmReadEntity($this->entityClassType, $this->entityParameters);
+        $this->entityClassDefinition  = Mockery::mock(ClassDefinition::class);
+        $this->entityParameters       = [];
+        $this->sut                    = new CreateBroadwayDoctrineOrmReadEntity($this->entityClassDefinition, $this->entityParameters);
     }
 
-    public function testGetEntityClassType()
+    public function testGetEntityClassDefinition()
     {
-        self::assertEquals($this->entityClassType, $this->sut->getEntityClassType());
+        self::assertEquals($this->entityClassDefinition, $this->sut->getEntityClassDefinition());
     }
 
     public function testGetEntityParameters()

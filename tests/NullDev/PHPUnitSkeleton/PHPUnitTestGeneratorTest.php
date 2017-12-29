@@ -62,7 +62,7 @@ class PHPUnitTestGeneratorTest extends TestCase
         $provider = new SeniorDeveloperProvider();
 
         return [
-            [new ImprovedClassSource($provider->provideClassType()), 'class'],
+            [new ImprovedClassSource($provider->provideClassDefinition()), 'class'],
             [$provider->provideSourceWithParent(), 'class-with-parent'],
             [$provider->provideSourceWithInterface(), 'class-with-interface'],
             [$provider->provideSourceWithTrait(), 'class-with-trait'],

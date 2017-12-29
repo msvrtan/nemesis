@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace spec\NullDev\BroadwaySkeleton\Command;
 
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayDoctrineOrmReadFactory;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PhpSpec\ObjectBehavior;
 
 class CreateBroadwayDoctrineOrmReadFactorySpec extends ObjectBehavior
 {
-    public function let(ClassType $factoryClassType)
+    public function let(ClassDefinition $factoryClassDefinition)
     {
-        $this->beConstructedWith($factoryClassType);
+        $this->beConstructedWith($factoryClassDefinition);
     }
 
     public function it_is_initializable()
@@ -20,8 +20,8 @@ class CreateBroadwayDoctrineOrmReadFactorySpec extends ObjectBehavior
         $this->shouldHaveType(CreateBroadwayDoctrineOrmReadFactory::class);
     }
 
-    public function it_exposes_class_type_of_factory_to_build(ClassType $factoryClassType)
+    public function it_exposes_class_type_of_factory_to_build(ClassDefinition $factoryClassDefinition)
     {
-        $this->getFactoryClassType()->shouldReturn($factoryClassType);
+        $this->getFactoryClassDefinition()->shouldReturn($factoryClassDefinition);
     }
 }

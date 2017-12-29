@@ -6,7 +6,7 @@ namespace Tests\NullDev\Skeleton\CodeGenerator\PhpParser;
 
 use NullDev\Skeleton\CodeGenerator\PhpParser\ClassGenerator;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\InterfaceType;
 use NullDev\Skeleton\Definition\PHP\Types\TraitType;
 use NullDev\Skeleton\Source\ImprovedClassSource;
@@ -30,7 +30,7 @@ class ClassGeneratorTest extends TestCase
 
     public function testClassWithoutExtraAdditionWorks(): void
     {
-        $input  = new ImprovedClassSource(ClassType::createFromFullyQualified('MyCompany\Namespace\User'));
+        $input  = new ImprovedClassSource(ClassDefinition::createFromFullyQualified('MyCompany\Namespace\User'));
         $result = $this->classGenerator->generate($input);
 
         self::assertInstanceOf(Class_::class, $result);
@@ -38,8 +38,8 @@ class ClassGeneratorTest extends TestCase
 
     public function testClassWithParentWorks(): void
     {
-        $input = new ImprovedClassSource(ClassType::createFromFullyQualified('MyCompany\Namespace\User'));
-        $input->addParent(ClassType::createFromFullyQualified('Vendor\Namespace\User'));
+        $input = new ImprovedClassSource(ClassDefinition::createFromFullyQualified('MyCompany\Namespace\User'));
+        $input->addParent(ClassDefinition::createFromFullyQualified('Vendor\Namespace\User'));
         $result = $this->classGenerator->generate($input);
 
         self::assertInstanceOf(Class_::class, $result);
@@ -47,7 +47,7 @@ class ClassGeneratorTest extends TestCase
 
     public function testClassWithInterfaces(): void
     {
-        $input = new ImprovedClassSource(ClassType::createFromFullyQualified('MyCompany\Namespace\User'));
+        $input = new ImprovedClassSource(ClassDefinition::createFromFullyQualified('MyCompany\Namespace\User'));
         $input->addInterface(InterfaceType::createFromFullyQualified('SomeInterface'));
         $input->addInterface(InterfaceType::createFromFullyQualified('AnotherInterface'));
         $result = $this->classGenerator->generate($input);
@@ -57,7 +57,7 @@ class ClassGeneratorTest extends TestCase
 
     public function testClassWithTraits(): void
     {
-        $input = new ImprovedClassSource(ClassType::createFromFullyQualified('MyCompany\Namespace\User'));
+        $input = new ImprovedClassSource(ClassDefinition::createFromFullyQualified('MyCompany\Namespace\User'));
         $input->addTrait(TraitType::createFromFullyQualified('SomeTrait'));
         $input->addTrait(TraitType::createFromFullyQualified('AnotherTrait'));
         $result = $this->classGenerator->generate($input);
@@ -67,7 +67,7 @@ class ClassGeneratorTest extends TestCase
 
     public function testClassWithProperties(): void
     {
-        $input = new ImprovedClassSource(ClassType::createFromFullyQualified('MyCompany\Namespace\User'));
+        $input = new ImprovedClassSource(ClassDefinition::createFromFullyQualified('MyCompany\Namespace\User'));
         $input->addProperty(Property::create('firstName'));
         $input->addProperty(Property::create('lastName', 'LastName'));
         $result = $this->classGenerator->generate($input);

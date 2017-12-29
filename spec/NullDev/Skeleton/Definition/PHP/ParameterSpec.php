@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace spec\NullDev\Skeleton\Definition\PHP;
 
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PhpSpec\ObjectBehavior;
 use Throwable;
 
 class ParameterSpec extends ObjectBehavior
 {
-    public function let(ClassType $type)
+    public function let(ClassDefinition $type)
     {
         $this->beConstructedWith($name = 'param', $type);
     }
@@ -41,7 +41,7 @@ class ParameterSpec extends ObjectBehavior
         $this->getName()->shouldReturn('param');
     }
 
-    public function it_exposes_parameter_class_type(ClassType $type)
+    public function it_exposes_parameter_class_type(ClassDefinition $type)
     {
         $this->getType()->shouldReturn($type);
     }
@@ -51,7 +51,7 @@ class ParameterSpec extends ObjectBehavior
         $this->hasType()->shouldReturn(true);
     }
 
-    public function it_exposes_parameters_class_name_without_namespace(ClassType $type)
+    public function it_exposes_parameters_class_name_without_namespace(ClassDefinition $type)
     {
         $type->getName()->shouldBeCalled()->willReturn('ClassName');
 

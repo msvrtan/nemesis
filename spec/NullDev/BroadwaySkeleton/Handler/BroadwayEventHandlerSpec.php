@@ -8,7 +8,7 @@ use NullDev\BroadwaySkeleton\Command\CreateBroadwayEvent;
 use NullDev\BroadwaySkeleton\Handler\BroadwayEventHandler;
 use NullDev\BroadwaySkeleton\SourceFactory\EventSourceFactory;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use PhpSpec\ObjectBehavior;
 
@@ -27,11 +27,11 @@ class BroadwayEventHandlerSpec extends ObjectBehavior
     public function it_will_handler_creating_broadway_model(
         CreateBroadwayEvent $command,
         EventSourceFactory $eventSourceFactory,
-        ClassType $classType,
+        ClassDefinition $classType,
         Parameter $parameter1,
         ImprovedClassSource $class
     ) {
-        $command->getClassType()
+        $command->getClassDefinition()
             ->shouldBeCalled()
             ->willReturn($classType);
         $command->getParameters()

@@ -6,7 +6,7 @@ namespace spec\NullDevelopment\Skeleton\Definition;
 
 //use NullDevelopment\Skeleton\SourceCode;
 use NullDevelopment\PhpStructure\DataTypeName\ClassName;
-use NullDevelopment\PhpStructure\Type\ClassType;
+use NullDevelopment\PhpStructure\Type\ClassDefinition;
 use NullDevelopment\Skeleton\Definition\DateTimeValueObject;
 use NullDevelopment\Skeleton\SourceCode;
 use PhpSpec\ObjectBehavior;

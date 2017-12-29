@@ -62,6 +62,6 @@ class ConstructorMethodSpec extends ObjectBehavior
         $parameter1->hasType()->shouldBeCalled()->willReturn(true);
         $parameter1->getType()->shouldBeCalled()->willReturn($classType1);
         $parameter2->hasType()->shouldBeCalled()->willReturn(false);
-        $this->getParamsAsClassTypes()->shouldReturn([$classType1]);
+        $this->getParamsAsClassDefinitions()->shouldReturn([$classType1]);
     }
 }

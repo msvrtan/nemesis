@@ -6,7 +6,7 @@ namespace Tests\NullDev\Skeleton\Definition\PHP;
 
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,7 +17,7 @@ class ParameterTest extends TestCase
 {
     public function testItWorksWithType(): void
     {
-        $type = ClassType::createFromFullyQualified('Vendor\Namespace\MyClass');
+        $type = ClassDefinition::createFromFullyQualified('Vendor\Namespace\MyClass');
 
         $parameter = new Parameter('name', $type);
 

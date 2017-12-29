@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\NullDev\Skeleton\Source;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use PHPUnit\Framework\TestCase;
@@ -21,7 +21,7 @@ class ClassSourceFactoryTest extends TestCase
 
         self::assertInstanceOf(
             ImprovedClassSource::class,
-            $factory->create(ClassType::createFromFullyQualified('My\Namespace\User'))
+            $factory->create(ClassDefinition::createFromFullyQualified('My\Namespace\User'))
         );
     }
 }

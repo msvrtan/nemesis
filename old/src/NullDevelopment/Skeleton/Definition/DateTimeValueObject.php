@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NullDevelopment\Skeleton\Definition;
 
-use NullDevelopment\PhpStructure\Type\ClassType;
+use NullDevelopment\PhpStructure\Type\ClassDefinition;
 use NullDevelopment\Skeleton\SourceCode;
 
 /**

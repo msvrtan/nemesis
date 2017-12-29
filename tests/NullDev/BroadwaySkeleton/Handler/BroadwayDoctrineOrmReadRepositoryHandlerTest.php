@@ -8,7 +8,7 @@ use League\Tactician\CommandBus;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayDoctrineOrmReadRepository;
 use NullDev\BroadwaySkeleton\Handler\BroadwayDoctrineOrmReadRepositoryHandler;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use Tests\NullDev\ContainerSupportedTestCase;
 
 /**
@@ -35,9 +35,9 @@ class BroadwayDoctrineOrmReadRepositoryHandlerTest extends ContainerSupportedTes
      */
     public function testSourcesWillMatchExpectedOutput(string $className): void
     {
-        $repositoryClassType = ClassType::createFromFullyQualified($className.'Repository');
+        $repositoryClassDefinition = ClassDefinition::createFromFullyQualified($className.'Repository');
 
-        $command = new CreateBroadwayDoctrineOrmReadRepository($repositoryClassType);
+        $command = new CreateBroadwayDoctrineOrmReadRepository($repositoryClassDefinition);
 
         $result = $this->commandBus->handle($command);
 

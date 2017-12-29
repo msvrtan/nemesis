@@ -24,7 +24,7 @@ class BroadwayDoctrineOrmReadProjectorHandler
     public function handleCreateBroadwayDoctrineOrmReadProjector(CreateBroadwayDoctrineOrmReadProjector $command): array
     {
         return [
-            $this->readProjectorSourceFactory->create($command->getProjectorClassType(), $command->getEntityParameters()),
+            $this->readProjectorSourceFactory->create($command->getProjectorClassDefinition(), $command->getEntityParameters()),
         ];
     }
 }

@@ -9,7 +9,7 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStore;
 use NullDev\Skeleton\Definition\PHP\Methods\Method;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\TypeDeclaration\ArrayType;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 
@@ -55,7 +55,7 @@ class SetUpMethod extends SimpleTestMethod implements Method
         return $params;
     }
 
-    public function getSubjectUnderTestConstuctorParametersAsClassTypes(): array
+    public function getSubjectUnderTestConstuctorParametersAsClassDefinitions(): array
     {
         $result = [];
         foreach ($this->subjectUnderTest->getConstructorParameters() as $param) {
@@ -65,8 +65,8 @@ class SetUpMethod extends SimpleTestMethod implements Method
         }
 
         if (EventSourcingRepository::class === $this->subjectUnderTest->getParentFullName()) {
-            $result[] = ClassType::createFromFullyQualified(EventStore::class);
-            $result[] = ClassType::createFromFullyQualified(EventBus::class);
+            $result[] = ClassDefinition::createFromFullyQualified(EventStore::class);
+            $result[] = ClassDefinition::createFromFullyQualified(EventBus::class);
             $result[] = new ArrayType();
         }
 

@@ -23,7 +23,7 @@ class CreateUuidClassHandler
 
     public function handleCreateUuidClass(CreateUuidClass $command): array
     {
-        $classSource = $this->sourceFactory->create($command->getClassType());
+        $classSource = $this->sourceFactory->create($command->getClassDefinition());
 
         return [$classSource];
     }

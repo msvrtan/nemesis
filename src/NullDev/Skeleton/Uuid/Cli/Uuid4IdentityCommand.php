@@ -6,7 +6,7 @@ namespace NullDev\Skeleton\Uuid\Cli;
 
 use League\Tactician\CommandBus;
 use NullDev\Skeleton\Command\SimpleSkeletonGeneratorCommand;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Uuid\Command\CreateUuidClass;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -27,7 +27,7 @@ class Uuid4IdentityCommand extends SimpleSkeletonGeneratorCommand
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $classType = ClassType::createFromFullyQualified($this->className);
+        $classType = ClassDefinition::createFromFullyQualified($this->className);
 
         $commandBus = $this->getService(CommandBus::class);
 

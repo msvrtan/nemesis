@@ -33,7 +33,7 @@ class TypeFactory
         } elseif ('bool' === $typeName) {
             $type = new BoolType();
         } else {
-            $type = ClassType::createFromFullyQualified($typeName);
+            $type = ClassDefinition::createFromFullyQualified($typeName);
         }
 
         return $type;

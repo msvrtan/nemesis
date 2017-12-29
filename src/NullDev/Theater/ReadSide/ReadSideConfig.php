@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NullDev\Theater\ReadSide;
 
 use Exception;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 
 /**
  * @see ReadSideConfigSpec
@@ -19,13 +19,13 @@ class ReadSideConfig
     private $namespace;
     /** @var ReadSideImplementation */
     private $implementation;
-    /** @var ClassType */
+    /** @var ClassDefinition */
     private $readEntity;
-    /** @var ClassType */
+    /** @var ClassDefinition */
     private $readRepository;
-    /** @var ClassType */
+    /** @var ClassDefinition */
     private $readProjector;
-    /** @var ClassType|null */
+    /** @var ClassDefinition|null */
     private $readFactory;
     /** @var array */
     private $properties;
@@ -34,10 +34,10 @@ class ReadSideConfig
         ReadSideName $name,
         ReadSideNamespace $namespace,
         ReadSideImplementation $implementation,
-        ClassType $readEntity,
-        ClassType $readRepository,
-        ClassType $readProjector,
-        ?ClassType $readFactory,
+        ClassDefinition $readEntity,
+        ClassDefinition $readRepository,
+        ClassDefinition $readProjector,
+        ?ClassDefinition $readFactory,
         array $properties
     ) {
         $this->name           = $name;
@@ -65,22 +65,22 @@ class ReadSideConfig
         return $this->implementation;
     }
 
-    public function getReadEntity(): ClassType
+    public function getReadEntity(): ClassDefinition
     {
         return $this->readEntity;
     }
 
-    public function getReadRepository(): ClassType
+    public function getReadRepository(): ClassDefinition
     {
         return $this->readRepository;
     }
 
-    public function getReadProjector(): ClassType
+    public function getReadProjector(): ClassDefinition
     {
         return $this->readProjector;
     }
 
-    public function getReadFactory(): ClassType
+    public function getReadFactory(): ClassDefinition
     {
         if (null === $this->readFactory) {
             throw new Exception('Err 98098351231: No read factory defined!');

@@ -8,7 +8,7 @@ use NullDev\BroadwaySkeleton\Command\CreateBroadwayDoctrineOrmReadProjector;
 use NullDev\BroadwaySkeleton\Handler\BroadwayDoctrineOrmReadProjectorHandler;
 use NullDev\BroadwaySkeleton\SourceFactory\Read\DoctrineOrm\ReadProjectorSourceFactory;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use PhpSpec\ObjectBehavior;
 
@@ -28,11 +28,11 @@ class BroadwayDoctrineOrmReadProjectorHandlerSpec extends ObjectBehavior
         CreateBroadwayDoctrineOrmReadProjector $command,
         ReadProjectorSourceFactory $readProjectorSourceFactory,
         Parameter $parameters,
-        ClassType $projectorType,
+        ClassDefinition $projectorType,
         ImprovedClassSource $projectorClass
     ) {
         $command->getEntityParameters()->shouldBeCalled()->willReturn([$parameters]);
-        $command->getProjectorClassType()->shouldBeCalled()->willReturn($projectorType);
+        $command->getProjectorClassDefinition()->shouldBeCalled()->willReturn($projectorType);
 
         $readProjectorSourceFactory->create($projectorType, [$parameters])->shouldBeCalled()->willReturn($projectorClass);
 

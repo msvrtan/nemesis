@@ -6,7 +6,7 @@ namespace Tests\NullDev\Skeleton\Source;
 
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use NullDev\Skeleton\Definition\PHP\Methods\ConstructorMethod;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\TypeDeclaration\ArrayType;
 use NullDev\Skeleton\Definition\PHP\Types\TypeDeclaration\BoolType;
 use NullDev\Skeleton\Definition\PHP\Types\TypeDeclaration\FloatType;
@@ -25,10 +25,10 @@ class ImprovedClassSourceTest extends TestCase
 
     public function testDefaultGetters(): void
     {
-        $classType           = ClassType::createFromFullyQualified('Vendor\Namespace\Name');
+        $classType           = ClassDefinition::createFromFullyQualified('Vendor\Namespace\Name');
         $improvedClassSource = new ImprovedClassSource($classType);
 
-        self::assertSame($classType, $improvedClassSource->getClassType());
+        self::assertSame($classType, $improvedClassSource->getClassDefinition());
         self::assertTrue($improvedClassSource->hasNamespace());
         self::assertEquals('Vendor\Namespace', $improvedClassSource->getNamespace());
         self::assertEquals('Name', $improvedClassSource->getName());
@@ -59,7 +59,7 @@ class ImprovedClassSourceTest extends TestCase
 
     public function testStaticTypesWillNotBeAddedToImport(): void
     {
-        $classType           = ClassType::createFromFullyQualified('Vendor\Namespace\Name');
+        $classType           = ClassDefinition::createFromFullyQualified('Vendor\Namespace\Name');
         $improvedClassSource = new ImprovedClassSource($classType);
 
         $improvedClassSource->addImport(new StringType());
@@ -76,7 +76,7 @@ class ImprovedClassSourceTest extends TestCase
      */
     public function testOnlyOneConstructorMethodCanBeAdded(): void
     {
-        $improvedClassSource = new ImprovedClassSource(ClassType::createFromFullyQualified('Vendor\Namespace\Name'));
+        $improvedClassSource = new ImprovedClassSource(ClassDefinition::createFromFullyQualified('Vendor\Namespace\Name'));
 
         $improvedClassSource->addConstructorMethod(new ConstructorMethod([]));
         $improvedClassSource->addConstructorMethod(new ConstructorMethod([]));

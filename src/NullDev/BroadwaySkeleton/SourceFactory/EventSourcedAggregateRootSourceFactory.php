@@ -8,7 +8,7 @@ use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use NullDev\BroadwaySkeleton\Definition\PHP\DefinitionFactory;
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 
 class EventSourcedAggregateRootSourceFactory
@@ -24,11 +24,11 @@ class EventSourcedAggregateRootSourceFactory
         $this->definitionFactory = $definitionFactory;
     }
 
-    public function create(ClassType $classType, Parameter $parameter)
+    public function create(ClassDefinition $classType, Parameter $parameter)
     {
         $source = $this->sourceFactory->create($classType);
 
-        $source->addParent(ClassType::createFromFullyQualified(EventSourcedAggregateRoot::class));
+        $source->addParent(ClassDefinition::createFromFullyQualified(EventSourcedAggregateRoot::class));
 
         //Add aggregate root id as property.
         $source->addProperty(Property::createFromParameter($parameter));

@@ -14,7 +14,7 @@ use NullDev\Skeleton\Definition\PHP\Methods\ConstructorMethod;
 use NullDev\Skeleton\Definition\PHP\Methods\GenericMethod;
 use NullDev\Skeleton\Definition\PHP\Methods\GetterMethod;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\TraitType;
 use NullDev\Skeleton\Definition\PHP\Types\TypeDeclaration\TypeDeclaration;
 use NullDev\Skeleton\Definition\PHPUnit\CoversComment;
@@ -51,23 +51,23 @@ class PHPUnitTestGenerator
             $testClassName = $this->config->getTestsNamespace().'\\'.$testClassName;
         }
 
-        $testClassType = ClassType::createFromFullyQualified($testClassName);
+        $testClassDefinition = ClassDefinition::createFromFullyQualified($testClassName);
 
-        $testSource = $this->factory->createTest($testClassType);
+        $testSource = $this->factory->createTest($testClassDefinition);
 
         $testSource->addDocComment(new CoversComment($improvedClassSource->getFullName()));
         $testSource->addDocComment(new GroupComment('todo'));
 
-        $testSource->addParent(ClassType::createFromFullyQualified($this->config->getBaseTestClassName()));
+        $testSource->addParent(ClassDefinition::createFromFullyQualified($this->config->getBaseTestClassName()));
 
-        $testSource->addImport($improvedClassSource->getClassType());
-        $testSource->addImport(ClassType::createFromFullyQualified('Mockery'));
+        $testSource->addImport($improvedClassSource->getClassDefinition());
+        $testSource->addImport(ClassDefinition::createFromFullyQualified('Mockery'));
 
         $testSource->addTrait(TraitType::createFromFullyQualified('Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration'));
 
         foreach ($improvedClassSource->getConstructorParameters() as $constructorParameter) {
             if (true === $constructorParameter->hasType() && false === ($constructorParameter->getType() instanceof TypeDeclaration)) {
-                $testSource->addImport(ClassType::createFromFullyQualified('Mockery\MockInterface'));
+                $testSource->addImport(ClassDefinition::createFromFullyQualified('Mockery\MockInterface'));
 
                 $property = new MockedProperty(lcfirst($constructorParameter->getName()), $constructorParameter->getType());
             } else {
@@ -78,12 +78,12 @@ class PHPUnitTestGenerator
         }
 
         $testSource->addProperty(
-            new Property('sut', $improvedClassSource->getClassType())
+            new Property('sut', $improvedClassSource->getClassDefinition())
         );
 
         $setUpMethod = new SetUpMethod($improvedClassSource);
 
-        foreach ($setUpMethod->getSubjectUnderTestConstuctorParametersAsClassTypes() as $item) {
+        foreach ($setUpMethod->getSubjectUnderTestConstuctorParametersAsClassDefinitions() as $item) {
             $testSource->addImport($item);
         }
 

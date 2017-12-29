@@ -36,7 +36,7 @@ class SpecGeneratorTest extends ContainerSupportedTestCase
         $provider = new SeniorDeveloperProvider();
 
         return [
-            [new ImprovedClassSource($provider->provideClassType()), 'class-spec'],
+            [new ImprovedClassSource($provider->provideClassDefinition()), 'class-spec'],
             [$provider->provideSourceWithParent(), 'class-with-parent-spec'],
             [$provider->provideSourceWithInterface(), 'class-with-interface-spec'],
             [$provider->provideSourceWithTrait(), 'class-with-trait-spec'],

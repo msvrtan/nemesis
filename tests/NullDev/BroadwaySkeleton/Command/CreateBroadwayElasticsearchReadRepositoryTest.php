@@ -8,7 +8,7 @@ use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\MockInterface;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayElasticsearchReadRepository;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,19 +18,19 @@ use PHPUnit\Framework\TestCase;
 class CreateBroadwayElasticsearchReadRepositoryTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
-    /** @var MockInterface|ClassType */
-    private $repositoryClassType;
+    /** @var MockInterface|ClassDefinition */
+    private $repositoryClassDefinition;
     /** @var CreateBroadwayElasticsearchReadRepository */
     private $sut;
 
     public function setUp()
     {
-        $this->repositoryClassType = Mockery::mock(ClassType::class);
-        $this->sut                 = new CreateBroadwayElasticsearchReadRepository($this->repositoryClassType);
+        $this->repositoryClassDefinition = Mockery::mock(ClassDefinition::class);
+        $this->sut                       = new CreateBroadwayElasticsearchReadRepository($this->repositoryClassDefinition);
     }
 
-    public function testGetRepositoryClassType()
+    public function testGetRepositoryClassDefinition()
     {
-        self::assertEquals($this->repositoryClassType, $this->sut->getRepositoryClassType());
+        self::assertEquals($this->repositoryClassDefinition, $this->sut->getRepositoryClassDefinition());
     }
 }

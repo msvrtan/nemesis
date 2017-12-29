@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NullDev\Skeleton\Uuid\Command;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 
 /**
  * @see CreateUuidClassSpec
@@ -12,15 +12,15 @@ use NullDev\Skeleton\Definition\PHP\Types\ClassType;
  */
 class CreateUuidClass
 {
-    /** @var ClassType */
+    /** @var ClassDefinition */
     private $classType;
 
-    public function __construct(ClassType $classType)
+    public function __construct(ClassDefinition $classType)
     {
         $this->classType = $classType;
     }
 
-    public function getClassType(): ClassType
+    public function getClassDefinition(): ClassDefinition
     {
         return $this->classType;
     }

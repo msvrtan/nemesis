@@ -24,7 +24,7 @@ class BroadwayElasticsearchReadEntityHandler
     public function handleCreateBroadwayElasticsearchReadEntity(CreateBroadwayElasticsearchReadEntity $command): array
     {
         return [
-            $this->readEntitySourceFactory->create($command->getEntityClassType(), $command->getEntityParameters()),
+            $this->readEntitySourceFactory->create($command->getEntityClassDefinition(), $command->getEntityParameters()),
         ];
     }
 }

@@ -52,7 +52,7 @@ class TestGetterMethodTest extends TestCase
         self::assertEquals($this->subjectUnderTestPropertyName, $this->sut->getSubjectUnderTestPropertyName());
     }
 
-    public function testGetParamsAsClassTypes()
+    public function testGetParamsAsClassDefinitions()
     {
         $this->markTestSkipped('Skipping');
     }

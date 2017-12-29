@@ -23,7 +23,7 @@ class TestNothingMethodSpec extends ObjectBehavior
 
     public function it_has_no_method_parameters()
     {
-        $this->getParamsAsClassTypes()->shouldReturn([]);
+        $this->getParamsAsClassDefinitions()->shouldReturn([]);
         $this->getMethodParameters()->shouldReturn([]);
     }
 

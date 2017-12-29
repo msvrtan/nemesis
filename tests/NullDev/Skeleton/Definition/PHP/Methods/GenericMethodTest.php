@@ -8,7 +8,7 @@ use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\MockInterface;
 use NullDev\Skeleton\Definition\PHP\Methods\GenericMethod;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,7 +22,7 @@ class GenericMethodTest extends TestCase
     private $methodName;
     /** @var array */
     private $params;
-    /** @var MockInterface|ClassType */
+    /** @var MockInterface|ClassDefinition */
     private $returnType;
     /** @var GenericMethod */
     private $sut;
@@ -31,7 +31,7 @@ class GenericMethodTest extends TestCase
     {
         $this->methodName = 'methodName';
         $this->params     = [];
-        $this->returnType = Mockery::mock(ClassType::class);
+        $this->returnType = Mockery::mock(ClassDefinition::class);
         $this->sut        = new GenericMethod($this->methodName, $this->params, $this->returnType);
     }
 
@@ -65,7 +65,7 @@ class GenericMethodTest extends TestCase
         $this->markTestSkipped('Skipping');
     }
 
-    public function testGetParamsAsClassTypes()
+    public function testGetParamsAsClassDefinitions()
     {
         $this->markTestSkipped('Skipping');
     }

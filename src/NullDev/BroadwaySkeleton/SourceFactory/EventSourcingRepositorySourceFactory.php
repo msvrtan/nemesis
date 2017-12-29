@@ -9,7 +9,7 @@ use Broadway\EventSourcing\AggregateFactory\PublicConstructorAggregateFactory;
 use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStore;
 use NullDev\BroadwaySkeleton\Definition\PHP\DefinitionFactory;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 
 class EventSourcingRepositorySourceFactory
@@ -25,26 +25,26 @@ class EventSourcingRepositorySourceFactory
         $this->definitionFactory = $definitionFactory;
     }
 
-    public function create(ClassType $classType, ClassType $modelClassType)
+    public function create(ClassDefinition $classType, ClassDefinition $modelClassDefinition)
     {
         $source = $this->sourceFactory->create($classType);
 
-        $source->addParent(ClassType::createFromFullyQualified(EventSourcingRepository::class));
+        $source->addParent(ClassDefinition::createFromFullyQualified(EventSourcingRepository::class));
 
         $source->addImport(
-            ClassType::createFromFullyQualified(PublicConstructorAggregateFactory::class)
+            ClassDefinition::createFromFullyQualified(PublicConstructorAggregateFactory::class)
         );
         $source->addImport(
-            ClassType::createFromFullyQualified(EventBus::class)
+            ClassDefinition::createFromFullyQualified(EventBus::class)
         );
         $source->addImport(
-            ClassType::createFromFullyQualified(EventStore::class)
+            ClassDefinition::createFromFullyQualified(EventStore::class)
         );
 
         //Add aggregate root id as property.
         //Add constructor which calls parent constructor method.
         $source->addMethod(
-            $this->definitionFactory->createBroadwayModelRepositoryConstructorMethod($modelClassType)
+            $this->definitionFactory->createBroadwayModelRepositoryConstructorMethod($modelClassDefinition)
         );
 
         return $source;

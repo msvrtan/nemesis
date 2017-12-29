@@ -10,7 +10,7 @@ use NullDev\BroadwaySkeleton\Definition\PHP\Methods\SerializeMethod;
 use NullDev\BroadwaySkeleton\SourceFactory\EventSourceFactory;
 use NullDev\Skeleton\Definition\PHP\Methods\ConstructorMethod;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use PhpSpec\ObjectBehavior;
@@ -30,7 +30,7 @@ class EventSourceFactorySpec extends ObjectBehavior
     public function it_will_create_source_from_given_class_type_and_constructor_params(
         ClassSourceFactory $sourceFactory,
         DefinitionFactory $definitionFactory,
-        ClassType $classType,
+        ClassDefinition $classType,
         ImprovedClassSource $classSource,
         Parameter $parameter1,
         Parameter $parameter2,

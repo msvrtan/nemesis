@@ -39,7 +39,7 @@ class DeserializeGeneratorTest extends BaseOutputGeneratorTestCase
         $provider = new SeniorDeveloperProvider();
 
         return [
-            [new ImprovedClassSource($provider->provideClassType()), '0-no-param'],
+            [new ImprovedClassSource($provider->provideClassDefinition()), '0-no-param'],
             [$provider->provideSourceWithParent(), '0-no-param'],
             [$provider->provideSourceWithInterface(), '0-no-param'],
             [$provider->provideSourceWithTrait(), '0-no-param'],

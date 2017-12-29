@@ -8,7 +8,7 @@ use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\MockInterface;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayDoctrineOrmReadProjector;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,8 +18,8 @@ use PHPUnit\Framework\TestCase;
 class CreateBroadwayDoctrineOrmReadProjectorTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
-    /** @var MockInterface|ClassType */
-    private $projectorClassType;
+    /** @var MockInterface|ClassDefinition */
+    private $projectorClassDefinition;
     /** @var array */
     private $entityParameters;
     /** @var CreateBroadwayDoctrineOrmReadProjector */
@@ -27,14 +27,14 @@ class CreateBroadwayDoctrineOrmReadProjectorTest extends TestCase
 
     public function setUp()
     {
-        $this->projectorClassType = Mockery::mock(ClassType::class);
-        $this->entityParameters   = [];
-        $this->sut                = new CreateBroadwayDoctrineOrmReadProjector($this->projectorClassType, $this->entityParameters);
+        $this->projectorClassDefinition = Mockery::mock(ClassDefinition::class);
+        $this->entityParameters         = [];
+        $this->sut                      = new CreateBroadwayDoctrineOrmReadProjector($this->projectorClassDefinition, $this->entityParameters);
     }
 
-    public function testGetProjectorClassType()
+    public function testGetProjectorClassDefinition()
     {
-        self::assertEquals($this->projectorClassType, $this->sut->getProjectorClassType());
+        self::assertEquals($this->projectorClassDefinition, $this->sut->getProjectorClassDefinition());
     }
 
     public function testGetEntityParameters()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NullDev\BroadwaySkeleton\Command;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 
 /**
  * @see CreateBroadwayDoctrineOrmReadFactorySpec
@@ -12,16 +12,16 @@ use NullDev\Skeleton\Definition\PHP\Types\ClassType;
  */
 class CreateBroadwayDoctrineOrmReadFactory
 {
-    /** @var ClassType */
-    private $factoryClassType;
+    /** @var ClassDefinition */
+    private $factoryClassDefinition;
 
-    public function __construct(ClassType $factoryClassType)
+    public function __construct(ClassDefinition $factoryClassDefinition)
     {
-        $this->factoryClassType = $factoryClassType;
+        $this->factoryClassDefinition = $factoryClassDefinition;
     }
 
-    public function getFactoryClassType(): ClassType
+    public function getFactoryClassDefinition(): ClassDefinition
     {
-        return $this->factoryClassType;
+        return $this->factoryClassDefinition;
     }
 }

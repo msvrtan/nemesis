@@ -9,7 +9,7 @@ use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayElasticsearchReadEntity;
 use NullDev\BroadwaySkeleton\Handler\BroadwayElasticsearchReadEntityHandler;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use Tests\NullDev\ContainerSupportedTestCase;
 
 /**
@@ -36,9 +36,9 @@ class BroadwayElasticsearchReadEntityHandlerTest extends ContainerSupportedTestC
      */
     public function testSourcesWillMatchExpectedOutput(string $className, array $parameters): void
     {
-        $readEntityClassType = ClassType::createFromFullyQualified($className.'Entity');
+        $readEntityClassDefinition = ClassDefinition::createFromFullyQualified($className.'Entity');
 
-        $command = new CreateBroadwayElasticsearchReadEntity($readEntityClassType, $parameters);
+        $command = new CreateBroadwayElasticsearchReadEntity($readEntityClassDefinition, $parameters);
 
         $result = $this->commandBus->handle($command);
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace spec\NullDev\Skeleton\Definition\PHP\Types;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\TypeDeclaration\ArrayType;
 use NullDev\Skeleton\Definition\PHP\Types\TypeDeclaration\BoolType;
 use NullDev\Skeleton\Definition\PHP\Types\TypeDeclaration\FloatType;
@@ -57,7 +57,7 @@ class TypeFactorySpec extends ObjectBehavior
 
     public function it_will_return_a_class_type_instance()
     {
-        $this->create('\DateTime')->shouldReturnAnInstanceOf(ClassType::class);
+        $this->create('\DateTime')->shouldReturnAnInstanceOf(ClassDefinition::class);
     }
 
     public function it_can_tell_if_type_name_is_type_declaration()

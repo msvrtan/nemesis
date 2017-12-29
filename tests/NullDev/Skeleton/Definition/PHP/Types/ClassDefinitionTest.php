@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Tests\NullDev\Skeleton\Definition\PHP\Types;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \NullDev\Skeleton\Definition\PHP\Types\ClassType
+ * @covers \NullDev\Skeleton\Definition\PHP\Types\ClassDefinition
  * @covers \NullDev\Skeleton\Definition\PHP\Types\ConceptName
  * @group  unit
  */
-class ClassTypeTest extends TestCase
+class ClassDefinitionTest extends TestCase
 {
     public function testNamespacedInterface(): void
     {
-        $interfaceType = new ClassType('MyClass', 'Namespace1\Namespace2');
+        $interfaceType = new ClassDefinition('MyClass', 'Namespace1\Namespace2');
 
         self::assertEquals('MyClass', $interfaceType->getName());
         self::assertEquals('Namespace1\Namespace2\MyClass', $interfaceType->getFullName());
@@ -26,7 +26,7 @@ class ClassTypeTest extends TestCase
 
     public function testNonNamespacedInterface(): void
     {
-        $interfaceType = new ClassType('MyClass');
+        $interfaceType = new ClassDefinition('MyClass');
 
         self::assertEquals('MyClass', $interfaceType->getName());
         self::assertEquals('MyClass', $interfaceType->getFullName());
@@ -36,7 +36,7 @@ class ClassTypeTest extends TestCase
 
     public function testNamespacedInterfaceCanBeCreatedFromFullyQualifiedClassName(): void
     {
-        $interfaceType = ClassType::createFromFullyQualified('Namespace1\Namespace2\MyClass');
+        $interfaceType = ClassDefinition::createFromFullyQualified('Namespace1\Namespace2\MyClass');
 
         self::assertEquals('MyClass', $interfaceType->getName());
         self::assertEquals('Namespace1\Namespace2\MyClass', $interfaceType->getFullName());
@@ -46,7 +46,7 @@ class ClassTypeTest extends TestCase
 
     public function testNonNamespacedInterfaceCanBeCreatedFromFullyQualifiedClassName(): void
     {
-        $interfaceType = ClassType::createFromFullyQualified('MyClass');
+        $interfaceType = ClassDefinition::createFromFullyQualified('MyClass');
 
         self::assertEquals('MyClass', $interfaceType->getName());
         self::assertEquals('MyClass', $interfaceType->getFullName());

@@ -56,7 +56,7 @@ class ConstructorMethod implements Method
     }
 
     /** @return Parameter[] */
-    public function getParamsAsClassTypes(): array
+    public function getParamsAsClassDefinitions(): array
     {
         $result = [];
         foreach ($this->params as $param) {

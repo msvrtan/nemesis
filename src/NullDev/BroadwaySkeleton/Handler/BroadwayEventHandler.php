@@ -24,7 +24,7 @@ class BroadwayEventHandler
     public function handleCreateBroadwayEvent(CreateBroadwayEvent $command): array
     {
         return [
-            $this->eventSourceFactory->create($command->getClassType(), $command->getParameters()),
+            $this->eventSourceFactory->create($command->getClassDefinition(), $command->getParameters()),
         ];
     }
 }

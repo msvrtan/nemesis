@@ -7,12 +7,12 @@ namespace spec\NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model;
 use NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model\CreateMethod;
 use NullDev\Skeleton\Definition\PHP\Methods\Method;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PhpSpec\ObjectBehavior;
 
 class CreateMethodSpec extends ObjectBehavior
 {
-    public function let(ClassType $className, Parameter $param1)
+    public function let(ClassDefinition $className, Parameter $param1)
     {
         $this->beConstructedWith($className, $parameters = [$param1]);
     }

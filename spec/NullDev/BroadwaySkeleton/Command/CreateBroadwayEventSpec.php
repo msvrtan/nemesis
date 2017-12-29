@@ -6,12 +6,12 @@ namespace spec\NullDev\BroadwaySkeleton\Command;
 
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayEvent;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PhpSpec\ObjectBehavior;
 
 class CreateBroadwayEventSpec extends ObjectBehavior
 {
-    public function let(ClassType $classType, Parameter $parameter1)
+    public function let(ClassDefinition $classType, Parameter $parameter1)
     {
         $this->beConstructedWith($classType, [$parameter1]);
     }
@@ -21,9 +21,9 @@ class CreateBroadwayEventSpec extends ObjectBehavior
         $this->shouldHaveType(CreateBroadwayEvent::class);
     }
 
-    public function it_exposes_class_type_of_event_to_build(ClassType $classType)
+    public function it_exposes_class_type_of_event_to_build(ClassDefinition $classType)
     {
-        $this->getClassType()->shouldReturn($classType);
+        $this->getClassDefinition()->shouldReturn($classType);
     }
 
     public function it_exposes_parameters_of_event_to_build(Parameter $parameter1)

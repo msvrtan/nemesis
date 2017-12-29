@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\NullDev\Skeleton\Uuid\CodeGenerator\PhpParser\Methods;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Uuid\CodeGenerator\PhpParser\Methods\UuidCreateGenerator;
 use NullDev\Skeleton\Uuid\Definition\PHP\Methods\UuidCreateMethod;
 use PhpParser\BuilderFactory;
@@ -25,7 +25,7 @@ class UuidCreateGeneratorTest extends BaseOutputGeneratorTestCase
     /**
      * @dataProvider provideParameters
      */
-    public function testOutput(ClassType $classType, string $fileName): void
+    public function testOutput(ClassDefinition $classType, string $fileName): void
     {
         $method = new UuidCreateMethod($classType);
 
@@ -36,7 +36,7 @@ class UuidCreateGeneratorTest extends BaseOutputGeneratorTestCase
     {
         return [
             [
-                ClassType::createFromFullyQualified('Vendor\Namespace\SomeId'),
+                ClassDefinition::createFromFullyQualified('Vendor\Namespace\SomeId'),
                 '0-type-param',
             ],
         ];

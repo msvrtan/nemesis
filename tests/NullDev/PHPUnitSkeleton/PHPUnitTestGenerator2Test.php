@@ -10,7 +10,7 @@ use MyCompany\ValueObject;
 use NullDev\Nemesis\SourceParser\ReflectionSourceParser;
 use NullDev\PHPUnitSkeleton\PHPUnitTestGenerator;
 use NullDev\Skeleton\CodeGenerator\PhpParserGenerator;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use Tests\NullDev\AssertOutputTrait;
 use Tests\NullDev\ContainerSupportedTestCase;
@@ -54,7 +54,7 @@ class PHPUnitTestGenerator2Test extends ContainerSupportedTestCase
     {
         $sourceParser = $this->getService(ReflectionSourceParser::class);
 
-        $input = new ImprovedClassSource(ClassType::createFromFullyQualified($className));
+        $input = new ImprovedClassSource(ClassDefinition::createFromFullyQualified($className));
 
         return $sourceParser->parseClass($input);
     }

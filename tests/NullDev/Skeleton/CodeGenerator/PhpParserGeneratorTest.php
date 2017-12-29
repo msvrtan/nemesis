@@ -27,7 +27,7 @@ class PhpParserGeneratorTest extends ContainerSupportedTestCase
         $provider = new SeniorDeveloperProvider();
 
         return [
-            [new ImprovedClassSource($provider->provideClassType()), 'code/class'],
+            [new ImprovedClassSource($provider->provideClassDefinition()), 'code/class'],
             [$provider->provideSourceWithParent(), 'code/class-with-parent'],
             [$provider->provideSourceWithInterface(), 'code/class-with-interface'],
             [$provider->provideSourceWithTrait(), 'code/class-with-trait'],

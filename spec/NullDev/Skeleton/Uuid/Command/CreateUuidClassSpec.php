@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace spec\NullDev\Skeleton\Uuid\Command;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Uuid\Command\CreateUuidClass;
 use PhpSpec\ObjectBehavior;
 
 class CreateUuidClassSpec extends ObjectBehavior
 {
-    public function let(ClassType $classType)
+    public function let(ClassDefinition $classType)
     {
         $this->beConstructedWith($classType);
     }
@@ -20,8 +20,8 @@ class CreateUuidClassSpec extends ObjectBehavior
         $this->shouldHaveType(CreateUuidClass::class);
     }
 
-    public function it_will_expose_class_type(ClassType $classType)
+    public function it_will_expose_class_type(ClassDefinition $classType)
     {
-        $this->getClassType()->shouldReturn($classType);
+        $this->getClassDefinition()->shouldReturn($classType);
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NullDev\BroadwaySkeleton\Command;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 
 /**
  * @see CreateBroadwayElasticsearchReadRepositorySpec
@@ -12,16 +12,16 @@ use NullDev\Skeleton\Definition\PHP\Types\ClassType;
  */
 class CreateBroadwayElasticsearchReadRepository
 {
-    /** @var ClassType */
-    private $repositoryClassType;
+    /** @var ClassDefinition */
+    private $repositoryClassDefinition;
 
-    public function __construct(ClassType $repositoryClassType)
+    public function __construct(ClassDefinition $repositoryClassDefinition)
     {
-        $this->repositoryClassType = $repositoryClassType;
+        $this->repositoryClassDefinition = $repositoryClassDefinition;
     }
 
-    public function getRepositoryClassType(): ClassType
+    public function getRepositoryClassDefinition(): ClassDefinition
     {
-        return $this->repositoryClassType;
+        return $this->repositoryClassDefinition;
     }
 }

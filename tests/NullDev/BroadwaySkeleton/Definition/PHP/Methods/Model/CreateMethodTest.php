@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model;
 
 use NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model\CreateMethod;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -19,7 +19,7 @@ class CreateMethodTest extends TestCase
 
     public function setUp(): void
     {
-        $this->createMethod = new CreateMethod(new ClassType('name', 'namespace'), []);
+        $this->createMethod = new CreateMethod(new ClassDefinition('name', 'namespace'), []);
     }
 
     public function testNothing(): void

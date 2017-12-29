@@ -17,7 +17,7 @@ class LetMethod implements Method
         $this->params = $params;
     }
 
-    public function getParamsAsClassTypes(): array
+    public function getParamsAsClassDefinitions(): array
     {
         $result = [];
         foreach ($this->params as $param) {

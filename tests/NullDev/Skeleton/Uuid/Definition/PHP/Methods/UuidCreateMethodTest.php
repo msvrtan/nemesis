@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\NullDev\Skeleton\Uuid\Definition\PHP\Methods;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Uuid\Definition\PHP\Methods\UuidCreateMethod;
 use PHPUnit\Framework\TestCase;
 
@@ -19,7 +19,7 @@ class UuidCreateMethodTest extends TestCase
 
     public function setUp(): void
     {
-        $this->method = new UuidCreateMethod(new ClassType('SomeId', 'Vendor\Namespace'));
+        $this->method = new UuidCreateMethod(new ClassDefinition('SomeId', 'Vendor\Namespace'));
     }
 
     public function testNothing(): void

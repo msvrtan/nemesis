@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NullDev\BroadwaySkeleton\Command;
 
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use Webmozart\Assert\Assert;
 
 /**
@@ -14,12 +14,12 @@ use Webmozart\Assert\Assert;
  */
 class CreateBroadwayEvent
 {
-    /** @var ClassType */
+    /** @var ClassDefinition */
     private $classType;
     /** @var Parameter[]|array */
     private $parameters;
 
-    public function __construct(ClassType $classType, array $parameters)
+    public function __construct(ClassDefinition $classType, array $parameters)
     {
         Assert::allIsInstanceOf($parameters, Parameter::class);
 
@@ -27,7 +27,7 @@ class CreateBroadwayEvent
         $this->parameters = $parameters;
     }
 
-    public function getClassType(): ClassType
+    public function getClassDefinition(): ClassDefinition
     {
         return $this->classType;
     }

@@ -10,7 +10,7 @@ use NullDev\Skeleton\Definition\PHP\Methods\GenericMethod;
 use NullDev\Skeleton\Definition\PHP\Methods\GetterMethod;
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\Type;
 use NullDev\Skeleton\Definition\PHP\Types\TypeFactory;
 use NullDev\Skeleton\Source\ImprovedClassSource;
@@ -68,7 +68,7 @@ class ReflectionSourceParser implements SourceParser
         $results = [];
 
         foreach ($this->parseOutClassNames($code) as $className) {
-            $results[] = new ImprovedClassSource(new ClassType($className, $this->namespace));
+            $results[] = new ImprovedClassSource(new ClassDefinition($className, $this->namespace));
         }
 
         $results2 = [];

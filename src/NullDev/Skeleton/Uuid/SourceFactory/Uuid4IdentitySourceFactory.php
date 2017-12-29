@@ -8,7 +8,7 @@ use NullDev\Skeleton\Definition\PHP\Methods\ConstructorMethod;
 use NullDev\Skeleton\Definition\PHP\Methods\ToStringMethod;
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 use NullDev\Skeleton\SourceFactory\SourceFactory;
 use NullDev\Skeleton\Uuid\Definition\PHP\Methods\UuidCreateMethod;
@@ -28,7 +28,7 @@ class Uuid4IdentitySourceFactory implements SourceFactory
         $this->sourceFactory = $sourceFactory;
     }
 
-    public function create(ClassType $classType)
+    public function create(ClassDefinition $classType)
     {
         $source   = $this->sourceFactory->create($classType);
         $param    = Parameter::create('id', 'string');
@@ -45,7 +45,7 @@ class Uuid4IdentitySourceFactory implements SourceFactory
         //Add static create() method.
         $source->addMethod(new UuidCreateMethod($classType));
         //Add Ramsey\Uuid\Uuid to imports.
-        $source->addImport(ClassType::createFromFullyQualified(Uuid::class));
+        $source->addImport(ClassDefinition::createFromFullyQualified(Uuid::class));
 
         return $source;
     }

@@ -8,7 +8,7 @@ use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\MockInterface;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayDoctrineOrmReadFactory;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,19 +18,19 @@ use PHPUnit\Framework\TestCase;
 class CreateBroadwayDoctrineOrmReadFactoryTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
-    /** @var MockInterface|ClassType */
-    private $factoryClassType;
+    /** @var MockInterface|ClassDefinition */
+    private $factoryClassDefinition;
     /** @var CreateBroadwayDoctrineOrmReadFactory */
     private $sut;
 
     public function setUp()
     {
-        $this->factoryClassType = Mockery::mock(ClassType::class);
-        $this->sut              = new CreateBroadwayDoctrineOrmReadFactory($this->factoryClassType);
+        $this->factoryClassDefinition = Mockery::mock(ClassDefinition::class);
+        $this->sut                    = new CreateBroadwayDoctrineOrmReadFactory($this->factoryClassDefinition);
     }
 
-    public function testGetFactoryClassType()
+    public function testGetFactoryClassDefinition()
     {
-        self::assertEquals($this->factoryClassType, $this->sut->getFactoryClassType());
+        self::assertEquals($this->factoryClassDefinition, $this->sut->getFactoryClassDefinition());
     }
 }

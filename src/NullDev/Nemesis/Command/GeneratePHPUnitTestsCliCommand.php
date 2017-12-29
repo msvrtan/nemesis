@@ -63,10 +63,10 @@ class GeneratePHPUnitTestsCliCommand extends Command implements ContainerAwareIn
             $testSource  = $this->createPhpUnit5Source($classSource);
 
             if (false === array_key_exists($testSource->getFullName(), $existingTestClasses)) {
-                if (false === $this->shouldBeIgnored($classSource->getClassType()->getFullName())) {
+                if (false === $this->shouldBeIgnored($classSource->getClassDefinition()->getFullName())) {
                     $generateTestClassSources[] = $testSource;
                 } else {
-                    $this->io->writeln('Ignoring '.$classSource->getClassType()->getFullName());
+                    $this->io->writeln('Ignoring '.$classSource->getClassDefinition()->getFullName());
                 }
             }
         }

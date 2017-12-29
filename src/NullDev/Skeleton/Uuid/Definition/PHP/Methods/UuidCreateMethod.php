@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NullDev\Skeleton\Uuid\Definition\PHP\Methods;
 
 use NullDev\Skeleton\Definition\PHP\Methods\Method;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 
 /**
  * @see UuidCreateMethodSpec
@@ -13,10 +13,10 @@ use NullDev\Skeleton\Definition\PHP\Types\ClassType;
  */
 class UuidCreateMethod implements Method
 {
-    /** @var ClassType */
+    /** @var ClassDefinition */
     private $classToBuild;
 
-    public function __construct(ClassType $classToBuild)
+    public function __construct(ClassDefinition $classToBuild)
     {
         $this->classToBuild = $classToBuild;
     }

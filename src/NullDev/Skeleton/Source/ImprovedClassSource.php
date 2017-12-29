@@ -12,7 +12,7 @@ use NullDev\Skeleton\Definition\PHP\Methods\GetterMethod;
 use NullDev\Skeleton\Definition\PHP\Methods\Method;
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\Importable;
 use NullDev\Skeleton\Definition\PHP\Types\InterfaceType;
 use NullDev\Skeleton\Definition\PHP\Types\TraitType;
@@ -25,11 +25,11 @@ use NullDev\Skeleton\Definition\PHP\Types\Type;
  */
 class ImprovedClassSource
 {
-    /** @var ClassType */
+    /** @var ClassDefinition */
     private $classType;
     /** @var DocComment[]|array */
     private $docComments = [];
-    /** @var null|ClassType */
+    /** @var null|ClassDefinition */
     private $parent;
     /** @var InterfaceType[]|array */
     private $interfaces = [];
@@ -47,12 +47,12 @@ class ImprovedClassSource
     /** @var Type[]|array */
     private $imports = [];
 
-    public function __construct(ClassType $classType)
+    public function __construct(ClassDefinition $classType)
     {
         $this->classType = $classType;
     }
 
-    public function getClassType(): ClassType
+    public function getClassDefinition(): ClassDefinition
     {
         return $this->classType;
     }
@@ -91,7 +91,7 @@ class ImprovedClassSource
 
     //-----     Parent     -----
 
-    public function addParent(ClassType $parent)
+    public function addParent(ClassDefinition $parent)
     {
         if ($this->hasParent()) {
             throw new Exception('Err 1000100: Class already has parent!');
@@ -113,7 +113,7 @@ class ImprovedClassSource
         return true;
     }
 
-    public function getParent(): ?ClassType
+    public function getParent(): ?ClassDefinition
     {
         return $this->parent;
     }

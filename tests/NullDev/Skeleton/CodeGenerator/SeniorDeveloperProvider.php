@@ -7,7 +7,7 @@ namespace Tests\NullDev\Skeleton\CodeGenerator;
 use NullDev\Skeleton\Definition\PHP\Methods\ConstructorMethod;
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\InterfaceType;
 use NullDev\Skeleton\Definition\PHP\Types\TraitType;
 use NullDev\Skeleton\Source\ImprovedClassSource;
@@ -16,21 +16,21 @@ class SeniorDeveloperProvider
 {
     public function provideSourceWithParent(): ImprovedClassSource
     {
-        $source = new ImprovedClassSource($this->provideClassType());
+        $source = new ImprovedClassSource($this->provideClassDefinition());
 
-        return $source->addParent($this->provideParentClassType());
+        return $source->addParent($this->provideParentClassDefinition());
     }
 
     public function provideSourceWithInterface(): ImprovedClassSource
     {
-        $source = new ImprovedClassSource($this->provideClassType());
+        $source = new ImprovedClassSource($this->provideClassDefinition());
 
         return $source->addInterface($this->provideInterfaceType1());
     }
 
     public function provideSourceWithTrait(): ImprovedClassSource
     {
-        $source = new ImprovedClassSource($this->provideClassType());
+        $source = new ImprovedClassSource($this->provideClassDefinition());
 
         return $source->addTrait($this->provideTraitType1());
     }
@@ -167,14 +167,14 @@ class SeniorDeveloperProvider
         ];
     }
 
-    public function provideClassType(): ClassType
+    public function provideClassDefinition(): ClassDefinition
     {
-        return new ClassType('Senior', 'Developer');
+        return new ClassDefinition('Senior', 'Developer');
     }
 
-    private function provideParentClassType(): ClassType
+    private function provideParentClassDefinition(): ClassDefinition
     {
-        return new ClassType('Person', 'Human');
+        return new ClassDefinition('Person', 'Human');
     }
 
     private function provideInterfaceType1(): InterfaceType

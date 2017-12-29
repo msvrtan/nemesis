@@ -31,7 +31,7 @@ class TestSkippedMethodTest extends TestCase
         $this->markTestSkipped('Skipping');
     }
 
-    public function testGetParamsAsClassTypes()
+    public function testGetParamsAsClassDefinitions()
     {
         $this->markTestSkipped('Skipping');
     }

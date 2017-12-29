@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NullDev\Skeleton\Source;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 
 /**
  * @see ClassSourceFactorySpec
@@ -12,17 +12,17 @@ use NullDev\Skeleton\Definition\PHP\Types\ClassType;
  */
 class ClassSourceFactory
 {
-    public function create(ClassType $classType): ImprovedClassSource
+    public function create(ClassDefinition $classType): ImprovedClassSource
     {
         return new ImprovedClassSource($classType);
     }
 
-    public function createSpec(ClassType $classType): ImprovedSpecSource
+    public function createSpec(ClassDefinition $classType): ImprovedSpecSource
     {
         return new ImprovedSpecSource($classType);
     }
 
-    public function createTest(ClassType $classType): ImprovedTestSource
+    public function createTest(ClassDefinition $classType): ImprovedTestSource
     {
         return new ImprovedTestSource($classType);
     }

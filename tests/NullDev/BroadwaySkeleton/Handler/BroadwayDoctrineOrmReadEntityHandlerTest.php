@@ -9,7 +9,7 @@ use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayDoctrineOrmReadEntity;
 use NullDev\BroadwaySkeleton\Handler\BroadwayDoctrineOrmReadEntityHandler;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use Tests\NullDev\ContainerSupportedTestCase;
 
 /**
@@ -36,9 +36,9 @@ class BroadwayDoctrineOrmReadEntityHandlerTest extends ContainerSupportedTestCas
      */
     public function testSourcesWillMatchExpectedOutput(string $className, array $parameters): void
     {
-        $readEntityClassType = ClassType::createFromFullyQualified($className.'Entity');
+        $readEntityClassDefinition = ClassDefinition::createFromFullyQualified($className.'Entity');
 
-        $command = new CreateBroadwayDoctrineOrmReadEntity($readEntityClassType, $parameters);
+        $command = new CreateBroadwayDoctrineOrmReadEntity($readEntityClassDefinition, $parameters);
 
         $result = $this->commandBus->handle($command);
 

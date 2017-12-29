@@ -9,7 +9,7 @@ use NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model\AggregateRootIdGetterM
 use NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model\CreateMethod;
 use NullDev\BroadwaySkeleton\SourceFactory\EventSourcedAggregateRootSourceFactory;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use PhpSpec\ObjectBehavior;
@@ -29,10 +29,10 @@ class EventSourcedAggregateRootSourceFactorySpec extends ObjectBehavior
     public function it_will_create_source_from_given_class_type_and_aggregate_root_id_param(
         ClassSourceFactory $sourceFactory,
         DefinitionFactory $definitionFactory,
-        ClassType $classType,
+        ClassDefinition $classType,
         ImprovedClassSource $classSource,
         Parameter $parameter,
-        ClassType $parameterClassType,
+        ClassDefinition $parameterClassDefinition,
         CreateMethod $createMethod,
         AggregateRootIdGetterMethod $aggregateRootIdGetterMethod
     ) {
@@ -46,7 +46,7 @@ class EventSourcedAggregateRootSourceFactorySpec extends ObjectBehavior
         $parameter
             ->getType()
             ->shouldBeCalled()
-            ->willReturn($parameterClassType);
+            ->willReturn($parameterClassDefinition);
 
         $sourceFactory
             ->create($classType)

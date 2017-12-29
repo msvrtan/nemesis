@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NullDev\BroadwaySkeleton\Command;
 
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 
 /**
  * @see CreateBroadwayElasticsearchReadProjectorSpec
@@ -12,20 +12,20 @@ use NullDev\Skeleton\Definition\PHP\Types\ClassType;
  */
 class CreateBroadwayElasticsearchReadProjector
 {
-    /** @var ClassType */
-    private $projectorClassType;
+    /** @var ClassDefinition */
+    private $projectorClassDefinition;
     /** @var array */
     private $entityParameters;
 
-    public function __construct(ClassType $projectorClassType, array $entityParameters)
+    public function __construct(ClassDefinition $projectorClassDefinition, array $entityParameters)
     {
-        $this->projectorClassType = $projectorClassType;
-        $this->entityParameters   = $entityParameters;
+        $this->projectorClassDefinition = $projectorClassDefinition;
+        $this->entityParameters         = $entityParameters;
     }
 
-    public function getProjectorClassType(): ClassType
+    public function getProjectorClassDefinition(): ClassDefinition
     {
-        return $this->projectorClassType;
+        return $this->projectorClassDefinition;
     }
 
     public function getEntityParameters(): array

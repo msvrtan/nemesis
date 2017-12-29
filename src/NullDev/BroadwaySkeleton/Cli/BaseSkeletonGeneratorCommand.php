@@ -50,16 +50,16 @@ abstract class BaseSkeletonGeneratorCommand extends Command implements Container
             if (true === empty($parameterClassName)) {
                 break;
             }
-            $parameterClassType = TypeFactory::create(str_replace('/', '\\', $parameterClassName));
+            $parameterClassDefinition = TypeFactory::create(str_replace('/', '\\', $parameterClassName));
 
             $suggestedName = '';
-            if (null !== $parameterClassType) {
-                $suggestedName = lcfirst($parameterClassType->getName());
+            if (null !== $parameterClassDefinition) {
+                $suggestedName = lcfirst($parameterClassDefinition->getName());
             }
 
             $parameterName = $this->askForParameterName($suggestedName);
 
-            $fields[] = new Parameter($parameterName, $parameterClassType);
+            $fields[] = new Parameter($parameterName, $parameterClassDefinition);
         }
 
         return $fields;

@@ -12,7 +12,7 @@ use NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model\RepositoryConstructorM
 use NullDev\BroadwaySkeleton\Definition\PHP\Methods\SerializeMethod;
 use NullDev\Skeleton\Definition\PHP\Methods\ConstructorMethod;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 
 class DefinitionFactory
@@ -32,7 +32,7 @@ class DefinitionFactory
         return new SerializeMethod($classSource);
     }
 
-    public function createBroadwayModelCreateMethod(ClassType $classType, array $parameters): CreateMethod
+    public function createBroadwayModelCreateMethod(ClassDefinition $classType, array $parameters): CreateMethod
     {
         return new CreateMethod($classType, $parameters);
     }
@@ -42,7 +42,7 @@ class DefinitionFactory
         return new AggregateRootIdGetterMethod($parameter);
     }
 
-    public function createBroadwayModelRepositoryConstructorMethod(ClassType $classType): RepositoryConstructorMethod
+    public function createBroadwayModelRepositoryConstructorMethod(ClassDefinition $classType): RepositoryConstructorMethod
     {
         return new RepositoryConstructorMethod($classType);
     }

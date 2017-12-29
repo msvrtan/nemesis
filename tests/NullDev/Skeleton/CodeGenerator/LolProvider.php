@@ -7,14 +7,14 @@ namespace Tests\NullDev\Skeleton\CodeGenerator;
 use NullDev\Skeleton\Definition\PHP\Methods\ConstructorMethod;
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 
 class LolProvider
 {
     public function provideAll(): ImprovedClassSource
     {
-        $classType = ClassType::createFromFullyQualified('BlaBla\Lol');
+        $classType = ClassDefinition::createFromFullyQualified('BlaBla\Lol');
 
         $source = new ImprovedClassSource($classType);
 

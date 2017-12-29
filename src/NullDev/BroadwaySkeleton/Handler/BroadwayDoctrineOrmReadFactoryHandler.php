@@ -24,7 +24,7 @@ class BroadwayDoctrineOrmReadFactoryHandler
     public function handleCreateBroadwayDoctrineOrmReadFactory(CreateBroadwayDoctrineOrmReadFactory $command): array
     {
         return [
-            $this->readFactorySourceFactory->create($command->getFactoryClassType()),
+            $this->readFactorySourceFactory->create($command->getFactoryClassDefinition()),
         ];
     }
 }

@@ -7,7 +7,7 @@ namespace NullDev\BroadwaySkeleton\SourceFactory;
 use Broadway\Serializer\Serializable;
 use NullDev\BroadwaySkeleton\Definition\PHP\DefinitionFactory;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\InterfaceType;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 use NullDev\Skeleton\SourceFactory\SourceFactory;
@@ -25,7 +25,7 @@ class EventSourceFactory implements SourceFactory
         $this->definitionFactory = $definitionFactory;
     }
 
-    public function create(ClassType $classType, array $parameters)
+    public function create(ClassDefinition $classType, array $parameters)
     {
         $source = $this->sourceFactory->create($classType);
 

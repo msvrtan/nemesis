@@ -9,7 +9,7 @@ use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayEvent;
 use NullDev\BroadwaySkeleton\Handler\BroadwayEventHandler;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use Tests\NullDev\ContainerSupportedTestCase;
 
 /**
@@ -35,7 +35,7 @@ class BroadwayEventHandlerTest extends ContainerSupportedTestCase
      * @dataProvider provideData
      */
     public function testSourcesWillMatchExpectedOutput(
-        ClassType $classType,
+        ClassDefinition $classType,
         array $parameters,
         string $folderName
     ): void {
@@ -54,12 +54,12 @@ class BroadwayEventHandlerTest extends ContainerSupportedTestCase
     {
         return [
             [
-                ClassType::createFromFullyQualified('Something\UserCreated'),
+                ClassDefinition::createFromFullyQualified('Something\UserCreated'),
                 [],
                 'no-params',
             ],
             [
-                ClassType::createFromFullyQualified('Something\UserCreated'),
+                ClassDefinition::createFromFullyQualified('Something\UserCreated'),
                 [
                     Parameter::create('name', 'string'),
                     Parameter::create('age', 'int'),

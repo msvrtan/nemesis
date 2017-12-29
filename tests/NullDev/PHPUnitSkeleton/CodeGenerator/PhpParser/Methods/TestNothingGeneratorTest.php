@@ -39,7 +39,7 @@ class TestNothingGeneratorTest extends TestCase
         $provider = new SeniorDeveloperProvider();
 
         return [
-            [new ImprovedClassSource($provider->provideClassType()), 'nothing'],
+            [new ImprovedClassSource($provider->provideClassDefinition()), 'nothing'],
             [$provider->provideSourceWithParent(), 'nothing'],
             [$provider->provideSourceWithInterface(), 'nothing'],
             [$provider->provideSourceWithTrait(), 'nothing'],

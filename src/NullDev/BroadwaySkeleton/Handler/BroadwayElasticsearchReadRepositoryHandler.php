@@ -24,7 +24,7 @@ class BroadwayElasticsearchReadRepositoryHandler
     public function handleCreateBroadwayElasticsearchReadRepository(CreateBroadwayElasticsearchReadRepository $command): array
     {
         return [
-            $this->readRepositorySourceFactory->create($command->getRepositoryClassType()),
+            $this->readRepositorySourceFactory->create($command->getRepositoryClassDefinition()),
         ];
     }
 }

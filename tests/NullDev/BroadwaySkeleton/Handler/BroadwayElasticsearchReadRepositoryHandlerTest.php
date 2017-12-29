@@ -8,7 +8,7 @@ use League\Tactician\CommandBus;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use NullDev\BroadwaySkeleton\Command\CreateBroadwayElasticsearchReadRepository;
 use NullDev\BroadwaySkeleton\Handler\BroadwayElasticsearchReadRepositoryHandler;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use Tests\NullDev\ContainerSupportedTestCase;
 
 /**
@@ -35,9 +35,9 @@ class BroadwayElasticsearchReadRepositoryHandlerTest extends ContainerSupportedT
      */
     public function testSourcesWillMatchExpectedOutput(string $className): void
     {
-        $repositoryClassType = ClassType::createFromFullyQualified($className.'Repository');
+        $repositoryClassDefinition = ClassDefinition::createFromFullyQualified($className.'Repository');
 
-        $command = new CreateBroadwayElasticsearchReadRepository($repositoryClassType);
+        $command = new CreateBroadwayElasticsearchReadRepository($repositoryClassDefinition);
 
         $result = $this->commandBus->handle($command);
 

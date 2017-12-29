@@ -8,7 +8,7 @@ use Exception;
 
 abstract class SimpleTestMethod
 {
-    public function getParamsAsClassTypes(): array
+    public function getParamsAsClassDefinitions(): array
     {
         return [];
     }

@@ -6,7 +6,7 @@ namespace NullDev\BroadwaySkeleton\Definition\PHP\Methods\Model;
 
 use NullDev\Skeleton\Definition\PHP\Methods\Method;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use Webmozart\Assert\Assert;
 
 class CreateMethod implements Method
@@ -15,7 +15,7 @@ class CreateMethod implements Method
     /** @var Parameter[]|array */
     private $params;
 
-    public function __construct(ClassType $classToBuild, array $params)
+    public function __construct(ClassDefinition $classToBuild, array $params)
     {
         Assert::allIsInstanceOf($params, Parameter::class);
 

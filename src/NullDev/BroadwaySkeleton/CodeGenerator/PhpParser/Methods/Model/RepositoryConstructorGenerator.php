@@ -59,7 +59,7 @@ class RepositoryConstructorGenerator implements MethodGenerator
                 [
                     new Node\Arg(new Node\Expr\Variable('eventStore')),
                     new Node\Arg(new Node\Expr\Variable('eventBus')),
-                    new Node\Arg(new ClassConstFetch(new Name($method->getModelClassType()->getName()), 'class')),
+                    new Node\Arg(new ClassConstFetch(new Name($method->getModelClassDefinition()->getName()), 'class')),
                     new Node\Arg(new Node\Expr\New_(new Name('PublicConstructorAggregateFactory'))),
                     new Node\Arg(new Node\Expr\Variable('eventStreamDecorators')),
                 ]

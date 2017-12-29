@@ -8,7 +8,7 @@ use NullDev\Skeleton\Definition\PHP\Methods\ConstructorMethod;
 use NullDev\Skeleton\Definition\PHP\Methods\ToStringMethod;
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ClassSourceFactory;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use NullDev\Skeleton\Uuid\Definition\PHP\Methods\UuidCreateMethod;
@@ -30,7 +30,7 @@ class Uuid4IdentitySourceFactorySpec extends ObjectBehavior
 
     public function it_will_create_source_from_given_class_type(
         ClassSourceFactory $sourceFactory,
-        ClassType $classType,
+        ClassDefinition $classType,
         ImprovedClassSource $classSource
     ) {
         $sourceFactory->create($classType)->willReturn($classSource);
@@ -40,7 +40,7 @@ class Uuid4IdentitySourceFactorySpec extends ObjectBehavior
         $classSource->addGetterMethod(Argument::type(Parameter::class));
         $classSource->addMethod(Argument::type(ToStringMethod::class));
         $classSource->addMethod(Argument::type(UuidCreateMethod::class));
-        $classSource->addImport(Argument::type(ClassType::class));
+        $classSource->addImport(Argument::type(ClassDefinition::class));
 
         $this->create($classType)->shouldReturn($classSource);
     }

@@ -7,7 +7,7 @@ namespace spec\NullDev\PHPUnitSkeleton\Definition\PHP\Methods;
 use Exception;
 use NullDev\PHPUnitSkeleton\Definition\PHP\Methods\SetUpMethod;
 use NullDev\Skeleton\Definition\PHP\Parameter;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Source\ImprovedClassSource;
 use PhpSpec\ObjectBehavior;
 
@@ -28,7 +28,7 @@ class SetUpMethodSpec extends ObjectBehavior
 
     public function it_has_no_method_parameters()
     {
-        $this->getParamsAsClassTypes()->shouldReturn([]);
+        $this->getParamsAsClassDefinitions()->shouldReturn([]);
         $this->getMethodParameters()->shouldReturn([]);
     }
 
@@ -85,7 +85,7 @@ class SetUpMethodSpec extends ObjectBehavior
         ImprovedClassSource $subjectUnderTest,
         Parameter $param1,
         Parameter $param2,
-        ClassType $classType1
+        ClassDefinition $classType1
     ) {
         $subjectUnderTest->getConstructorParameters()
             ->shouldBeCalled()
@@ -95,6 +95,6 @@ class SetUpMethodSpec extends ObjectBehavior
         $param1->getType()->shouldBeCalled()->willReturn($classType1);
         $param2->hasType()->shouldBeCalled()->willReturn(false);
 
-        $this->getSubjectUnderTestConstuctorParametersAsClassTypes()->shouldReturn([$classType1]);
+        $this->getSubjectUnderTestConstuctorParametersAsClassDefinitions()->shouldReturn([$classType1]);
     }
 }

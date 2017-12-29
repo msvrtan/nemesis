@@ -12,7 +12,7 @@ use NullDev\Skeleton\Definition\PHP\Methods\GetterMethod;
 use NullDev\Skeleton\Definition\PHP\Methods\Method;
 use NullDev\Skeleton\Definition\PHP\Parameter;
 use NullDev\Skeleton\Definition\PHP\Property;
-use NullDev\Skeleton\Definition\PHP\Types\ClassType;
+use NullDev\Skeleton\Definition\PHP\Types\ClassDefinition;
 use NullDev\Skeleton\Definition\PHP\Types\Type;
 use NullDev\Skeleton\Definition\PHP\Types\TypeFactory;
 use NullDev\Skeleton\Source\ImprovedClassSource;
@@ -60,7 +60,7 @@ class PhpParserSourceParser implements SourceParser
             } elseif ($parsedStatement instanceof Class_) {
                 $results[] = $this->parseClass($parsedStatement, null);
             } elseif ($parsedStatement instanceof Use_) {
-                $this->imports[] = ClassType::createFromFullyQualified((string) $parsedStatement->uses[0]->name);
+                $this->imports[] = ClassDefinition::createFromFullyQualified((string) $parsedStatement->uses[0]->name);
             }
         }
 
@@ -81,7 +81,7 @@ class PhpParserSourceParser implements SourceParser
 
         foreach ($namespaceStatement->stmts as $parsedStatement) {
             if ($parsedStatement instanceof Use_) {
-                $this->imports[] = ClassType::createFromFullyQualified((string) $parsedStatement->uses[0]->name);
+                $this->imports[] = ClassDefinition::createFromFullyQualified((string) $parsedStatement->uses[0]->name);
             }
         }
 
@@ -98,7 +98,7 @@ class PhpParserSourceParser implements SourceParser
     {
         $className = (string) $classStatement->name;
 
-        $this->class = new ImprovedClassSource(new ClassType($className, $namespaceName));
+        $this->class = new ImprovedClassSource(new ClassDefinition($className, $namespaceName));
 
         // Constructor parsing
         foreach ($classStatement->stmts as $parsedStatement) {
@@ -231,11 +231,11 @@ class PhpParserSourceParser implements SourceParser
         }
 
         if (class_exists($input)) {
-            return ClassType::createFromFullyQualified($input);
+            return ClassDefinition::createFromFullyQualified($input);
         }
 
         if (class_exists($this->namespace.'\\'.$input)) {
-            return ClassType::createFromFullyQualified($this->namespace.'\\'.$input);
+            return ClassDefinition::createFromFullyQualified($this->namespace.'\\'.$input);
         }
 
         throw new Exception('Unknown class '.$input);
