@@ -9,6 +9,13 @@
     <target name="all" depends="test,fix-codestandards,phpstan"/>
     <target name="test" depends="phpspec,phpunit,behat"/>
 
+
+    <target name="output" description="Run checks on output">
+        <exec command="find lib/ -type f -name '*.php' -print0 | xargs -0 -n1 php -l" passthru="true" checkreturn="true"/>
+        <exec command="./vendor/bin/phpunit lib/tests" passthru="true" checkreturn="true"/>
+        <exec command="./vendor/bin/phpspec run --config=lib/phpspec.yml" passthru="true" checkreturn="true"/>
+    </target>
+
     <target name="fix-codestandards" depends="phpcbf,php-cs-fixer-fix,phpmd,phpcs"/>
     <target name="check-codestandards" depends="php-cs-fixer-check,phpmd,phpcs"/>
 
