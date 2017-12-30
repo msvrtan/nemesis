@@ -18,7 +18,13 @@
             "Tests\\": "tests/",
             "MyVendor\\":"lib/src/MyVendor/",
             "spec\\MyVendor\\": "lib/spec/MyVendor/",
-            "Tests\\MyVendor\\": "lib/tests/MyVendor/"
+            "Tests\\MyVendor\\": "lib/tests/MyVendor/",
+            "DevboardLib\\":"lib/src/DevboardLib/",
+            "spec\\DevboardLib\\": "lib/spec/DevboardLib/",
+            "Tests\\DevboardLib\\": "lib/tests/DevboardLib/",
+            "Git\\":"lib/src/Git/",
+            "spec\\Git\\": "lib/spec/Git/",
+            "Tests\\Git\\": "lib/tests/Git/"
         }
     },
     "require": {
