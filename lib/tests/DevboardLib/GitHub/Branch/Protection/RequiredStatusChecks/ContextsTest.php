@@ -10,7 +10,8 @@ use DevboardLib\GitHub\Branch\Protection\RequiredStatusChecks\Contexts;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversNothing
+ * @covers \DevboardLib\GitHub\Branch\Protection\RequiredStatusChecks\Contexts
+ * @group  todo
  */
 class ContextsTest extends TestCase
 {

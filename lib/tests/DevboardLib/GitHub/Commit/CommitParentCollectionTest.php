@@ -12,7 +12,8 @@ use DevboardLib\GitHub\Commit\CommitParentCollection;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversNothing
+ * @covers \DevboardLib\GitHub\Commit\CommitParentCollection
+ * @group  todo
  */
 class CommitParentCollectionTest extends TestCase
 {
