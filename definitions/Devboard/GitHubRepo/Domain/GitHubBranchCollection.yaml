@@ -1,0 +1,16 @@
+definition:
+  type: SimpleCollection
+  instanceOf: Devboard\GitHubRepo\Domain\GitHubBranchCollection
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    branches:
+      instanceOf: array
+      nullable: false
+      hasDefault: true
+      default: []
+  collectionOf:
+    instanceOf: Devboard\GitHubRepo\Domain\GitHubBranchEntity
+    accessor: getName
+    has: DevboardLib\Git\Branch\BranchName

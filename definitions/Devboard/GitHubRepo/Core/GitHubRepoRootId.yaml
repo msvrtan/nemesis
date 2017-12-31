@@ -1,0 +1,8 @@
+definition:
+  type: TheaterRootId
+  instanceOf: Devboard\GitHubRepo\Core\GitHubRepoRootId
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  basedOn: DevboardLib\GitHub\Repo\RepoId
+  prefix: GHRepoRoot

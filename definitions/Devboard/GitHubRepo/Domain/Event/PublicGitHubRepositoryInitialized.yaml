@@ -1,0 +1,28 @@
+definition:
+  type: BroadwayEvent
+  instanceOf: Devboard\GitHubRepo\Domain\Event\PublicGitHubRepositoryInitialized
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: Devboard\GitHubRepo\Core\GitHubRepoRootId
+    fullName:
+      instanceOf: DevboardLib\GitHub\Repo\RepoFullName
+    owner:
+      instanceOf: DevboardLib\GitHub\Repo\RepoOwner
+      nullable: true
+    description:
+      instanceOf: DevboardLib\GitHub\Repo\RepoDescription
+      nullable: true
+    parent:
+      instanceOf: DevboardLib\GitHub\Repo\RepoParent
+      nullable: true
+    endpoints:
+      instanceOf: DevboardLib\GitHub\Repo\RepoEndpoints
+    timestamps:
+      instanceOf: DevboardLib\GitHub\Repo\RepoTimestamps
+    stats:
+      instanceOf: DevboardLib\GitHub\Repo\RepoStats
+    initializedAt:
+      instanceOf: DateTime

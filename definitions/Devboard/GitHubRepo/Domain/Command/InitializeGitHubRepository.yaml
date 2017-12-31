@@ -1,0 +1,19 @@
+definition:
+  type: BroadwayCommand
+  instanceOf: Devboard\GitHubRepo\Domain\Command\InitializeGitHubRepository
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: Devboard\GitHubRepo\Core\GitHubRepoRootId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    repo:
+      instanceOf: DevboardLib\GitHub\GitHubRepo
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []

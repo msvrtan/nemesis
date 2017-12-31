@@ -1,0 +1,16 @@
+definition:
+  type: SimpleCollection
+  instanceOf: Devboard\GitHubRepo\Domain\GitHubTagCollection
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    branches:
+      instanceOf: array
+      nullable: false
+      hasDefault: true
+      default: []
+  collectionOf:
+    instanceOf: Devboard\GitHubRepo\Domain\GitHubTagEntity
+    accessor: getName
+    has: DevboardLib\Git\Tag\TagName

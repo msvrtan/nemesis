@@ -1,0 +1,19 @@
+definition:
+  type: BroadwayCommand
+  instanceOf: Devboard\GitHubRepo\Domain\Command\DeleteGitHubBranch
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: Devboard\GitHubRepo\Core\GitHubRepoRootId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    branchName:
+      instanceOf: DevboardLib\Git\Branch\BranchName
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['master','dev']

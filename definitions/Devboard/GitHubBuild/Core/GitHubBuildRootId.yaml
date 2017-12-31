@@ -1,0 +1,8 @@
+definition:
+  type: TheaterRootId
+  instanceOf: Devboard\GitHubBuild\Core\GitHubBuildRootId
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  basedOn: DevboardLib\GitHub\Repo\RepoId
+  prefix: GHBuildRoot

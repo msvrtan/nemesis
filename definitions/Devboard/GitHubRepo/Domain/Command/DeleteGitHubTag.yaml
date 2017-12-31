@@ -1,0 +1,19 @@
+definition:
+  type: BroadwayCommand
+  instanceOf: Devboard\GitHubRepo\Domain\Command\DeleteGitHubTag
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: Devboard\GitHubRepo\Core\GitHubRepoRootId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    tagName:
+      instanceOf: DevboardLib\Git\Tag\TagName
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['0.1','1.2.3']

@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: Devboard\GitHubRepo\Domain\Event\GitHubTagEvent
+  parent: ~
+  constants: []
+  methods: []

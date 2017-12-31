@@ -1,0 +1,39 @@
+definition:
+  type: BroadwayEventSourcedAggregateRoot
+  instanceOf: Devboard\GitHubRepo\Domain\GitHubRepoModel
+  parent: Broadway\EventSourcing\EventSourcedAggregateRoot
+  interfaces: {  }
+  traits: {  }
+  properties:
+    id:
+      instanceOf: Devboard\GitHubRepo\Core\GitHubRepoRootId
+    login:
+      instanceOf: DevboardLib\GitHub\Account\AccountLogin
+    name:
+      instanceOf: DevboardLib\GitHub\Repo\RepoName
+    private:
+      instanceOf: bool
+    owner:
+      instanceOf: DevboardLib\GitHub\Repo\RepoOwner
+      nullable: true
+    description:
+      instanceOf: DevboardLib\GitHub\Repo\RepoDescription
+      nullable: true
+    parent:
+      instanceOf: DevboardLib\GitHub\Repo\RepoParent
+      nullable: true
+    endpoints:
+      instanceOf: DevboardLib\GitHub\Repo\RepoEndpoints
+    timestamps:
+      instanceOf: DevboardLib\GitHub\Repo\RepoTimestamps
+    stats:
+      instanceOf: DevboardLib\GitHub\Repo\RepoStats
+    initializedAt:
+      instanceOf: DateTime
+  children:
+    branches:
+      instanceOf: Devboard\GitHubRepo\Domain\GitHubBranchCollection
+    tags:
+      instanceOf: Devboard\GitHubRepo\Domain\GitHubTagCollection
+
+

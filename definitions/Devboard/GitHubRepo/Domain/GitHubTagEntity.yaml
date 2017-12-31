@@ -1,0 +1,35 @@
+definition:
+  type: BroadwaySimpleEventSourcedEntity
+  instanceOf: Devboard\GitHubRepo\Domain\GitHubTagEntity
+  parent: Broadway\EventSourcing\SimpleEventSourcedEntity
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: Devboard\GitHubRepo\Core\GitHubRepoRootId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    name:
+      instanceOf: DevboardLib\Git\Tag\TagName
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['0.1','2.3.4']
+    commit:
+      instanceOf: DevboardLib\GitHub\GitHubCommit
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    createdAt:
+      instanceOf: DateTime
+    updatedAt:
+      instanceOf: DateTime
+    deletedAt:
+      instanceOf: bool
+      nullable: false
+      hasDefault: true
+      default: false
+      examples: [false, true]

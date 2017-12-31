@@ -1,0 +1,13 @@
+definition:
+  type: BroadwayCommandHandler
+  instanceOf: Devboard\GitHubRepo\Application\GitHubRepoCommandHandler
+  parent: Broadway\CommandHandling\SimpleCommandHandler
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    repository:
+      instanceOf: Devboard\GitHubRepo\Application\GitHubRepoRepository
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []

@@ -1,0 +1,28 @@
+definition:
+  type: BroadwayEvent
+  instanceOf: Devboard\GitHubRepo\Domain\Event\GitHubBranchUpdated
+  parent: null
+  interfaces:
+    - Devboard\GitHubRepo\Domain\Event\GitHubBranchEvent
+  traits: {  }
+  constructor:
+    id:
+      instanceOf: Devboard\GitHubRepo\Core\GitHubRepoRootId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    branchName:
+      instanceOf: DevboardLib\Git\Branch\BranchName
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['master','dev']
+    commit:
+      instanceOf: DevboardLib\GitHub\GitHubCommit
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    updatedAt:
+      instanceOf: DateTime
