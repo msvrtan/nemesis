@@ -38,8 +38,8 @@ class AccountHtmlUrl
         return $this->htmlUrl;
     }
 
-    public static function deserialize(string $htmlUrl): self
+    public static function deserialize(string $htmlUrl)
     {
-        return new self($htmlUrl);
+        return new static($htmlUrl);
     }
 }

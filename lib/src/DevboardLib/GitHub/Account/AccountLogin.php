@@ -33,8 +33,8 @@ class AccountLogin
         return $this->value;
     }
 
-    public static function deserialize(string $value): self
+    public static function deserialize(string $value)
     {
-        return new self($value);
+        return new static($value);
     }
 }

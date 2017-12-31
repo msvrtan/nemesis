@@ -38,8 +38,8 @@ class AccountApiUrl
         return $this->apiUrl;
     }
 
-    public static function deserialize(string $apiUrl): self
+    public static function deserialize(string $apiUrl)
     {
-        return new self($apiUrl);
+        return new static($apiUrl);
     }
 }

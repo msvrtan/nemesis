@@ -38,8 +38,8 @@ class AccountType
         return $this->type;
     }
 
-    public static function deserialize(string $type): self
+    public static function deserialize(string $type)
     {
-        return new self($type);
+        return new static($type);
     }
 }
