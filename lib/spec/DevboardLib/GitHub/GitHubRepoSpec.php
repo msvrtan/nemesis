@@ -14,6 +14,7 @@ use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHub\Repo\RepoLanguage;
 use DevboardLib\GitHub\Repo\RepoMirrorUrl;
 use DevboardLib\GitHub\Repo\RepoOwner;
+use DevboardLib\GitHub\Repo\RepoParent;
 use DevboardLib\GitHub\Repo\RepoStats;
 use DevboardLib\GitHub\Repo\RepoTimestamps;
 use PhpSpec\ObjectBehavior;
@@ -29,13 +30,14 @@ class GitHubRepoSpec extends ObjectBehavior
         RepoFullName $fullName,
         RepoOwner $owner,
         BranchName $defaultBranch,
+        RepoParent $parent,
         RepoDescription $description,
         RepoHomepage $homepage,
         RepoLanguage $language,
         RepoMirrorUrl $mirrorUrl,
-        RepoEndpoints $repoEndpoints,
-        RepoStats $repoStats,
-        RepoTimestamps $repoTimestamps
+        RepoEndpoints $endpoints,
+        RepoStats $stats,
+        RepoTimestamps $timestamps
     ) {
         $this->beConstructedWith(
             $id,
@@ -44,14 +46,15 @@ class GitHubRepoSpec extends ObjectBehavior
             $private = true,
             $defaultBranch,
             $fork = true,
+            $parent,
             $description,
             $homepage,
             $language,
             $mirrorUrl,
             $archived = true,
-            $repoEndpoints,
-            $repoStats,
-            $repoTimestamps
+            $endpoints,
+            $stats,
+            $timestamps
         );
     }
 
@@ -90,6 +93,11 @@ class GitHubRepoSpec extends ObjectBehavior
         $this->getFork()->shouldReturn(true);
     }
 
+    public function it_exposes_parent(RepoParent $parent)
+    {
+        $this->getParent()->shouldReturn($parent);
+    }
+
     public function it_exposes_description(RepoDescription $description)
     {
         $this->getDescription()->shouldReturn($description);
@@ -115,19 +123,19 @@ class GitHubRepoSpec extends ObjectBehavior
         $this->getArchived()->shouldReturn(true);
     }
 
-    public function it_exposes_repo_endpoints(RepoEndpoints $repoEndpoints)
+    public function it_exposes_endpoints(RepoEndpoints $endpoints)
     {
-        $this->getRepoEndpoints()->shouldReturn($repoEndpoints);
+        $this->getEndpoints()->shouldReturn($endpoints);
     }
 
-    public function it_exposes_repo_stats(RepoStats $repoStats)
+    public function it_exposes_stats(RepoStats $stats)
     {
-        $this->getRepoStats()->shouldReturn($repoStats);
+        $this->getStats()->shouldReturn($stats);
     }
 
-    public function it_exposes_repo_timestamps(RepoTimestamps $repoTimestamps)
+    public function it_exposes_timestamps(RepoTimestamps $timestamps)
     {
-        $this->getRepoTimestamps()->shouldReturn($repoTimestamps);
+        $this->getTimestamps()->shouldReturn($timestamps);
     }
 
     public function it_can_be_serialized(
@@ -135,35 +143,37 @@ class GitHubRepoSpec extends ObjectBehavior
         RepoFullName $fullName,
         RepoOwner $owner,
         BranchName $defaultBranch,
+        RepoParent $parent,
         RepoDescription $description,
         RepoHomepage $homepage,
         RepoLanguage $language,
         RepoMirrorUrl $mirrorUrl,
-        RepoEndpoints $repoEndpoints,
-        RepoStats $repoStats,
-        RepoTimestamps $repoTimestamps
+        RepoEndpoints $endpoints,
+        RepoStats $stats,
+        RepoTimestamps $timestamps
     ) {
         $id->serialize()->shouldBeCalled()->willReturn(1);
         $fullName->serialize()->shouldBeCalled()->willReturn(['owner' => 'value', 'repoName' => 'name']);
         $owner->serialize()->shouldBeCalled()->willReturn(
             [
-                'id'         => 1,
+                'userId'     => 1,
                 'login'      => 'value',
                 'type'       => 'type',
                 'avatarUrl'  => 'avatarUrl',
                 'gravatarId' => 'id',
                 'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'url',
+                'apiUrl'     => 'apiUrl',
                 'siteAdmin'  => true,
             ]
         );
         $defaultBranch->serialize()->shouldBeCalled()->willReturn('name');
+        $parent->serialize()->shouldBeCalled()->willReturn(['id' => 1, 'fullName' => ['owner' => 'value', 'repoName' => 'name']]);
         $description->serialize()->shouldBeCalled()->willReturn('description');
         $homepage->serialize()->shouldBeCalled()->willReturn('homepage');
         $language->serialize()->shouldBeCalled()->willReturn('language');
         $mirrorUrl->serialize()->shouldBeCalled()->willReturn('mirrorUrl');
-        $repoEndpoints->serialize()->shouldBeCalled()->willReturn(['htmlUrl' => 'htmlUrl', 'url' => 'url', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl']);
-        $repoStats->serialize()->shouldBeCalled()->willReturn(
+        $endpoints->serialize()->shouldBeCalled()->willReturn(['htmlUrl' => 'htmlUrl', 'apiUrl' => 'apiUrl', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl']);
+        $stats->serialize()->shouldBeCalled()->willReturn(
             [
                 'networkCount'     => 1,
                 'watchersCount'    => 1,
@@ -173,7 +183,7 @@ class GitHubRepoSpec extends ObjectBehavior
                 'size'             => 1,
             ]
         );
-        $repoTimestamps->serialize()->shouldBeCalled()->willReturn(
+        $timestamps->serialize()->shouldBeCalled()->willReturn(
             [
                 'createdAt' => '2018-01-01T00:01:00+00:00',
                 'updatedAt' => '2018-01-01T00:01:00+00:00',
@@ -185,25 +195,26 @@ class GitHubRepoSpec extends ObjectBehavior
                 'id'       => 1,
                 'fullName' => ['owner' => 'value', 'repoName' => 'name'],
                 'owner'    => [
-                    'id'         => 1,
+                    'userId'     => 1,
                     'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
                     'gravatarId' => 'id',
                     'htmlUrl'    => 'htmlUrl',
-                    'apiUrl'     => 'url',
+                    'apiUrl'     => 'apiUrl',
                     'siteAdmin'  => true,
                 ],
                 'private'       => true,
                 'defaultBranch' => 'name',
                 'fork'          => true,
+                'parent'        => ['id' => 1, 'fullName' => ['owner' => 'value', 'repoName' => 'name']],
                 'description'   => 'description',
                 'homepage'      => 'homepage',
                 'language'      => 'language',
                 'mirrorUrl'     => 'mirrorUrl',
                 'archived'      => true,
-                'repoEndpoints' => ['htmlUrl' => 'htmlUrl', 'url' => 'url', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl'],
-                'repoStats'     => [
+                'endpoints'     => ['htmlUrl' => 'htmlUrl', 'apiUrl' => 'apiUrl', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl'],
+                'stats'         => [
                     'networkCount'     => 1,
                     'watchersCount'    => 1,
                     'stargazersCount'  => 1,
@@ -211,7 +222,7 @@ class GitHubRepoSpec extends ObjectBehavior
                     'openIssuesCount'  => 1,
                     'size'             => 1,
                 ],
-                'repoTimestamps' => [
+                'timestamps' => [
                     'createdAt' => '2018-01-01T00:01:00+00:00',
                     'updatedAt' => '2018-01-01T00:01:00+00:00',
                     'pushedAt'  => '2018-01-01T00:01:00+00:00',
@@ -226,25 +237,26 @@ class GitHubRepoSpec extends ObjectBehavior
             'id'       => 1,
             'fullName' => ['owner' => 'value', 'repoName' => 'name'],
             'owner'    => [
-                'id'         => 1,
+                'userId'     => 1,
                 'login'      => 'value',
                 'type'       => 'type',
                 'avatarUrl'  => 'avatarUrl',
                 'gravatarId' => 'id',
                 'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'url',
+                'apiUrl'     => 'apiUrl',
                 'siteAdmin'  => true,
             ],
             'private'       => true,
             'defaultBranch' => 'name',
             'fork'          => true,
+            'parent'        => ['id' => 1, 'fullName' => ['owner' => 'value', 'repoName' => 'name']],
             'description'   => 'description',
             'homepage'      => 'homepage',
             'language'      => 'language',
             'mirrorUrl'     => 'mirrorUrl',
             'archived'      => true,
-            'repoEndpoints' => ['htmlUrl' => 'htmlUrl', 'url' => 'url', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl'],
-            'repoStats'     => [
+            'endpoints'     => ['htmlUrl' => 'htmlUrl', 'apiUrl' => 'apiUrl', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl'],
+            'stats'         => [
                 'networkCount'     => 1,
                 'watchersCount'    => 1,
                 'stargazersCount'  => 1,
@@ -252,7 +264,7 @@ class GitHubRepoSpec extends ObjectBehavior
                 'openIssuesCount'  => 1,
                 'size'             => 1,
             ],
-            'repoTimestamps' => [
+            'timestamps' => [
                 'createdAt' => '2018-01-01T00:01:00+00:00',
                 'updatedAt' => '2018-01-01T00:01:00+00:00',
                 'pushedAt'  => '2018-01-01T00:01:00+00:00',

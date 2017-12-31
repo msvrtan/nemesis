@@ -11,7 +11,7 @@ class TreeApiUrlSpec extends ObjectBehavior
 {
     public function let()
     {
-        $this->beConstructedWith($url = 'https://api.github.com/repos/symfony/symfony-docs/git/trees/2cf1013cef32b574d7635169cf797b1dfcd110d2');
+        $this->beConstructedWith($apiUrl = 'https://api.github.com/repos/symfony/symfony-docs/git/trees/2cf1013cef32b574d7635169cf797b1dfcd110d2');
     }
 
     public function it_is_initializable()
@@ -19,9 +19,9 @@ class TreeApiUrlSpec extends ObjectBehavior
         $this->shouldHaveType(TreeApiUrl::class);
     }
 
-    public function it_exposes_url()
+    public function it_exposes_api_url()
     {
-        $this->getUrl()->shouldReturn('https://api.github.com/repos/symfony/symfony-docs/git/trees/2cf1013cef32b574d7635169cf797b1dfcd110d2');
+        $this->getApiUrl()->shouldReturn('https://api.github.com/repos/symfony/symfony-docs/git/trees/2cf1013cef32b574d7635169cf797b1dfcd110d2');
     }
 
     public function it_exposes_value()

@@ -9,18 +9,20 @@ use DevboardLib\Git\Commit\Author\AuthorName;
 use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\GitHub\Commit\CommitAuthor;
 use DevboardLib\GitHub\Commit\CommitAuthorDetails;
+use Git\Commit\CommitAuthor as CommitAuthorInterface;
 use PhpSpec\ObjectBehavior;
 
 class CommitAuthorSpec extends ObjectBehavior
 {
-    public function let(AuthorName $name, EmailAddress $email, CommitDate $date, CommitAuthorDetails $authorDetails)
+    public function let(AuthorName $name, EmailAddress $email, CommitDate $commitDate, CommitAuthorDetails $authorDetails)
     {
-        $this->beConstructedWith($name, $email, $date, $authorDetails);
+        $this->beConstructedWith($name, $email, $commitDate, $authorDetails);
     }
 
     public function it_is_initializable()
     {
         $this->shouldHaveType(CommitAuthor::class);
+        $this->shouldImplement(CommitAuthorInterface::class);
     }
 
     public function it_exposes_name(AuthorName $name)
@@ -33,9 +35,9 @@ class CommitAuthorSpec extends ObjectBehavior
         $this->getEmail()->shouldReturn($email);
     }
 
-    public function it_exposes_date(CommitDate $date)
+    public function it_exposes_commit_date(CommitDate $commitDate)
     {
-        $this->getDate()->shouldReturn($date);
+        $this->getCommitDate()->shouldReturn($commitDate);
     }
 
     public function it_exposes_author_details(CommitAuthorDetails $authorDetails)
@@ -43,15 +45,15 @@ class CommitAuthorSpec extends ObjectBehavior
         $this->getAuthorDetails()->shouldReturn($authorDetails);
     }
 
-    public function it_can_be_serialized(AuthorName $name, EmailAddress $email, CommitDate $date, CommitAuthorDetails $authorDetails)
+    public function it_can_be_serialized(AuthorName $name, EmailAddress $email, CommitDate $commitDate, CommitAuthorDetails $authorDetails)
     {
         $name->serialize()->shouldBeCalled()->willReturn('Jane Johnson');
         $email->serialize()->shouldBeCalled()->willReturn('jane@example.com');
-        $date->serialize()->shouldBeCalled()->willReturn('2018-01-02T20:21:22+00:00');
+        $commitDate->serialize()->shouldBeCalled()->willReturn('2018-01-02T20:21:22+00:00');
         $authorDetails->serialize()->shouldBeCalled()->willReturn(
             [
-                'id'         => 1,
-                'login'      => 'login',
+                'userId'     => 1,
+                'login'      => 'value',
                 'type'       => 'type',
                 'avatarUrl'  => 'avatarUrl',
                 'gravatarId' => 'id',
@@ -64,10 +66,10 @@ class CommitAuthorSpec extends ObjectBehavior
             [
                 'name'          => 'Jane Johnson',
                 'email'         => 'jane@example.com',
-                'date'          => '2018-01-02T20:21:22+00:00',
+                'commitDate'    => '2018-01-02T20:21:22+00:00',
                 'authorDetails' => [
-                    'id'         => 1,
-                    'login'      => 'login',
+                    'userId'     => 1,
+                    'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
                     'gravatarId' => 'id',
@@ -84,10 +86,10 @@ class CommitAuthorSpec extends ObjectBehavior
         $input = [
             'name'          => 'Jane Johnson',
             'email'         => 'jane@example.com',
-            'date'          => '2018-01-02T20:21:22+00:00',
+            'commitDate'    => '2018-01-02T20:21:22+00:00',
             'authorDetails' => [
-                'id'         => 1,
-                'login'      => 'login',
+                'userId'     => 1,
+                'login'      => 'value',
                 'type'       => 'type',
                 'avatarUrl'  => 'avatarUrl',
                 'gravatarId' => 'id',

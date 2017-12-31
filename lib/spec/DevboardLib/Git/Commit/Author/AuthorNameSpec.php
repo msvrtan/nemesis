@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace spec\DevboardLib\Git\Commit\Author;
 
 use DevboardLib\Git\Commit\Author\AuthorName;
+use Git\Commit\Author\AuthorName as AuthorNameInterface;
 use PhpSpec\ObjectBehavior;
 
 class AuthorNameSpec extends ObjectBehavior
@@ -17,6 +18,7 @@ class AuthorNameSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType(AuthorName::class);
+        $this->shouldImplement(AuthorNameInterface::class);
     }
 
     public function it_exposes_name()

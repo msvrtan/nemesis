@@ -4,42 +4,39 @@ declare(strict_types=1);
 
 namespace DevboardLib\GitHub\User;
 
+use DevboardLib\GitHub\Account\AccountLogin;
+
 /**
  * @see \spec\DevboardLib\GitHub\User\UserLoginSpec
  * @see \Tests\DevboardLib\GitHub\User\UserLoginTest
  */
-class UserLogin
+class UserLogin extends AccountLogin
 {
     /** @var string */
-    private $login;
+    private $value;
 
-    public function __construct(string $login)
+    public function __construct(string $value)
     {
-        $this->login = $login;
-    }
-
-    public function getLogin(): string
-    {
-        return $this->login;
+        $this->value = $value;
     }
 
     public function getValue(): string
     {
-        return $this->login;
+        return $this->value;
     }
 
     public function __toString(): string
     {
-        return $this->login;
+        return $this->value;
     }
 
     public function serialize(): string
     {
-        return $this->login;
+        return $this->value;
     }
 
-    public static function deserialize(string $login): self
+    public static function deserialize(string $value): self
     {
-        return new self($login);
+        return new self($value);
     }
 }

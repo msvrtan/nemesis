@@ -6,6 +6,7 @@ namespace spec\DevboardLib\Git\Commit;
 
 use DateTime;
 use DevboardLib\Git\Commit\CommitDate;
+use Git\Commit\CommitDate as CommitDateInterface;
 use PhpSpec\ObjectBehavior;
 
 class CommitDateSpec extends ObjectBehavior
@@ -19,6 +20,7 @@ class CommitDateSpec extends ObjectBehavior
     {
         $this->shouldHaveType(CommitDate::class);
         $this->shouldHaveType(DateTime::class);
+        $this->shouldImplement(CommitDateInterface::class);
     }
 
     public function it_is_castable_to_string()

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace spec\DevboardLib\Git\Commit;
 
 use DevboardLib\Git\Commit\CommitSha;
+use Git\Commit\CommitSha as CommitShaInterface;
 use PhpSpec\ObjectBehavior;
 
 class CommitShaSpec extends ObjectBehavior
@@ -17,6 +18,7 @@ class CommitShaSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType(CommitSha::class);
+        $this->shouldImplement(CommitShaInterface::class);
     }
 
     public function it_exposes_sha()

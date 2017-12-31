@@ -14,39 +14,39 @@ use PHPUnit\Framework\TestCase;
 class AccountApiUrlTest extends TestCase
 {
     /** @var string */
-    private $url;
+    private $apiUrl;
 
     /** @var AccountApiUrl */
     private $sut;
 
     public function setUp()
     {
-        $this->url = 'https://api.github.com/users/baxterthehacker';
-        $this->sut = new AccountApiUrl($this->url);
+        $this->apiUrl = 'https://api.github.com/users/baxterthehacker';
+        $this->sut    = new AccountApiUrl($this->apiUrl);
     }
 
-    public function testGetUrl()
+    public function testGetApiUrl()
     {
-        self::assertSame($this->url, $this->sut->getUrl());
+        self::assertSame($this->apiUrl, $this->sut->getApiUrl());
     }
 
     public function testGetValue()
     {
-        self::assertSame($this->url, $this->sut->getValue());
+        self::assertSame($this->apiUrl, $this->sut->getValue());
     }
 
     public function testToString()
     {
-        self::assertSame($this->url, $this->sut->__toString());
+        self::assertSame($this->apiUrl, $this->sut->__toString());
     }
 
     public function testSerialize()
     {
-        self::assertEquals($this->url, $this->sut->serialize());
+        self::assertEquals($this->apiUrl, $this->sut->serialize());
     }
 
     public function testDeserialize()
     {
-        self::assertEquals($this->sut, $this->sut->deserialize($this->url));
+        self::assertEquals($this->sut, $this->sut->deserialize($this->apiUrl));
     }
 }

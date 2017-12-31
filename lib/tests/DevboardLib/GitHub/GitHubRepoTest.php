@@ -27,6 +27,7 @@ use DevboardLib\GitHub\Repo\RepoLanguage;
 use DevboardLib\GitHub\Repo\RepoMirrorUrl;
 use DevboardLib\GitHub\Repo\RepoName;
 use DevboardLib\GitHub\Repo\RepoOwner;
+use DevboardLib\GitHub\Repo\RepoParent;
 use DevboardLib\GitHub\Repo\RepoPushedAt;
 use DevboardLib\GitHub\Repo\RepoStats;
 use DevboardLib\GitHub\Repo\RepoStats\RepoSize;
@@ -60,10 +61,13 @@ class GitHubRepoTest extends TestCase
     /** @var bool */
     private $fork;
 
+    /** @var RepoParent|null */
+    private $parent;
+
     /** @var RepoDescription|null */
     private $description;
 
-    /** @var RepoHomepage */
+    /** @var RepoHomepage|null */
     private $homepage;
 
     /** @var RepoLanguage|null */
@@ -72,17 +76,17 @@ class GitHubRepoTest extends TestCase
     /** @var RepoMirrorUrl|null */
     private $mirrorUrl;
 
-    /** @var bool */
+    /** @var bool|null */
     private $archived;
 
     /** @var RepoEndpoints */
-    private $repoEndpoints;
+    private $endpoints;
 
     /** @var RepoStats */
-    private $repoStats;
+    private $stats;
 
     /** @var RepoTimestamps */
-    private $repoTimestamps;
+    private $timestamps;
 
     /** @var GitHubRepo */
     private $sut;
@@ -98,20 +102,21 @@ class GitHubRepoTest extends TestCase
             new AccountAvatarUrl('avatarUrl'),
             new GravatarId('id'),
             new AccountHtmlUrl('htmlUrl'),
-            new AccountApiUrl('url'),
+            new AccountApiUrl('apiUrl'),
             true
         );
-        $this->private        = true;
-        $this->defaultBranch  = new BranchName('name');
-        $this->fork           = true;
-        $this->description    = new RepoDescription('description');
-        $this->homepage       = new RepoHomepage('homepage');
-        $this->language       = new RepoLanguage('language');
-        $this->mirrorUrl      = new RepoMirrorUrl('mirrorUrl');
-        $this->archived       = true;
-        $this->repoEndpoints  = new RepoEndpoints(new RepoHtmlUrl('htmlUrl'), new RepoApiUrl('url'), new RepoGitUrl('gitUrl'), new RepoSshUrl('sshUrl'));
-        $this->repoStats      = new RepoStats(1, 1, 1, 1, 1, new RepoSize(1));
-        $this->repoTimestamps = new RepoTimestamps(
+        $this->private       = true;
+        $this->defaultBranch = new BranchName('name');
+        $this->fork          = true;
+        $this->parent        = new RepoParent(new RepoId(1), new RepoFullName(new AccountLogin('value'), new RepoName('name')));
+        $this->description   = new RepoDescription('description');
+        $this->homepage      = new RepoHomepage('homepage');
+        $this->language      = new RepoLanguage('language');
+        $this->mirrorUrl     = new RepoMirrorUrl('mirrorUrl');
+        $this->archived      = true;
+        $this->endpoints     = new RepoEndpoints(new RepoHtmlUrl('htmlUrl'), new RepoApiUrl('apiUrl'), new RepoGitUrl('gitUrl'), new RepoSshUrl('sshUrl'));
+        $this->stats         = new RepoStats(1, 1, 1, 1, 1, new RepoSize(1));
+        $this->timestamps    = new RepoTimestamps(
             new RepoCreatedAt('2018-01-01T00:01:00+00:00'),
             new RepoUpdatedAt('2018-01-01T00:01:00+00:00'),
             new RepoPushedAt('2018-01-01T00:01:00+00:00')
@@ -123,14 +128,15 @@ class GitHubRepoTest extends TestCase
             $this->private,
             $this->defaultBranch,
             $this->fork,
+            $this->parent,
             $this->description,
             $this->homepage,
             $this->language,
             $this->mirrorUrl,
             $this->archived,
-            $this->repoEndpoints,
-            $this->repoStats,
-            $this->repoTimestamps
+            $this->endpoints,
+            $this->stats,
+            $this->timestamps
         );
     }
 
@@ -164,6 +170,11 @@ class GitHubRepoTest extends TestCase
         self::assertSame($this->fork, $this->sut->getFork());
     }
 
+    public function testGetParent()
+    {
+        self::assertSame($this->parent, $this->sut->getParent());
+    }
+
     public function testGetDescription()
     {
         self::assertSame($this->description, $this->sut->getDescription());
@@ -189,19 +200,19 @@ class GitHubRepoTest extends TestCase
         self::assertSame($this->archived, $this->sut->getArchived());
     }
 
-    public function testGetRepoEndpoints()
+    public function testGetEndpoints()
     {
-        self::assertSame($this->repoEndpoints, $this->sut->getRepoEndpoints());
+        self::assertSame($this->endpoints, $this->sut->getEndpoints());
     }
 
-    public function testGetRepoStats()
+    public function testGetStats()
     {
-        self::assertSame($this->repoStats, $this->sut->getRepoStats());
+        self::assertSame($this->stats, $this->sut->getStats());
     }
 
-    public function testGetRepoTimestamps()
+    public function testGetTimestamps()
     {
-        self::assertSame($this->repoTimestamps, $this->sut->getRepoTimestamps());
+        self::assertSame($this->timestamps, $this->sut->getTimestamps());
     }
 
     public function testSerialize()
@@ -210,25 +221,26 @@ class GitHubRepoTest extends TestCase
             'id'       => 1,
             'fullName' => ['owner' => 'value', 'repoName' => 'name'],
             'owner'    => [
-                'id'         => 1,
+                'userId'     => 1,
                 'login'      => 'value',
                 'type'       => 'type',
                 'avatarUrl'  => 'avatarUrl',
                 'gravatarId' => 'id',
                 'htmlUrl'    => 'htmlUrl',
-                'apiUrl'     => 'url',
+                'apiUrl'     => 'apiUrl',
                 'siteAdmin'  => true,
             ],
             'private'       => true,
             'defaultBranch' => 'name',
             'fork'          => true,
+            'parent'        => ['id' => 1, 'fullName' => ['owner' => 'value', 'repoName' => 'name']],
             'description'   => 'description',
             'homepage'      => 'homepage',
             'language'      => 'language',
             'mirrorUrl'     => 'mirrorUrl',
             'archived'      => true,
-            'repoEndpoints' => ['htmlUrl' => 'htmlUrl', 'url' => 'url', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl'],
-            'repoStats'     => [
+            'endpoints'     => ['htmlUrl' => 'htmlUrl', 'apiUrl' => 'apiUrl', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl'],
+            'stats'         => [
                 'networkCount'     => 1,
                 'watchersCount'    => 1,
                 'stargazersCount'  => 1,
@@ -236,7 +248,7 @@ class GitHubRepoTest extends TestCase
                 'openIssuesCount'  => 1,
                 'size'             => 1,
             ],
-            'repoTimestamps' => [
+            'timestamps' => [
                 'createdAt' => '2018-01-01T00:01:00+00:00',
                 'updatedAt' => '2018-01-01T00:01:00+00:00',
                 'pushedAt'  => '2018-01-01T00:01:00+00:00',

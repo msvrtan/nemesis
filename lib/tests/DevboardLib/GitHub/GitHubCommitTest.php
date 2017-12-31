@@ -66,7 +66,7 @@ class GitHubCommitTest extends TestCase
     /** @var CommitParentCollection */
     private $parents;
 
-    /** @var CommitVerification */
+    /** @var CommitVerification|null */
     private $verification;
 
     /** @var CommitApiUrl */
@@ -89,7 +89,7 @@ class GitHubCommitTest extends TestCase
             new CommitDate('2018-01-01T00:01:00+00:00'),
             new CommitAuthorDetails(
                 new UserId(1),
-                new UserLogin('login'),
+                new UserLogin('value'),
                 new AccountType('type'),
                 new UserAvatarUrl('avatarUrl'),
                 new GravatarId('id'),
@@ -104,7 +104,7 @@ class GitHubCommitTest extends TestCase
             new CommitDate('2018-01-01T00:01:00+00:00'),
             new CommitCommitterDetails(
                 new UserId(1),
-                new UserLogin('login'),
+                new UserLogin('value'),
                 new AccountType('type'),
                 new UserAvatarUrl('avatarUrl'),
                 new GravatarId('id'),
@@ -113,7 +113,7 @@ class GitHubCommitTest extends TestCase
                 true
             )
         );
-        $this->tree         = new CommitTree(new CommitSha('sha'), new TreeApiUrl('url'));
+        $this->tree         = new CommitTree(new CommitSha('sha'), new TreeApiUrl('apiUrl'));
         $this->parents      = new CommitParentCollection([new CommitParent(new CommitSha('sha'), new ParentApiUrl('apiUrl'), new ParentHtmlUrl('htmlUrl'))]);
         $this->verification = new CommitVerification(
             new VerificationVerified(true),
@@ -196,10 +196,10 @@ class GitHubCommitTest extends TestCase
             'author'     => [
                 'name'          => 'name',
                 'email'         => 'value',
-                'date'          => '2018-01-01T00:01:00+00:00',
+                'commitDate'    => '2018-01-01T00:01:00+00:00',
                 'authorDetails' => [
-                    'id'         => 1,
-                    'login'      => 'login',
+                    'userId'     => 1,
+                    'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
                     'gravatarId' => 'id',
@@ -211,10 +211,10 @@ class GitHubCommitTest extends TestCase
             'committer' => [
                 'name'             => 'name',
                 'email'            => 'value',
-                'date'             => '2018-01-01T00:01:00+00:00',
+                'commitDate'       => '2018-01-01T00:01:00+00:00',
                 'committerDetails' => [
-                    'id'         => 1,
-                    'login'      => 'login',
+                    'userId'     => 1,
+                    'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
                     'gravatarId' => 'id',
@@ -223,7 +223,7 @@ class GitHubCommitTest extends TestCase
                     'siteAdmin'  => true,
                 ],
             ],
-            'tree'         => ['sha' => 'sha', 'url' => 'url'],
+            'tree'         => ['sha' => 'sha', 'apiUrl' => 'apiUrl'],
             'parents'      => [['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']],
             'verification' => ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload'],
             'apiUrl'       => 'apiUrl',

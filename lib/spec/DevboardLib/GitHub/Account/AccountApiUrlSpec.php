@@ -11,7 +11,7 @@ class AccountApiUrlSpec extends ObjectBehavior
 {
     public function let()
     {
-        $this->beConstructedWith($url = 'https://api.github.com/users/baxterthehacker');
+        $this->beConstructedWith($apiUrl = 'https://api.github.com/users/baxterthehacker');
     }
 
     public function it_is_initializable()
@@ -19,9 +19,9 @@ class AccountApiUrlSpec extends ObjectBehavior
         $this->shouldHaveType(AccountApiUrl::class);
     }
 
-    public function it_exposes_url()
+    public function it_exposes_api_url()
     {
-        $this->getUrl()->shouldReturn('https://api.github.com/users/baxterthehacker');
+        $this->getApiUrl()->shouldReturn('https://api.github.com/users/baxterthehacker');
     }
 
     public function it_exposes_value()

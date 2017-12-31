@@ -17,7 +17,7 @@ use PhpSpec\ObjectBehavior;
 class CommitCommitterDetailsSpec extends ObjectBehavior
 {
     public function let(
-        UserId $id,
+        UserId $userId,
         UserLogin $login,
         AccountType $type,
         UserAvatarUrl $avatarUrl,
@@ -25,7 +25,7 @@ class CommitCommitterDetailsSpec extends ObjectBehavior
         UserHtmlUrl $htmlUrl,
         UserApiUrl $apiUrl
     ) {
-        $this->beConstructedWith($id, $login, $type, $avatarUrl, $gravatarId, $htmlUrl, $apiUrl, $siteAdmin = false);
+        $this->beConstructedWith($userId, $login, $type, $avatarUrl, $gravatarId, $htmlUrl, $apiUrl, $siteAdmin = false);
     }
 
     public function it_is_initializable()
@@ -33,9 +33,9 @@ class CommitCommitterDetailsSpec extends ObjectBehavior
         $this->shouldHaveType(CommitCommitterDetails::class);
     }
 
-    public function it_exposes_id(UserId $id)
+    public function it_exposes_user_id(UserId $userId)
     {
-        $this->getId()->shouldReturn($id);
+        $this->getUserId()->shouldReturn($userId);
     }
 
     public function it_exposes_login(UserLogin $login)
@@ -74,7 +74,7 @@ class CommitCommitterDetailsSpec extends ObjectBehavior
     }
 
     public function it_can_be_serialized(
-        UserId $id,
+        UserId $userId,
         UserLogin $login,
         AccountType $type,
         UserAvatarUrl $avatarUrl,
@@ -82,7 +82,7 @@ class CommitCommitterDetailsSpec extends ObjectBehavior
         UserHtmlUrl $htmlUrl,
         UserApiUrl $apiUrl
     ) {
-        $id->serialize()->shouldBeCalled()->willReturn(6752317);
+        $userId->serialize()->shouldBeCalled()->willReturn(6752317);
         $login->serialize()->shouldBeCalled()->willReturn('baxterthehacker');
         $type->serialize()->shouldBeCalled()->willReturn('User');
         $avatarUrl->serialize()->shouldBeCalled()->willReturn('https://avatars.githubusercontent.com/u/6752317?v=3');
@@ -91,7 +91,7 @@ class CommitCommitterDetailsSpec extends ObjectBehavior
         $apiUrl->serialize()->shouldBeCalled()->willReturn('https://api.github.com/users/baxterthehacker');
         $this->serialize()->shouldReturn(
             [
-                'id'         => 6752317,
+                'userId'     => 6752317,
                 'login'      => 'baxterthehacker',
                 'type'       => 'User',
                 'avatarUrl'  => 'https://avatars.githubusercontent.com/u/6752317?v=3',
@@ -106,7 +106,7 @@ class CommitCommitterDetailsSpec extends ObjectBehavior
     public function it_can_be_deserialized()
     {
         $input = [
-            'id'         => 6752317,
+            'userId'     => 6752317,
             'login'      => 'baxterthehacker',
             'type'       => 'User',
             'avatarUrl'  => 'https://avatars.githubusercontent.com/u/6752317?v=3',

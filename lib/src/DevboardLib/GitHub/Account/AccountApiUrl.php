@@ -11,35 +11,35 @@ namespace DevboardLib\GitHub\Account;
 class AccountApiUrl
 {
     /** @var string */
-    private $url;
+    private $apiUrl;
 
-    public function __construct(string $url)
+    public function __construct(string $apiUrl)
     {
-        $this->url = $url;
+        $this->apiUrl = $apiUrl;
     }
 
-    public function getUrl(): string
+    public function getApiUrl(): string
     {
-        return $this->url;
+        return $this->apiUrl;
     }
 
     public function getValue(): string
     {
-        return $this->url;
+        return $this->apiUrl;
     }
 
     public function __toString(): string
     {
-        return $this->url;
+        return $this->apiUrl;
     }
 
     public function serialize(): string
     {
-        return $this->url;
+        return $this->apiUrl;
     }
 
-    public static function deserialize(string $url): self
+    public static function deserialize(string $apiUrl): self
     {
-        return new self($url);
+        return new self($apiUrl);
     }
 }

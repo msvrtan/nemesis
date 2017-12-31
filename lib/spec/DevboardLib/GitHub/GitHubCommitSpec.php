@@ -114,10 +114,10 @@ class GitHubCommitSpec extends ObjectBehavior
             [
                 'name'          => 'name',
                 'email'         => 'value',
-                'date'          => '2018-01-01T00:01:00+00:00',
+                'commitDate'    => '2018-01-01T00:01:00+00:00',
                 'authorDetails' => [
-                    'id'         => 1,
-                    'login'      => 'login',
+                    'userId'     => 1,
+                    'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
                     'gravatarId' => 'id',
@@ -131,10 +131,10 @@ class GitHubCommitSpec extends ObjectBehavior
             [
                 'name'             => 'name',
                 'email'            => 'value',
-                'date'             => '2018-01-01T00:01:00+00:00',
+                'commitDate'       => '2018-01-01T00:01:00+00:00',
                 'committerDetails' => [
-                    'id'         => 1,
-                    'login'      => 'login',
+                    'userId'     => 1,
+                    'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
                     'gravatarId' => 'id',
@@ -144,7 +144,7 @@ class GitHubCommitSpec extends ObjectBehavior
                 ],
             ]
         );
-        $tree->serialize()->shouldBeCalled()->willReturn(['sha' => 'sha', 'url' => 'url']);
+        $tree->serialize()->shouldBeCalled()->willReturn(['sha' => 'sha', 'apiUrl' => 'apiUrl']);
         $parents->serialize()->shouldBeCalled()->willReturn([['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']]);
         $verification->serialize()->shouldBeCalled()->willReturn(['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload']);
         $apiUrl->serialize()->shouldBeCalled()->willReturn('apiUrl');
@@ -157,10 +157,10 @@ class GitHubCommitSpec extends ObjectBehavior
                 'author'     => [
                     'name'          => 'name',
                     'email'         => 'value',
-                    'date'          => '2018-01-01T00:01:00+00:00',
+                    'commitDate'    => '2018-01-01T00:01:00+00:00',
                     'authorDetails' => [
-                        'id'         => 1,
-                        'login'      => 'login',
+                        'userId'     => 1,
+                        'login'      => 'value',
                         'type'       => 'type',
                         'avatarUrl'  => 'avatarUrl',
                         'gravatarId' => 'id',
@@ -172,10 +172,10 @@ class GitHubCommitSpec extends ObjectBehavior
                 'committer' => [
                     'name'             => 'name',
                     'email'            => 'value',
-                    'date'             => '2018-01-01T00:01:00+00:00',
+                    'commitDate'       => '2018-01-01T00:01:00+00:00',
                     'committerDetails' => [
-                        'id'         => 1,
-                        'login'      => 'login',
+                        'userId'     => 1,
+                        'login'      => 'value',
                         'type'       => 'type',
                         'avatarUrl'  => 'avatarUrl',
                         'gravatarId' => 'id',
@@ -184,7 +184,7 @@ class GitHubCommitSpec extends ObjectBehavior
                         'siteAdmin'  => true,
                     ],
                 ],
-                'tree'         => ['sha' => 'sha', 'url' => 'url'],
+                'tree'         => ['sha' => 'sha', 'apiUrl' => 'apiUrl'],
                 'parents'      => [['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']],
                 'verification' => ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload'],
                 'apiUrl'       => 'apiUrl',
@@ -202,10 +202,10 @@ class GitHubCommitSpec extends ObjectBehavior
             'author'     => [
                 'name'          => 'name',
                 'email'         => 'value',
-                'date'          => '2018-01-01T00:01:00+00:00',
+                'commitDate'    => '2018-01-01T00:01:00+00:00',
                 'authorDetails' => [
-                    'id'         => 1,
-                    'login'      => 'login',
+                    'userId'     => 1,
+                    'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
                     'gravatarId' => 'id',
@@ -217,10 +217,10 @@ class GitHubCommitSpec extends ObjectBehavior
             'committer' => [
                 'name'             => 'name',
                 'email'            => 'value',
-                'date'             => '2018-01-01T00:01:00+00:00',
+                'commitDate'       => '2018-01-01T00:01:00+00:00',
                 'committerDetails' => [
-                    'id'         => 1,
-                    'login'      => 'login',
+                    'userId'     => 1,
+                    'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
                     'gravatarId' => 'id',
@@ -229,7 +229,7 @@ class GitHubCommitSpec extends ObjectBehavior
                     'siteAdmin'  => true,
                 ],
             ],
-            'tree'         => ['sha' => 'sha', 'url' => 'url'],
+            'tree'         => ['sha' => 'sha', 'apiUrl' => 'apiUrl'],
             'parents'      => [['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']],
             'verification' => ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload'],
             'apiUrl'       => 'apiUrl',

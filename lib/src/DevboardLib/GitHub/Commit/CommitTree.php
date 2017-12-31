@@ -6,23 +6,24 @@ namespace DevboardLib\GitHub\Commit;
 
 use DevboardLib\Git\Commit\CommitSha;
 use DevboardLib\GitHub\Commit\Tree\TreeApiUrl;
+use Git\Commit\CommitTree as CommitTreeInterface;
 
 /**
  * @see \spec\DevboardLib\GitHub\Commit\CommitTreeSpec
  * @see \Tests\DevboardLib\GitHub\Commit\CommitTreeTest
  */
-class CommitTree
+class CommitTree implements CommitTreeInterface
 {
     /** @var CommitSha */
     private $sha;
 
     /** @var TreeApiUrl */
-    private $url;
+    private $apiUrl;
 
-    public function __construct(CommitSha $sha, TreeApiUrl $url)
+    public function __construct(CommitSha $sha, TreeApiUrl $apiUrl)
     {
-        $this->sha = $sha;
-        $this->url = $url;
+        $this->sha    = $sha;
+        $this->apiUrl = $apiUrl;
     }
 
     public function getSha(): CommitSha
@@ -30,16 +31,16 @@ class CommitTree
         return $this->sha;
     }
 
-    public function getUrl(): TreeApiUrl
+    public function getApiUrl(): TreeApiUrl
     {
-        return $this->url;
+        return $this->apiUrl;
     }
 
     public function serialize(): array
     {
         return [
-            'sha' => $this->sha->serialize(),
-            'url' => $this->url->serialize(),
+            'sha'    => $this->sha->serialize(),
+            'apiUrl' => $this->apiUrl->serialize(),
         ];
     }
 
@@ -47,7 +48,7 @@ class CommitTree
     {
         return new self(
             CommitSha::deserialize($data['sha']),
-            TreeApiUrl::deserialize($data['url'])
+            TreeApiUrl::deserialize($data['apiUrl'])
         );
     }
 }

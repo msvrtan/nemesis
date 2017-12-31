@@ -45,7 +45,7 @@ class GitHubCommit implements Commit
     /** @var CommitParentCollection */
     private $parents;
 
-    /** @var CommitVerification */
+    /** @var CommitVerification|null */
     private $verification;
 
     /** @var CommitApiUrl */
@@ -62,7 +62,7 @@ class GitHubCommit implements Commit
         CommitCommitter $committer,
         CommitTree $tree,
         CommitParentCollection $parents,
-        CommitVerification $verification,
+        ?CommitVerification $verification = null,
         CommitApiUrl $apiUrl,
         CommitHtmlUrl $htmlUrl
     ) {
@@ -113,7 +113,7 @@ class GitHubCommit implements Commit
         return $this->parents;
     }
 
-    public function getVerification(): CommitVerification
+    public function getVerification(): ?CommitVerification
     {
         return $this->verification;
     }
@@ -130,6 +130,12 @@ class GitHubCommit implements Commit
 
     public function serialize(): array
     {
+        if (null === $this->verification) {
+            $verification = null;
+        } else {
+            $verification = $this->verification->serialize();
+        }
+
         return [
             'sha'          => $this->sha->serialize(),
             'message'      => $this->message->serialize(),
@@ -138,7 +144,7 @@ class GitHubCommit implements Commit
             'committer'    => $this->committer->serialize(),
             'tree'         => $this->tree->serialize(),
             'parents'      => $this->parents->serialize(),
-            'verification' => $this->verification->serialize(),
+            'verification' => $verification,
             'apiUrl'       => $this->apiUrl->serialize(),
             'htmlUrl'      => $this->htmlUrl->serialize(),
         ];
@@ -146,6 +152,12 @@ class GitHubCommit implements Commit
 
     public static function deserialize(array $data): self
     {
+        if (null === $data['verification']) {
+            $verification = null;
+        } else {
+            $verification = CommitVerification::deserialize($data['verification']);
+        }
+
         return new self(
             CommitSha::deserialize($data['sha']),
             CommitMessage::deserialize($data['message']),
@@ -154,7 +166,7 @@ class GitHubCommit implements Commit
             CommitCommitter::deserialize($data['committer']),
             CommitTree::deserialize($data['tree']),
             CommitParentCollection::deserialize($data['parents']),
-            CommitVerification::deserialize($data['verification']),
+            $verification,
             CommitApiUrl::deserialize($data['apiUrl']),
             CommitHtmlUrl::deserialize($data['htmlUrl'])
         );

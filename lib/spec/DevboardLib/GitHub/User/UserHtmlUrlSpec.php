@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHub\User;
 
+use DevboardLib\GitHub\Account\AccountHtmlUrl;
 use DevboardLib\GitHub\User\UserHtmlUrl;
 use PhpSpec\ObjectBehavior;
 
@@ -17,6 +18,7 @@ class UserHtmlUrlSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType(UserHtmlUrl::class);
+        $this->shouldHaveType(AccountHtmlUrl::class);
     }
 
     public function it_exposes_html_url()

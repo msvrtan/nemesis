@@ -7,12 +7,13 @@ namespace DevboardLib\GitHub\Commit;
 use DevboardLib\Generix\EmailAddress;
 use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\Committer\CommitterName;
+use Git\Commit\CommitCommitter as CommitCommitterInterface;
 
 /**
  * @see \spec\DevboardLib\GitHub\Commit\CommitCommitterSpec
  * @see \Tests\DevboardLib\GitHub\Commit\CommitCommitterTest
  */
-class CommitCommitter
+class CommitCommitter implements CommitCommitterInterface
 {
     /** @var CommitterName */
     private $name;
@@ -21,16 +22,16 @@ class CommitCommitter
     private $email;
 
     /** @var CommitDate */
-    private $date;
+    private $commitDate;
 
     /** @var CommitCommitterDetails|null */
     private $committerDetails;
 
-    public function __construct(CommitterName $name, EmailAddress $email, CommitDate $date, ?CommitCommitterDetails $committerDetails)
+    public function __construct(CommitterName $name, EmailAddress $email, CommitDate $commitDate, ?CommitCommitterDetails $committerDetails)
     {
         $this->name             = $name;
         $this->email            = $email;
-        $this->date             = $date;
+        $this->commitDate       = $commitDate;
         $this->committerDetails = $committerDetails;
     }
 
@@ -44,9 +45,9 @@ class CommitCommitter
         return $this->email;
     }
 
-    public function getDate(): CommitDate
+    public function getCommitDate(): CommitDate
     {
-        return $this->date;
+        return $this->commitDate;
     }
 
     public function getCommitterDetails(): ?CommitCommitterDetails
@@ -65,7 +66,7 @@ class CommitCommitter
         return [
             'name'             => $this->name->serialize(),
             'email'            => $this->email->serialize(),
-            'date'             => $this->date->serialize(),
+            'commitDate'       => $this->commitDate->serialize(),
             'committerDetails' => $committerDetails,
         ];
     }
@@ -81,7 +82,7 @@ class CommitCommitter
         return new self(
             CommitterName::deserialize($data['name']),
             EmailAddress::deserialize($data['email']),
-            CommitDate::deserialize($data['date']),
+            CommitDate::deserialize($data['commitDate']),
             $committerDetails
         );
     }

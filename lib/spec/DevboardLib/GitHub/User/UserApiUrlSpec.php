@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHub\User;
 
+use DevboardLib\GitHub\Account\AccountApiUrl;
 use DevboardLib\GitHub\User\UserApiUrl;
 use PhpSpec\ObjectBehavior;
 
@@ -17,6 +18,7 @@ class UserApiUrlSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType(UserApiUrl::class);
+        $this->shouldHaveType(AccountApiUrl::class);
     }
 
     public function it_exposes_api_url()

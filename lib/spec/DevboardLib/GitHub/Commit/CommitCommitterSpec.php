@@ -9,18 +9,20 @@ use DevboardLib\Git\Commit\CommitDate;
 use DevboardLib\Git\Commit\Committer\CommitterName;
 use DevboardLib\GitHub\Commit\CommitCommitter;
 use DevboardLib\GitHub\Commit\CommitCommitterDetails;
+use Git\Commit\CommitCommitter as CommitCommitterInterface;
 use PhpSpec\ObjectBehavior;
 
 class CommitCommitterSpec extends ObjectBehavior
 {
-    public function let(CommitterName $name, EmailAddress $email, CommitDate $date, CommitCommitterDetails $committerDetails)
+    public function let(CommitterName $name, EmailAddress $email, CommitDate $commitDate, CommitCommitterDetails $committerDetails)
     {
-        $this->beConstructedWith($name, $email, $date, $committerDetails);
+        $this->beConstructedWith($name, $email, $commitDate, $committerDetails);
     }
 
     public function it_is_initializable()
     {
         $this->shouldHaveType(CommitCommitter::class);
+        $this->shouldImplement(CommitCommitterInterface::class);
     }
 
     public function it_exposes_name(CommitterName $name)
@@ -33,9 +35,9 @@ class CommitCommitterSpec extends ObjectBehavior
         $this->getEmail()->shouldReturn($email);
     }
 
-    public function it_exposes_date(CommitDate $date)
+    public function it_exposes_commit_date(CommitDate $commitDate)
     {
-        $this->getDate()->shouldReturn($date);
+        $this->getCommitDate()->shouldReturn($commitDate);
     }
 
     public function it_exposes_committer_details(CommitCommitterDetails $committerDetails)
@@ -43,15 +45,15 @@ class CommitCommitterSpec extends ObjectBehavior
         $this->getCommitterDetails()->shouldReturn($committerDetails);
     }
 
-    public function it_can_be_serialized(CommitterName $name, EmailAddress $email, CommitDate $date, CommitCommitterDetails $committerDetails)
+    public function it_can_be_serialized(CommitterName $name, EmailAddress $email, CommitDate $commitDate, CommitCommitterDetails $committerDetails)
     {
         $name->serialize()->shouldBeCalled()->willReturn('Jane Johnson');
         $email->serialize()->shouldBeCalled()->willReturn('jane@example.com');
-        $date->serialize()->shouldBeCalled()->willReturn('2018-01-02T20:21:22+00:00');
+        $commitDate->serialize()->shouldBeCalled()->willReturn('2018-01-02T20:21:22+00:00');
         $committerDetails->serialize()->shouldBeCalled()->willReturn(
             [
-                'id'         => 1,
-                'login'      => 'login',
+                'userId'     => 1,
+                'login'      => 'value',
                 'type'       => 'type',
                 'avatarUrl'  => 'avatarUrl',
                 'gravatarId' => 'id',
@@ -64,10 +66,10 @@ class CommitCommitterSpec extends ObjectBehavior
             [
                 'name'             => 'Jane Johnson',
                 'email'            => 'jane@example.com',
-                'date'             => '2018-01-02T20:21:22+00:00',
+                'commitDate'       => '2018-01-02T20:21:22+00:00',
                 'committerDetails' => [
-                    'id'         => 1,
-                    'login'      => 'login',
+                    'userId'     => 1,
+                    'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
                     'gravatarId' => 'id',
@@ -84,10 +86,10 @@ class CommitCommitterSpec extends ObjectBehavior
         $input = [
             'name'             => 'Jane Johnson',
             'email'            => 'jane@example.com',
-            'date'             => '2018-01-02T20:21:22+00:00',
+            'commitDate'       => '2018-01-02T20:21:22+00:00',
             'committerDetails' => [
-                'id'         => 1,
-                'login'      => 'login',
+                'userId'     => 1,
+                'login'      => 'value',
                 'type'       => 'type',
                 'avatarUrl'  => 'avatarUrl',
                 'gravatarId' => 'id',

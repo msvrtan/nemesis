@@ -13,9 +13,9 @@ use PhpSpec\ObjectBehavior;
 
 class RepoEndpointsSpec extends ObjectBehavior
 {
-    public function let(RepoHtmlUrl $htmlUrl, RepoApiUrl $url, RepoGitUrl $gitUrl, RepoSshUrl $sshUrl)
+    public function let(RepoHtmlUrl $htmlUrl, RepoApiUrl $apiUrl, RepoGitUrl $gitUrl, RepoSshUrl $sshUrl)
     {
-        $this->beConstructedWith($htmlUrl, $url, $gitUrl, $sshUrl);
+        $this->beConstructedWith($htmlUrl, $apiUrl, $gitUrl, $sshUrl);
     }
 
     public function it_is_initializable()
@@ -28,9 +28,9 @@ class RepoEndpointsSpec extends ObjectBehavior
         $this->getHtmlUrl()->shouldReturn($htmlUrl);
     }
 
-    public function it_exposes_url(RepoApiUrl $url)
+    public function it_exposes_api_url(RepoApiUrl $apiUrl)
     {
-        $this->getUrl()->shouldReturn($url);
+        $this->getApiUrl()->shouldReturn($apiUrl);
     }
 
     public function it_exposes_git_url(RepoGitUrl $gitUrl)
@@ -43,16 +43,16 @@ class RepoEndpointsSpec extends ObjectBehavior
         $this->getSshUrl()->shouldReturn($sshUrl);
     }
 
-    public function it_can_be_serialized(RepoHtmlUrl $htmlUrl, RepoApiUrl $url, RepoGitUrl $gitUrl, RepoSshUrl $sshUrl)
+    public function it_can_be_serialized(RepoHtmlUrl $htmlUrl, RepoApiUrl $apiUrl, RepoGitUrl $gitUrl, RepoSshUrl $sshUrl)
     {
         $htmlUrl->serialize()->shouldBeCalled()->willReturn('https://github.com/octocat/Hello-World');
-        $url->serialize()->shouldBeCalled()->willReturn('https://api.github.com/repos/octocat/Hello-World');
+        $apiUrl->serialize()->shouldBeCalled()->willReturn('https://api.github.com/repos/octocat/Hello-World');
         $gitUrl->serialize()->shouldBeCalled()->willReturn('git://github.com/octocat/Hello-World.git');
         $sshUrl->serialize()->shouldBeCalled()->willReturn('git@github.com:octocat/Hello-World.git');
         $this->serialize()->shouldReturn(
             [
                 'htmlUrl' => 'https://github.com/octocat/Hello-World',
-                'url'     => 'https://api.github.com/repos/octocat/Hello-World',
+                'apiUrl'  => 'https://api.github.com/repos/octocat/Hello-World',
                 'gitUrl'  => 'git://github.com/octocat/Hello-World.git',
                 'sshUrl'  => 'git@github.com:octocat/Hello-World.git',
             ]
@@ -63,7 +63,7 @@ class RepoEndpointsSpec extends ObjectBehavior
     {
         $input = [
             'htmlUrl' => 'https://github.com/octocat/Hello-World',
-            'url'     => 'https://api.github.com/repos/octocat/Hello-World',
+            'apiUrl'  => 'https://api.github.com/repos/octocat/Hello-World',
             'gitUrl'  => 'git://github.com/octocat/Hello-World.git',
             'sshUrl'  => 'git@github.com:octocat/Hello-World.git',
         ];

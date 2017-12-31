@@ -33,7 +33,7 @@ class CommitAuthorTest extends TestCase
     private $email;
 
     /** @var CommitDate */
-    private $date;
+    private $commitDate;
 
     /** @var CommitAuthorDetails|null */
     private $authorDetails;
@@ -45,10 +45,10 @@ class CommitAuthorTest extends TestCase
     {
         $this->name          = new AuthorName('Jane Johnson');
         $this->email         = new EmailAddress('jane@example.com');
-        $this->date          = new CommitDate('2018-01-02T20:21:22+00:00');
+        $this->commitDate    = new CommitDate('2018-01-02T20:21:22+00:00');
         $this->authorDetails = new CommitAuthorDetails(
             new UserId(1),
-            new UserLogin('login'),
+            new UserLogin('value'),
             new AccountType('type'),
             new UserAvatarUrl('avatarUrl'),
             new GravatarId('id'),
@@ -56,7 +56,7 @@ class CommitAuthorTest extends TestCase
             new UserApiUrl('apiUrl'),
             true
         );
-        $this->sut = new CommitAuthor($this->name, $this->email, $this->date, $this->authorDetails);
+        $this->sut = new CommitAuthor($this->name, $this->email, $this->commitDate, $this->authorDetails);
     }
 
     public function testGetName()
@@ -69,9 +69,9 @@ class CommitAuthorTest extends TestCase
         self::assertSame($this->email, $this->sut->getEmail());
     }
 
-    public function testGetDate()
+    public function testGetCommitDate()
     {
-        self::assertSame($this->date, $this->sut->getDate());
+        self::assertSame($this->commitDate, $this->sut->getCommitDate());
     }
 
     public function testGetAuthorDetails()
@@ -84,10 +84,10 @@ class CommitAuthorTest extends TestCase
         $expected = [
             'name'          => 'Jane Johnson',
             'email'         => 'jane@example.com',
-            'date'          => '2018-01-02T20:21:22+00:00',
+            'commitDate'    => '2018-01-02T20:21:22+00:00',
             'authorDetails' => [
-                'id'         => 1,
-                'login'      => 'login',
+                'userId'     => 1,
+                'login'      => 'value',
                 'type'       => 'type',
                 'avatarUrl'  => 'avatarUrl',
                 'gravatarId' => 'id',

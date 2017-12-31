@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace DevboardLib\Git\Commit\Author;
 
+use Git\Commit\Author\AuthorName as AuthorNameInterface;
+
 /**
  * @see \spec\DevboardLib\Git\Commit\Author\AuthorNameSpec
  * @see \Tests\DevboardLib\Git\Commit\Author\AuthorNameTest
  */
-class AuthorName
+class AuthorName implements AuthorNameInterface
 {
     /** @var string */
     private $name;

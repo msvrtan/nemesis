@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace DevboardLib\GitHub\Commit;
 
 use DevboardLib\Git\Commit\CommitSha;
+use Git\Commit\CommitParentCollection as CommitParentCollectionInterface;
 use Webmozart\Assert\Assert;
 
 /**
  * @see \spec\DevboardLib\GitHub\Commit\CommitParentCollectionSpec
  * @see \Tests\DevboardLib\GitHub\Commit\CommitParentCollectionTest
  */
-class CommitParentCollection
+class CommitParentCollection implements CommitParentCollectionInterface
 {
     /** @var array|CommitParent[] */
     private $elements;

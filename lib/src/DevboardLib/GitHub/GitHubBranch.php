@@ -24,18 +24,18 @@ class GitHubBranch implements Reference
     /** @var GitHubCommit */
     private $commit;
 
-    /** @var bool */
+    /** @var bool|null */
     private $protected;
 
-    /** @var BranchProtectionUrl */
+    /** @var BranchProtectionUrl|null */
     private $protectionUrl;
 
     public function __construct(
         RepoFullName $repoFullName,
         BranchName $name,
         GitHubCommit $commit,
-        bool $protected,
-        BranchProtectionUrl $protectionUrl
+        ?bool $protected = null,
+        ?BranchProtectionUrl $protectionUrl = null
     ) {
         $this->repoFullName  = $repoFullName;
         $this->name          = $name;
@@ -59,35 +59,47 @@ class GitHubBranch implements Reference
         return $this->commit;
     }
 
-    public function getProtected(): bool
+    public function getProtected(): ?bool
     {
         return $this->protected;
     }
 
-    public function getProtectionUrl(): BranchProtectionUrl
+    public function getProtectionUrl(): ?BranchProtectionUrl
     {
         return $this->protectionUrl;
     }
 
     public function serialize(): array
     {
+        if (null === $this->protectionUrl) {
+            $protectionUrl = null;
+        } else {
+            $protectionUrl = $this->protectionUrl->serialize();
+        }
+
         return [
             'repoFullName'  => $this->repoFullName->serialize(),
             'name'          => $this->name->serialize(),
             'commit'        => $this->commit->serialize(),
             'protected'     => $this->protected,
-            'protectionUrl' => $this->protectionUrl->serialize(),
+            'protectionUrl' => $protectionUrl,
         ];
     }
 
     public static function deserialize(array $data): self
     {
+        if (null === $data['protectionUrl']) {
+            $protectionUrl = null;
+        } else {
+            $protectionUrl = BranchProtectionUrl::deserialize($data['protectionUrl']);
+        }
+
         return new self(
             RepoFullName::deserialize($data['repoFullName']),
             BranchName::deserialize($data['name']),
             GitHubCommit::deserialize($data['commit']),
             $data['protected'],
-            BranchProtectionUrl::deserialize($data['protectionUrl'])
+            $protectionUrl
         );
     }
 }

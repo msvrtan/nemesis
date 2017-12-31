@@ -11,7 +11,7 @@ class RepoApiUrlSpec extends ObjectBehavior
 {
     public function let()
     {
-        $this->beConstructedWith($url = 'https://api.github.com/repos/octocat/linguist');
+        $this->beConstructedWith($apiUrl = 'https://api.github.com/repos/octocat/linguist');
     }
 
     public function it_is_initializable()
@@ -19,9 +19,9 @@ class RepoApiUrlSpec extends ObjectBehavior
         $this->shouldHaveType(RepoApiUrl::class);
     }
 
-    public function it_exposes_url()
+    public function it_exposes_api_url()
     {
-        $this->getUrl()->shouldReturn('https://api.github.com/repos/octocat/linguist');
+        $this->getApiUrl()->shouldReturn('https://api.github.com/repos/octocat/linguist');
     }
 
     public function it_exposes_value()

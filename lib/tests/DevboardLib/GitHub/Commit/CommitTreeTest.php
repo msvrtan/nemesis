@@ -19,16 +19,16 @@ class CommitTreeTest extends TestCase
     private $sha;
 
     /** @var TreeApiUrl */
-    private $url;
+    private $apiUrl;
 
     /** @var CommitTree */
     private $sut;
 
     public function setUp()
     {
-        $this->sha = new CommitSha('02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0');
-        $this->url = new TreeApiUrl('https://api.github.com/repos/baxterthehacker/public-repo/git/trees/02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0');
-        $this->sut = new CommitTree($this->sha, $this->url);
+        $this->sha    = new CommitSha('02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0');
+        $this->apiUrl = new TreeApiUrl('https://api.github.com/repos/baxterthehacker/public-repo/git/trees/02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0');
+        $this->sut    = new CommitTree($this->sha, $this->apiUrl);
     }
 
     public function testGetSha()
@@ -36,16 +36,16 @@ class CommitTreeTest extends TestCase
         self::assertSame($this->sha, $this->sut->getSha());
     }
 
-    public function testGetUrl()
+    public function testGetApiUrl()
     {
-        self::assertSame($this->url, $this->sut->getUrl());
+        self::assertSame($this->apiUrl, $this->sut->getApiUrl());
     }
 
     public function testSerialize()
     {
         $expected = [
-            'sha' => '02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0',
-            'url' => 'https://api.github.com/repos/baxterthehacker/public-repo/git/trees/02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0',
+            'sha'    => '02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0',
+            'apiUrl' => 'https://api.github.com/repos/baxterthehacker/public-repo/git/trees/02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0',
         ];
 
         self::assertSame($expected, $this->sut->serialize());

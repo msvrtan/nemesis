@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
 class CommitCommitterDetailsTest extends TestCase
 {
     /** @var UserId */
-    private $id;
+    private $userId;
 
     /** @var UserLogin */
     private $login;
@@ -49,7 +49,7 @@ class CommitCommitterDetailsTest extends TestCase
 
     public function setUp()
     {
-        $this->id         = new UserId(6752317);
+        $this->userId     = new UserId(6752317);
         $this->login      = new UserLogin('baxterthehacker');
         $this->type       = new AccountType('User');
         $this->avatarUrl  = new UserAvatarUrl('https://avatars.githubusercontent.com/u/6752317?v=3');
@@ -58,7 +58,7 @@ class CommitCommitterDetailsTest extends TestCase
         $this->apiUrl     = new UserApiUrl('https://api.github.com/users/baxterthehacker');
         $this->siteAdmin  = false;
         $this->sut        = new CommitCommitterDetails(
-            $this->id,
+            $this->userId,
             $this->login,
             $this->type,
             $this->avatarUrl,
@@ -69,9 +69,9 @@ class CommitCommitterDetailsTest extends TestCase
         );
     }
 
-    public function testGetId()
+    public function testGetUserId()
     {
-        self::assertSame($this->id, $this->sut->getId());
+        self::assertSame($this->userId, $this->sut->getUserId());
     }
 
     public function testGetLogin()
@@ -112,7 +112,7 @@ class CommitCommitterDetailsTest extends TestCase
     public function testSerialize()
     {
         $expected = [
-            'id'         => 6752317,
+            'userId'     => 6752317,
             'login'      => 'baxterthehacker',
             'type'       => 'User',
             'avatarUrl'  => 'https://avatars.githubusercontent.com/u/6752317?v=3',

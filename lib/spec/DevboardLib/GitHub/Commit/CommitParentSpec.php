@@ -8,6 +8,7 @@ use DevboardLib\Git\Commit\CommitSha;
 use DevboardLib\GitHub\Commit\CommitParent;
 use DevboardLib\GitHub\Commit\CommitParent\ParentApiUrl;
 use DevboardLib\GitHub\Commit\CommitParent\ParentHtmlUrl;
+use Git\Commit\CommitParent as CommitParentInterface;
 use PhpSpec\ObjectBehavior;
 
 class CommitParentSpec extends ObjectBehavior
@@ -20,6 +21,7 @@ class CommitParentSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType(CommitParent::class);
+        $this->shouldImplement(CommitParentInterface::class);
     }
 
     public function it_exposes_sha(CommitSha $sha)

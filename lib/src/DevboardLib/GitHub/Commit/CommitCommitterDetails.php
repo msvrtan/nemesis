@@ -19,7 +19,7 @@ use DevboardLib\GitHub\User\UserLogin;
 class CommitCommitterDetails
 {
     /** @var UserId */
-    private $id;
+    private $userId;
 
     /** @var UserLogin */
     private $login;
@@ -43,7 +43,7 @@ class CommitCommitterDetails
     private $siteAdmin;
 
     public function __construct(
-        UserId $id,
+        UserId $userId,
         UserLogin $login,
         AccountType $type,
         UserAvatarUrl $avatarUrl,
@@ -52,7 +52,7 @@ class CommitCommitterDetails
         UserApiUrl $apiUrl,
         bool $siteAdmin
     ) {
-        $this->id         = $id;
+        $this->userId     = $userId;
         $this->login      = $login;
         $this->type       = $type;
         $this->avatarUrl  = $avatarUrl;
@@ -62,9 +62,9 @@ class CommitCommitterDetails
         $this->siteAdmin  = $siteAdmin;
     }
 
-    public function getId(): UserId
+    public function getUserId(): UserId
     {
-        return $this->id;
+        return $this->userId;
     }
 
     public function getLogin(): UserLogin
@@ -105,7 +105,7 @@ class CommitCommitterDetails
     public function serialize(): array
     {
         return [
-            'id'         => $this->id->serialize(),
+            'userId'     => $this->userId->serialize(),
             'login'      => $this->login->serialize(),
             'type'       => $this->type->serialize(),
             'avatarUrl'  => $this->avatarUrl->serialize(),
@@ -119,7 +119,7 @@ class CommitCommitterDetails
     public static function deserialize(array $data): self
     {
         return new self(
-            UserId::deserialize($data['id']),
+            UserId::deserialize($data['userId']),
             UserLogin::deserialize($data['login']),
             AccountType::deserialize($data['type']),
             UserAvatarUrl::deserialize($data['avatarUrl']),

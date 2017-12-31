@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
 class RepoOwnerTest extends TestCase
 {
     /** @var AccountId */
-    private $id;
+    private $userId;
 
     /** @var AccountLogin */
     private $login;
@@ -49,7 +49,7 @@ class RepoOwnerTest extends TestCase
 
     public function setUp()
     {
-        $this->id         = new AccountId(583231);
+        $this->userId     = new AccountId(583231);
         $this->login      = new AccountLogin('octocat');
         $this->type       = new AccountType('User');
         $this->avatarUrl  = new AccountAvatarUrl('https://avatars3.githubusercontent.com/u/583231?v=4');
@@ -58,7 +58,7 @@ class RepoOwnerTest extends TestCase
         $this->apiUrl     = new AccountApiUrl('https://api.github.com/users/octocat');
         $this->siteAdmin  = false;
         $this->sut        = new RepoOwner(
-            $this->id,
+            $this->userId,
             $this->login,
             $this->type,
             $this->avatarUrl,
@@ -69,9 +69,9 @@ class RepoOwnerTest extends TestCase
         );
     }
 
-    public function testGetId()
+    public function testGetUserId()
     {
-        self::assertSame($this->id, $this->sut->getId());
+        self::assertSame($this->userId, $this->sut->getUserId());
     }
 
     public function testGetLogin()
@@ -112,7 +112,7 @@ class RepoOwnerTest extends TestCase
     public function testSerialize()
     {
         $expected = [
-            'id'         => 583231,
+            'userId'     => 583231,
             'login'      => 'octocat',
             'type'       => 'User',
             'avatarUrl'  => 'https://avatars3.githubusercontent.com/u/583231?v=4',

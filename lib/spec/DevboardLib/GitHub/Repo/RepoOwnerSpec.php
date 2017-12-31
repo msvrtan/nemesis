@@ -17,7 +17,7 @@ use PhpSpec\ObjectBehavior;
 class RepoOwnerSpec extends ObjectBehavior
 {
     public function let(
-        AccountId $id,
+        AccountId $userId,
         AccountLogin $login,
         AccountType $type,
         AccountAvatarUrl $avatarUrl,
@@ -25,7 +25,7 @@ class RepoOwnerSpec extends ObjectBehavior
         AccountHtmlUrl $htmlUrl,
         AccountApiUrl $apiUrl
     ) {
-        $this->beConstructedWith($id, $login, $type, $avatarUrl, $gravatarId, $htmlUrl, $apiUrl, $siteAdmin = false);
+        $this->beConstructedWith($userId, $login, $type, $avatarUrl, $gravatarId, $htmlUrl, $apiUrl, $siteAdmin = false);
     }
 
     public function it_is_initializable()
@@ -33,9 +33,9 @@ class RepoOwnerSpec extends ObjectBehavior
         $this->shouldHaveType(RepoOwner::class);
     }
 
-    public function it_exposes_id(AccountId $id)
+    public function it_exposes_user_id(AccountId $userId)
     {
-        $this->getId()->shouldReturn($id);
+        $this->getUserId()->shouldReturn($userId);
     }
 
     public function it_exposes_login(AccountLogin $login)
@@ -74,7 +74,7 @@ class RepoOwnerSpec extends ObjectBehavior
     }
 
     public function it_can_be_serialized(
-        AccountId $id,
+        AccountId $userId,
         AccountLogin $login,
         AccountType $type,
         AccountAvatarUrl $avatarUrl,
@@ -82,7 +82,7 @@ class RepoOwnerSpec extends ObjectBehavior
         AccountHtmlUrl $htmlUrl,
         AccountApiUrl $apiUrl
     ) {
-        $id->serialize()->shouldBeCalled()->willReturn(583231);
+        $userId->serialize()->shouldBeCalled()->willReturn(583231);
         $login->serialize()->shouldBeCalled()->willReturn('octocat');
         $type->serialize()->shouldBeCalled()->willReturn('User');
         $avatarUrl->serialize()->shouldBeCalled()->willReturn('https://avatars3.githubusercontent.com/u/583231?v=4');
@@ -91,7 +91,7 @@ class RepoOwnerSpec extends ObjectBehavior
         $apiUrl->serialize()->shouldBeCalled()->willReturn('https://api.github.com/users/octocat');
         $this->serialize()->shouldReturn(
             [
-                'id'         => 583231,
+                'userId'     => 583231,
                 'login'      => 'octocat',
                 'type'       => 'User',
                 'avatarUrl'  => 'https://avatars3.githubusercontent.com/u/583231?v=4',
@@ -106,7 +106,7 @@ class RepoOwnerSpec extends ObjectBehavior
     public function it_can_be_deserialized()
     {
         $input = [
-            'id'         => 583231,
+            'userId'     => 583231,
             'login'      => 'octocat',
             'type'       => 'User',
             'avatarUrl'  => 'https://avatars3.githubusercontent.com/u/583231?v=4',

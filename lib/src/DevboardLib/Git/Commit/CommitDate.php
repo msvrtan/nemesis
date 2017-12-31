@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace DevboardLib\Git\Commit;
 
 use DateTime;
+use Git\Commit\CommitDate as CommitDateInterface;
 
 /**
  * @see \spec\DevboardLib\Git\Commit\CommitDateSpec
  * @see \Tests\DevboardLib\Git\Commit\CommitDateTest
  */
-class CommitDate extends DateTime
+class CommitDate extends DateTime implements CommitDateInterface
 {
     public function __toString(): string
     {

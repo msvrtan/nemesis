@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace spec\DevboardLib\Git\Commit\Committer;
 
 use DevboardLib\Git\Commit\Committer\CommitterName;
+use Git\Commit\Committer\CommitterName as CommitterNameInterface;
 use PhpSpec\ObjectBehavior;
 
 class CommitterNameSpec extends ObjectBehavior
@@ -17,6 +18,7 @@ class CommitterNameSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType(CommitterName::class);
+        $this->shouldImplement(CommitterNameInterface::class);
     }
 
     public function it_exposes_name()

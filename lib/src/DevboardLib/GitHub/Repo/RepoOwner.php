@@ -19,7 +19,7 @@ use DevboardLib\GitHub\Account\AccountType;
 class RepoOwner
 {
     /** @var AccountId */
-    private $id;
+    private $userId;
 
     /** @var AccountLogin */
     private $login;
@@ -43,7 +43,7 @@ class RepoOwner
     private $siteAdmin;
 
     public function __construct(
-        AccountId $id,
+        AccountId $userId,
         AccountLogin $login,
         AccountType $type,
         AccountAvatarUrl $avatarUrl,
@@ -52,7 +52,7 @@ class RepoOwner
         AccountApiUrl $apiUrl,
         bool $siteAdmin
     ) {
-        $this->id         = $id;
+        $this->userId     = $userId;
         $this->login      = $login;
         $this->type       = $type;
         $this->avatarUrl  = $avatarUrl;
@@ -62,9 +62,9 @@ class RepoOwner
         $this->siteAdmin  = $siteAdmin;
     }
 
-    public function getId(): AccountId
+    public function getUserId(): AccountId
     {
-        return $this->id;
+        return $this->userId;
     }
 
     public function getLogin(): AccountLogin
@@ -105,7 +105,7 @@ class RepoOwner
     public function serialize(): array
     {
         return [
-            'id'         => $this->id->serialize(),
+            'userId'     => $this->userId->serialize(),
             'login'      => $this->login->serialize(),
             'type'       => $this->type->serialize(),
             'avatarUrl'  => $this->avatarUrl->serialize(),
@@ -119,7 +119,7 @@ class RepoOwner
     public static function deserialize(array $data): self
     {
         return new self(
-            AccountId::deserialize($data['id']),
+            AccountId::deserialize($data['userId']),
             AccountLogin::deserialize($data['login']),
             AccountType::deserialize($data['type']),
             AccountAvatarUrl::deserialize($data['avatarUrl']),

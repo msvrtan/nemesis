@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace spec\DevboardLib\GitHub\User;
 
+use DevboardLib\GitHub\Account\AccountId;
 use DevboardLib\GitHub\User\UserId;
 use PhpSpec\ObjectBehavior;
 
@@ -17,6 +18,7 @@ class UserIdSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType(UserId::class);
+        $this->shouldHaveType(AccountId::class);
     }
 
     public function it_exposes_id()

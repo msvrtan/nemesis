@@ -13,6 +13,7 @@ use DevboardLib\GitHub\Repo\RepoId;
 use DevboardLib\GitHub\Repo\RepoLanguage;
 use DevboardLib\GitHub\Repo\RepoMirrorUrl;
 use DevboardLib\GitHub\Repo\RepoOwner;
+use DevboardLib\GitHub\Repo\RepoParent;
 use DevboardLib\GitHub\Repo\RepoStats;
 use DevboardLib\GitHub\Repo\RepoTimestamps;
 
@@ -42,10 +43,13 @@ class GitHubRepo
     /** @var bool */
     private $fork;
 
+    /** @var RepoParent|null */
+    private $parent;
+
     /** @var RepoDescription|null */
     private $description;
 
-    /** @var RepoHomepage */
+    /** @var RepoHomepage|null */
     private $homepage;
 
     /** @var RepoLanguage|null */
@@ -54,17 +58,17 @@ class GitHubRepo
     /** @var RepoMirrorUrl|null */
     private $mirrorUrl;
 
-    /** @var bool */
+    /** @var bool|null */
     private $archived;
 
     /** @var RepoEndpoints */
-    private $repoEndpoints;
+    private $endpoints;
 
     /** @var RepoStats */
-    private $repoStats;
+    private $stats;
 
     /** @var RepoTimestamps */
-    private $repoTimestamps;
+    private $timestamps;
 
     public function __construct(
         RepoId $id,
@@ -73,29 +77,31 @@ class GitHubRepo
         bool $private,
         BranchName $defaultBranch,
         bool $fork,
+        ?RepoParent $parent,
         ?RepoDescription $description,
-        RepoHomepage $homepage,
+        ?RepoHomepage $homepage,
         ?RepoLanguage $language,
         ?RepoMirrorUrl $mirrorUrl,
-        bool $archived,
-        RepoEndpoints $repoEndpoints,
-        RepoStats $repoStats,
-        RepoTimestamps $repoTimestamps
+        ?bool $archived,
+        RepoEndpoints $endpoints,
+        RepoStats $stats,
+        RepoTimestamps $timestamps
     ) {
-        $this->id             = $id;
-        $this->fullName       = $fullName;
-        $this->owner          = $owner;
-        $this->private        = $private;
-        $this->defaultBranch  = $defaultBranch;
-        $this->fork           = $fork;
-        $this->description    = $description;
-        $this->homepage       = $homepage;
-        $this->language       = $language;
-        $this->mirrorUrl      = $mirrorUrl;
-        $this->archived       = $archived;
-        $this->repoEndpoints  = $repoEndpoints;
-        $this->repoStats      = $repoStats;
-        $this->repoTimestamps = $repoTimestamps;
+        $this->id            = $id;
+        $this->fullName      = $fullName;
+        $this->owner         = $owner;
+        $this->private       = $private;
+        $this->defaultBranch = $defaultBranch;
+        $this->fork          = $fork;
+        $this->parent        = $parent;
+        $this->description   = $description;
+        $this->homepage      = $homepage;
+        $this->language      = $language;
+        $this->mirrorUrl     = $mirrorUrl;
+        $this->archived      = $archived;
+        $this->endpoints     = $endpoints;
+        $this->stats         = $stats;
+        $this->timestamps    = $timestamps;
     }
 
     public function getId(): RepoId
@@ -128,12 +134,17 @@ class GitHubRepo
         return $this->fork;
     }
 
+    public function getParent(): ?RepoParent
+    {
+        return $this->parent;
+    }
+
     public function getDescription(): ?RepoDescription
     {
         return $this->description;
     }
 
-    public function getHomepage(): RepoHomepage
+    public function getHomepage(): ?RepoHomepage
     {
         return $this->homepage;
     }
@@ -148,32 +159,44 @@ class GitHubRepo
         return $this->mirrorUrl;
     }
 
-    public function getArchived(): bool
+    public function getArchived(): ?bool
     {
         return $this->archived;
     }
 
-    public function getRepoEndpoints(): RepoEndpoints
+    public function getEndpoints(): RepoEndpoints
     {
-        return $this->repoEndpoints;
+        return $this->endpoints;
     }
 
-    public function getRepoStats(): RepoStats
+    public function getStats(): RepoStats
     {
-        return $this->repoStats;
+        return $this->stats;
     }
 
-    public function getRepoTimestamps(): RepoTimestamps
+    public function getTimestamps(): RepoTimestamps
     {
-        return $this->repoTimestamps;
+        return $this->timestamps;
     }
 
     public function serialize(): array
     {
+        if (null === $this->parent) {
+            $parent = null;
+        } else {
+            $parent = $this->parent->serialize();
+        }
+
         if (null === $this->description) {
             $description = null;
         } else {
             $description = $this->description->serialize();
+        }
+
+        if (null === $this->homepage) {
+            $homepage = null;
+        } else {
+            $homepage = $this->homepage->serialize();
         }
 
         if (null === $this->language) {
@@ -189,29 +212,42 @@ class GitHubRepo
         }
 
         return [
-            'id'             => $this->id->serialize(),
-            'fullName'       => $this->fullName->serialize(),
-            'owner'          => $this->owner->serialize(),
-            'private'        => $this->private,
-            'defaultBranch'  => $this->defaultBranch->serialize(),
-            'fork'           => $this->fork,
-            'description'    => $description,
-            'homepage'       => $this->homepage->serialize(),
-            'language'       => $language,
-            'mirrorUrl'      => $mirrorUrl,
-            'archived'       => $this->archived,
-            'repoEndpoints'  => $this->repoEndpoints->serialize(),
-            'repoStats'      => $this->repoStats->serialize(),
-            'repoTimestamps' => $this->repoTimestamps->serialize(),
+            'id'            => $this->id->serialize(),
+            'fullName'      => $this->fullName->serialize(),
+            'owner'         => $this->owner->serialize(),
+            'private'       => $this->private,
+            'defaultBranch' => $this->defaultBranch->serialize(),
+            'fork'          => $this->fork,
+            'parent'        => $parent,
+            'description'   => $description,
+            'homepage'      => $homepage,
+            'language'      => $language,
+            'mirrorUrl'     => $mirrorUrl,
+            'archived'      => $this->archived,
+            'endpoints'     => $this->endpoints->serialize(),
+            'stats'         => $this->stats->serialize(),
+            'timestamps'    => $this->timestamps->serialize(),
         ];
     }
 
     public static function deserialize(array $data): self
     {
+        if (null === $data['parent']) {
+            $parent = null;
+        } else {
+            $parent = RepoParent::deserialize($data['parent']);
+        }
+
         if (null === $data['description']) {
             $description = null;
         } else {
             $description = RepoDescription::deserialize($data['description']);
+        }
+
+        if (null === $data['homepage']) {
+            $homepage = null;
+        } else {
+            $homepage = RepoHomepage::deserialize($data['homepage']);
         }
 
         if (null === $data['language']) {
@@ -233,14 +269,15 @@ class GitHubRepo
             $data['private'],
             BranchName::deserialize($data['defaultBranch']),
             $data['fork'],
+            $parent,
             $description,
-            RepoHomepage::deserialize($data['homepage']),
+            $homepage,
             $language,
             $mirrorUrl,
             $data['archived'],
-            RepoEndpoints::deserialize($data['repoEndpoints']),
-            RepoStats::deserialize($data['repoStats']),
-            RepoTimestamps::deserialize($data['repoTimestamps'])
+            RepoEndpoints::deserialize($data['endpoints']),
+            RepoStats::deserialize($data['stats']),
+            RepoTimestamps::deserialize($data['timestamps'])
         );
     }
 }

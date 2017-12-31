@@ -60,10 +60,10 @@ class GitHubBranchTest extends TestCase
     /** @var GitHubCommit */
     private $commit;
 
-    /** @var bool */
+    /** @var bool|null */
     private $protected;
 
-    /** @var BranchProtectionUrl */
+    /** @var BranchProtectionUrl|null */
     private $protectionUrl;
 
     /** @var GitHubBranch */
@@ -83,7 +83,7 @@ class GitHubBranchTest extends TestCase
                 new CommitDate('2018-01-01T00:01:00+00:00'),
                 new CommitAuthorDetails(
                     new UserId(1),
-                    new UserLogin('login'),
+                    new UserLogin('value'),
                     new AccountType('type'),
                     new UserAvatarUrl('avatarUrl'),
                     new GravatarId('id'),
@@ -98,7 +98,7 @@ class GitHubBranchTest extends TestCase
                 new CommitDate('2018-01-01T00:01:00+00:00'),
                 new CommitCommitterDetails(
                     new UserId(1),
-                    new UserLogin('login'),
+                    new UserLogin('value'),
                     new AccountType('type'),
                     new UserAvatarUrl('avatarUrl'),
                     new GravatarId('id'),
@@ -107,7 +107,7 @@ class GitHubBranchTest extends TestCase
                     true
                 )
             ),
-            new CommitTree(new CommitSha('sha'), new TreeApiUrl('url')),
+            new CommitTree(new CommitSha('sha'), new TreeApiUrl('apiUrl')),
             new CommitParentCollection([new CommitParent(new CommitSha('sha'), new ParentApiUrl('apiUrl'), new ParentHtmlUrl('htmlUrl'))]),
             new CommitVerification(
                 new VerificationVerified(true),
@@ -160,10 +160,10 @@ class GitHubBranchTest extends TestCase
                 'author'     => [
                     'name'          => 'name',
                     'email'         => 'value',
-                    'date'          => '2018-01-01T00:01:00+00:00',
+                    'commitDate'    => '2018-01-01T00:01:00+00:00',
                     'authorDetails' => [
-                        'id'         => 1,
-                        'login'      => 'login',
+                        'userId'     => 1,
+                        'login'      => 'value',
                         'type'       => 'type',
                         'avatarUrl'  => 'avatarUrl',
                         'gravatarId' => 'id',
@@ -175,10 +175,10 @@ class GitHubBranchTest extends TestCase
                 'committer' => [
                     'name'             => 'name',
                     'email'            => 'value',
-                    'date'             => '2018-01-01T00:01:00+00:00',
+                    'commitDate'       => '2018-01-01T00:01:00+00:00',
                     'committerDetails' => [
-                        'id'         => 1,
-                        'login'      => 'login',
+                        'userId'     => 1,
+                        'login'      => 'value',
                         'type'       => 'type',
                         'avatarUrl'  => 'avatarUrl',
                         'gravatarId' => 'id',
@@ -187,7 +187,7 @@ class GitHubBranchTest extends TestCase
                         'siteAdmin'  => true,
                     ],
                 ],
-                'tree'         => ['sha' => 'sha', 'url' => 'url'],
+                'tree'         => ['sha' => 'sha', 'apiUrl' => 'apiUrl'],
                 'parents'      => [['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']],
                 'verification' => ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload'],
                 'apiUrl'       => 'apiUrl',

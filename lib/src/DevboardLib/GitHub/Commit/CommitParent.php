@@ -7,12 +7,13 @@ namespace DevboardLib\GitHub\Commit;
 use DevboardLib\Git\Commit\CommitSha;
 use DevboardLib\GitHub\Commit\CommitParent\ParentApiUrl;
 use DevboardLib\GitHub\Commit\CommitParent\ParentHtmlUrl;
+use Git\Commit\CommitParent as CommitParentInterface;
 
 /**
  * @see \spec\DevboardLib\GitHub\Commit\CommitParentSpec
  * @see \Tests\DevboardLib\GitHub\Commit\CommitParentTest
  */
-class CommitParent
+class CommitParent implements CommitParentInterface
 {
     /** @var CommitSha */
     private $sha;

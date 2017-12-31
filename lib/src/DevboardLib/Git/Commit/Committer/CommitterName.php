@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace DevboardLib\Git\Commit\Committer;
 
+use Git\Commit\Committer\CommitterName as CommitterNameInterface;
+
 /**
  * @see \spec\DevboardLib\Git\Commit\Committer\CommitterNameSpec
  * @see \Tests\DevboardLib\Git\Commit\Committer\CommitterNameTest
  */
-class CommitterName
+class CommitterName implements CommitterNameInterface
 {
     /** @var string */
     private $name;

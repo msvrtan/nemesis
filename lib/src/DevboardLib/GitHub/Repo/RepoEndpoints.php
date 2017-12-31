@@ -19,7 +19,7 @@ class RepoEndpoints
     private $htmlUrl;
 
     /** @var RepoApiUrl */
-    private $url;
+    private $apiUrl;
 
     /** @var RepoGitUrl */
     private $gitUrl;
@@ -27,10 +27,10 @@ class RepoEndpoints
     /** @var RepoSshUrl */
     private $sshUrl;
 
-    public function __construct(RepoHtmlUrl $htmlUrl, RepoApiUrl $url, RepoGitUrl $gitUrl, RepoSshUrl $sshUrl)
+    public function __construct(RepoHtmlUrl $htmlUrl, RepoApiUrl $apiUrl, RepoGitUrl $gitUrl, RepoSshUrl $sshUrl)
     {
         $this->htmlUrl = $htmlUrl;
-        $this->url     = $url;
+        $this->apiUrl  = $apiUrl;
         $this->gitUrl  = $gitUrl;
         $this->sshUrl  = $sshUrl;
     }
@@ -40,9 +40,9 @@ class RepoEndpoints
         return $this->htmlUrl;
     }
 
-    public function getUrl(): RepoApiUrl
+    public function getApiUrl(): RepoApiUrl
     {
-        return $this->url;
+        return $this->apiUrl;
     }
 
     public function getGitUrl(): RepoGitUrl
@@ -59,7 +59,7 @@ class RepoEndpoints
     {
         return [
             'htmlUrl' => $this->htmlUrl->serialize(),
-            'url'     => $this->url->serialize(),
+            'apiUrl'  => $this->apiUrl->serialize(),
             'gitUrl'  => $this->gitUrl->serialize(),
             'sshUrl'  => $this->sshUrl->serialize(),
         ];
@@ -69,7 +69,7 @@ class RepoEndpoints
     {
         return new self(
             RepoHtmlUrl::deserialize($data['htmlUrl']),
-            RepoApiUrl::deserialize($data['url']),
+            RepoApiUrl::deserialize($data['apiUrl']),
             RepoGitUrl::deserialize($data['gitUrl']),
             RepoSshUrl::deserialize($data['sshUrl'])
         );

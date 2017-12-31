@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace DevboardLib\Git\Commit;
 
+use Git\Commit\CommitSha as CommitShaInterface;
+
 /**
  * @see \spec\DevboardLib\Git\Commit\CommitShaSpec
  * @see \Tests\DevboardLib\Git\Commit\CommitShaTest
  */
-class CommitSha
+class CommitSha implements CommitShaInterface
 {
     /** @var string */
     private $sha;
