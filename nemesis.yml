@@ -1,15 +1,18 @@
 paths:
   code:
     "lib/src/MyVendor/": "MyVendor\\"
+    "lib/src/Devboard/": "Devboard\\"
     "lib/src/DevboardLib/": "DevboardLib\\"
     "lib/src/Git/": "Git\\"
     "src/": ""
   spec:
     "lib/spec/MyVendor/": spec\MyVendor\
+    "lib/spec/Devboard/": spec\Devboard\
     "lib/spec/DevboardLib/": spec\DevboardLib\
     "spec/": spec\
   tests:
     "lib/tests/MyVendor/": Tests\MyVendor\
+    "lib/tests/Devboard/": Tests\Devboard\
     "lib/tests/DevboardLib/": Tests\DevboardLib\
     "tests/": Tests\
 phpunit:
