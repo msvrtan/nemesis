@@ -1,0 +1,14 @@
+definition:
+  type: SimpleEntity
+  instanceOf: DevboardLib\Git\Commit\CommitParent
+  parent: null
+  interfaces:
+    CommitParentInterface: Git\Commit\CommitParent
+  traits: {  }
+  constructor:
+    sha:
+      instanceOf: DevboardLib\Git\Commit\CommitSha
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['5246f51f550db504e76c98b641e3337570e84dd4']

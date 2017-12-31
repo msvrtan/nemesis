@@ -1,11 +1,11 @@
 definition:
   type: SingleValueObject
   instanceOf: DevboardLib\GitHub\User\UserLogin
-  parent: null
+  parent: DevboardLib\GitHub\Account\AccountLogin
   interfaces: {  }
   traits: {  }
   constructor:
-    login:
+    value:
       instanceOf: string
       nullable: false
       hasDefault: false

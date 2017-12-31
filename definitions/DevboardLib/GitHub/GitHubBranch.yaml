@@ -26,13 +26,13 @@ definition:
       examples: []
     protected:
       instanceOf: bool
-      nullable: false
-      hasDefault: false
+      nullable: true
+      hasDefault: true
       default: null
       examples: [false, true]
     protectionUrl:
       instanceOf: DevboardLib\GitHub\Branch\BranchProtectionUrl
-      nullable: false
-      hasDefault: false
+      nullable: true
+      hasDefault: true
       default: null
       examples: []

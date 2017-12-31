@@ -5,6 +5,8 @@ definition:
   interfaces:
     - Git\Reference\ReferenceName
   traits: {  }
+  constants:
+    TYPE: 'Branch'
   constructor:
     name:
       instanceOf: string

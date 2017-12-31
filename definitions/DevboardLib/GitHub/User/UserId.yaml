@@ -1,7 +1,7 @@
 definition:
   type: SimpleIdentifier
   instanceOf: DevboardLib\GitHub\User\UserId
-  parent: null
+  parent: DevboardLib\GitHub\Account\AccountId
   interfaces: {  }
   traits: {  }
   constructor:

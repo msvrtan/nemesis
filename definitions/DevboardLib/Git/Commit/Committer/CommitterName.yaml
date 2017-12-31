@@ -2,7 +2,8 @@ definition:
   type: SingleValueObject
   instanceOf: DevboardLib\Git\Commit\Committer\CommitterName
   parent: null
-  interfaces: {  }
+  interfaces:
+    CommitterNameInterface: Git\Commit\Committer\CommitterName
   traits: {  }
   constructor:
     name:

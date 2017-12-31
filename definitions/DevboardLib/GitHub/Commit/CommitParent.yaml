@@ -2,7 +2,8 @@ definition:
   type: SimpleEntity
   instanceOf: DevboardLib\GitHub\Commit\CommitParent
   parent: null
-  interfaces: {  }
+  interfaces:
+    CommitParentInterface: Git\Commit\CommitParent
   traits: {  }
   constructor:
     sha:

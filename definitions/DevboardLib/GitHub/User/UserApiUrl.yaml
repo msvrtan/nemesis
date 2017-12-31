@@ -1,7 +1,7 @@
 definition:
   type: SingleValueObject
   instanceOf: DevboardLib\GitHub\User\UserApiUrl
-  parent: null
+  parent: DevboardLib\GitHub\Account\AccountApiUrl
   interfaces: {  }
   traits: {  }
   constructor:

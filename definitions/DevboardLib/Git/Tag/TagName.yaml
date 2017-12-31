@@ -1,14 +1,16 @@
 definition:
   type: SingleValueObject
-  instanceOf: DevboardLib\Git\Commit\Author\AuthorName
+  instanceOf: DevboardLib\Git\Tag\TagName
   parent: null
   interfaces:
-    AuthorNameInterface: Git\Commit\Author\AuthorName
+    - Git\Reference\ReferenceName
   traits: {  }
+  constants:
+    TYPE: 'Tag'
   constructor:
     name:
       instanceOf: string
       nullable: false
       hasDefault: false
       default: null
-      examples: ['John Smith', 'Amy Johnson']
+      examples: ['0.1', '1.0', '1.2.3', '3.x']

@@ -2,7 +2,8 @@ definition:
   type: SingleValueObject
   instanceOf: DevboardLib\Git\Commit\CommitMessage
   parent: null
-  interfaces: {  }
+  interfaces:
+    CommitMessageInterface: Git\Commit\CommitMessage
   traits: {  }
   constructor:
     message:

@@ -50,8 +50,8 @@ definition:
       examples: []
     verification:
       instanceOf: DevboardLib\GitHub\Commit\CommitVerification
-      nullable: false
-      hasDefault: false
+      nullable: true
+      hasDefault: true
       default: null
       examples: []
     apiUrl:

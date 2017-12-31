@@ -2,7 +2,8 @@ definition:
   type: SingleValueObject
   instanceOf: DevboardLib\Git\Commit\CommitSha
   parent: null
-  interfaces: {  }
+  interfaces:
+    CommitShaInterface: Git\Commit\CommitSha
   traits: {  }
   constructor:
     sha:

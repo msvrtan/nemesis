@@ -5,7 +5,7 @@ definition:
   interfaces: {  }
   traits: {  }
   constructor:
-    id:
+    userId:
       instanceOf: DevboardLib\GitHub\User\UserId
       nullable: false
       hasDefault: false

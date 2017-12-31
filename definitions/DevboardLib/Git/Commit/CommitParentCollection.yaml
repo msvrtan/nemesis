@@ -1,6 +1,6 @@
 definition:
   type: SimpleCollection
-  instanceOf: DevboardLib\GitHub\Commit\CommitParentCollection
+  instanceOf: DevboardLib\Git\Commit\CommitParentCollection
   parent: null
   interfaces:
     CommitParentCollectionInterface: Git\Commit\CommitParentCollection
@@ -12,6 +12,6 @@ definition:
       hasDefault: true
       default: []
   collectionOf:
-    instanceOf: DevboardLib\GitHub\Commit\CommitParent
+    instanceOf: DevboardLib\Git\Commit\CommitParent
     accessor: getSha
     has: DevboardLib\Git\Commit\CommitSha

@@ -2,7 +2,8 @@ definition:
   type: DateTimeValueObject
   instanceOf: DevboardLib\Git\Commit\CommitDate
   parent: DateTime
-  interfaces: {  }
+  interfaces:
+    CommitDateInterface: Git\Commit\CommitDate
   traits: {  }
   constructor:
     value:

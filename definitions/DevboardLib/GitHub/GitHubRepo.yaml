@@ -41,6 +41,12 @@ definition:
       hasDefault: false
       default: null
       examples: []
+    parent:
+      instanceOf: DevboardLib\GitHub\Repo\RepoParent
+      nullable: true
+      hasDefault: false
+      default: null
+      examples: []
     description:
       instanceOf: DevboardLib\GitHub\Repo\RepoDescription
       nullable: true
@@ -49,7 +55,7 @@ definition:
       examples: []
     homepage:
       instanceOf: DevboardLib\GitHub\Repo\RepoHomepage
-      nullable: false
+      nullable: true
       hasDefault: false
       default: null
       examples: []
@@ -67,23 +73,23 @@ definition:
       examples: []
     archived:
       instanceOf: bool
-      nullable: false
+      nullable: true
       hasDefault: false
       default: null
       examples: []
-    repoEndpoints:
+    endpoints:
       instanceOf: DevboardLib\GitHub\Repo\RepoEndpoints
       nullable: false
       hasDefault: false
       default: null
       examples: []
-    repoStats:
+    stats:
       instanceOf: DevboardLib\GitHub\Repo\RepoStats
       nullable: false
       hasDefault: false
       default: null
       examples: []
-    repoTimestamps:
+    timestamps:
       instanceOf: DevboardLib\GitHub\Repo\RepoTimestamps
       nullable: false
       hasDefault: false

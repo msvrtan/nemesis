@@ -2,7 +2,8 @@ definition:
   type: SimpleEntity
   instanceOf: DevboardLib\GitHub\Commit\CommitCommitter
   parent: null
-  interfaces: {  }
+  interfaces:
+    CommitCommitterInterface: Git\Commit\CommitCommitter
   traits: {  }
   constructor:
     name:
@@ -17,7 +18,7 @@ definition:
       hasDefault: false
       default: null
       examples: ['jane@example.com']
-    date:
+    commitDate:
       instanceOf: DevboardLib\Git\Commit\CommitDate
       nullable: false
       hasDefault: false

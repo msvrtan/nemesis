@@ -4,6 +4,10 @@ definition:
   parent: null
   interfaces: {  }
   traits: {  }
+  constants:
+    ORGANIZATION: 'Organization'
+    USER: 'User'
+    BOT: 'Bot'
   constructor:
     type:
       instanceOf: string

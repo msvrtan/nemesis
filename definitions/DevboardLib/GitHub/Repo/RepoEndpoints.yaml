@@ -11,7 +11,7 @@ definition:
       hasDefault: false
       default: null
       examples: ['https://github.com/octocat/Hello-World']
-    url:
+    apiUrl:
       instanceOf: DevboardLib\GitHub\Repo\RepoEndpoints\RepoApiUrl
       nullable: false
       hasDefault: false
