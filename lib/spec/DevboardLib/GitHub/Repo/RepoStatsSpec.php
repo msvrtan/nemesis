@@ -65,7 +65,7 @@ class RepoStatsSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(RepoSize $size)
+    public function it_can_be_deserialized()
     {
         $input = [
             'networkCount'     => 11,

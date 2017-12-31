@@ -51,7 +51,7 @@ class CommitParentSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(CommitSha $sha, ParentApiUrl $apiUrl, ParentHtmlUrl $htmlUrl)
+    public function it_can_be_deserialized()
     {
         $input = [
             'sha'     => '5246f51f550db504e76c98b641e3337570e84dd4',

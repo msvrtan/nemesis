@@ -103,15 +103,8 @@ class CommitCommitterDetailsSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(
-        UserId $id,
-        UserLogin $login,
-        AccountType $type,
-        UserAvatarUrl $avatarUrl,
-        GravatarId $gravatarId,
-        UserHtmlUrl $htmlUrl,
-        UserApiUrl $apiUrl
-    ) {
+    public function it_can_be_deserialized()
+    {
         $input = [
             'id'         => 6752317,
             'login'      => 'baxterthehacker',

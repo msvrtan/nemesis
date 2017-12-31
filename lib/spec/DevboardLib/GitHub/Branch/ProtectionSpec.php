@@ -36,7 +36,7 @@ class ProtectionSpec extends ObjectBehavior
         $this->serialize()->shouldReturn(['enabled' => true, 'requiredStatusChecks' => ['enforcementLevel' => 'enforcementLevel', 'contexts' => [1]]]);
     }
 
-    public function it_can_be_deserialized(RequiredStatusChecks $requiredStatusChecks)
+    public function it_can_be_deserialized()
     {
         $input = ['enabled' => true, 'requiredStatusChecks' => ['enforcementLevel' => 'enforcementLevel', 'contexts' => [1]]];
 

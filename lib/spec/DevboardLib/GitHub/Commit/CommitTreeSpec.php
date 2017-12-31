@@ -43,7 +43,7 @@ class CommitTreeSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(CommitSha $sha, TreeApiUrl $url)
+    public function it_can_be_deserialized()
     {
         $input = [
             'sha' => '02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0',

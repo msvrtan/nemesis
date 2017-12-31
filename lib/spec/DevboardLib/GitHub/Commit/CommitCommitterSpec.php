@@ -79,7 +79,7 @@ class CommitCommitterSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(CommitterName $name, EmailAddress $email, CommitDate $date, CommitCommitterDetails $committerDetails)
+    public function it_can_be_deserialized()
     {
         $input = [
             'name'             => 'Jane Johnson',

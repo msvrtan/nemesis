@@ -79,7 +79,7 @@ class CommitAuthorSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(AuthorName $name, EmailAddress $email, CommitDate $date, CommitAuthorDetails $authorDetails)
+    public function it_can_be_deserialized()
     {
         $input = [
             'name'          => 'Jane Johnson',

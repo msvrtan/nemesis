@@ -193,18 +193,8 @@ class GitHubCommitSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(
-        CommitSha $sha,
-        CommitMessage $message,
-        CommitDate $commitDate,
-        CommitAuthor $author,
-        CommitCommitter $committer,
-        CommitTree $tree,
-        CommitParentCollection $parents,
-        CommitVerification $verification,
-        CommitApiUrl $apiUrl,
-        CommitHtmlUrl $htmlUrl
-    ) {
+    public function it_can_be_deserialized()
+    {
         $input = [
             'sha'        => 'sha',
             'message'    => 'message',

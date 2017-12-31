@@ -103,15 +103,8 @@ class RepoOwnerSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(
-        AccountId $id,
-        AccountLogin $login,
-        AccountType $type,
-        AccountAvatarUrl $avatarUrl,
-        GravatarId $gravatarId,
-        AccountHtmlUrl $htmlUrl,
-        AccountApiUrl $apiUrl
-    ) {
+    public function it_can_be_deserialized()
+    {
         $input = [
             'id'         => 583231,
             'login'      => 'octocat',

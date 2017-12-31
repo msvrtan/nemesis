@@ -59,7 +59,7 @@ class RepoEndpointsSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(RepoHtmlUrl $htmlUrl, RepoApiUrl $url, RepoGitUrl $gitUrl, RepoSshUrl $sshUrl)
+    public function it_can_be_deserialized()
     {
         $input = [
             'htmlUrl' => 'https://github.com/octocat/Hello-World',

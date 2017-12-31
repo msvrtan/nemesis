@@ -38,7 +38,7 @@ class RepoFullNameSpec extends ObjectBehavior
         $this->serialize()->shouldReturn(['owner' => 'octocat', 'repoName' => 'linguist']);
     }
 
-    public function it_can_be_deserialized(AccountLogin $owner, RepoName $repoName)
+    public function it_can_be_deserialized()
     {
         $input = ['owner' => 'octocat', 'repoName' => 'linguist'];
 

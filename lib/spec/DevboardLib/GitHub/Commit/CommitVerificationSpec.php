@@ -60,12 +60,8 @@ class CommitVerificationSpec extends ObjectBehavior
         $this->serialize()->shouldReturn(['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload']);
     }
 
-    public function it_can_be_deserialized(
-        VerificationVerified $verified,
-        VerificationReason $reason,
-        VerificationSignature $signature,
-        VerificationPayload $payload
-    ) {
+    public function it_can_be_deserialized()
+    {
         $input = ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload'];
 
         $this->deserialize($input)->shouldReturnAnInstanceOf(CommitVerification::class);

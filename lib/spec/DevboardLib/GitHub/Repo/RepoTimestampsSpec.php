@@ -51,7 +51,7 @@ class RepoTimestampsSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(RepoCreatedAt $createdAt, RepoUpdatedAt $updatedAt, RepoPushedAt $pushedAt)
+    public function it_can_be_deserialized()
     {
         $input = [
             'createdAt' => '2011-01-26T19:01:12+00:00',

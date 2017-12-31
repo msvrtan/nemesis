@@ -147,7 +147,7 @@ class GitHubBranchSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(RepoFullName $repoFullName, BranchName $name, GitHubCommit $commit, BranchProtectionUrl $protectionUrl)
+    public function it_can_be_deserialized()
     {
         $input = [
             'repoFullName' => ['owner' => 'value', 'repoName' => 'name'],

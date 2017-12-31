@@ -220,19 +220,8 @@ class GitHubRepoSpec extends ObjectBehavior
         );
     }
 
-    public function it_can_be_deserialized(
-        RepoId $id,
-        RepoFullName $fullName,
-        RepoOwner $owner,
-        BranchName $defaultBranch,
-        RepoDescription $description,
-        RepoHomepage $homepage,
-        RepoLanguage $language,
-        RepoMirrorUrl $mirrorUrl,
-        RepoEndpoints $repoEndpoints,
-        RepoStats $repoStats,
-        RepoTimestamps $repoTimestamps
-    ) {
+    public function it_can_be_deserialized()
+    {
         $input = [
             'id'       => 1,
             'fullName' => ['owner' => 'value', 'repoName' => 'name'],

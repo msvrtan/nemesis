@@ -31,7 +31,7 @@ class ContextSpec extends ObjectBehavior
         $this->serialize()->shouldReturn(1);
     }
 
-    public function it_can_be_deserialized(ContextId $id)
+    public function it_can_be_deserialized()
     {
         $input = 1;
 

@@ -38,7 +38,7 @@ class RequiredStatusChecksSpec extends ObjectBehavior
         $this->serialize()->shouldReturn(['enforcementLevel' => 'enforcementLevel', 'contexts' => [1]]);
     }
 
-    public function it_can_be_deserialized(RequiredStatusChecksEnforcementLevel $enforcementLevel, Contexts $contexts)
+    public function it_can_be_deserialized()
     {
         $input = ['enforcementLevel' => 'enforcementLevel', 'contexts' => [1]];
 
