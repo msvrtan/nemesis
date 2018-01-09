@@ -97,7 +97,7 @@ class CommitCommitterDetails
         return $this->apiUrl;
     }
 
-    public function getSiteAdmin(): bool
+    public function isSiteAdmin(): bool
     {
         return $this->siteAdmin;
     }

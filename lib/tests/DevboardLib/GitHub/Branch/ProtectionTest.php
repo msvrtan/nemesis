@@ -30,13 +30,16 @@ class ProtectionTest extends TestCase
     public function setUp()
     {
         $this->enabled              = true;
-        $this->requiredStatusChecks = new RequiredStatusChecks(new RequiredStatusChecksEnforcementLevel('enforcementLevel'), new Contexts([new Context(new ContextId(1))]));
-        $this->sut                  = new Protection($this->enabled, $this->requiredStatusChecks);
+        $this->requiredStatusChecks = new RequiredStatusChecks(
+            new RequiredStatusChecksEnforcementLevel('enforcementLevel'),
+            new Contexts([new Context(new ContextId(1))])
+        );
+        $this->sut = new Protection($this->enabled, $this->requiredStatusChecks);
     }
 
-    public function testGetEnabled()
+    public function testIsEnabled()
     {
-        self::assertSame($this->enabled, $this->sut->getEnabled());
+        self::assertSame($this->enabled, $this->sut->isEnabled());
     }
 
     public function testGetRequiredStatusChecks()

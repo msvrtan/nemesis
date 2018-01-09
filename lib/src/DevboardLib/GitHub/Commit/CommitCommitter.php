@@ -27,8 +27,9 @@ class CommitCommitter implements CommitCommitterInterface
     /** @var CommitCommitterDetails|null */
     private $committerDetails;
 
-    public function __construct(CommitterName $name, EmailAddress $email, CommitDate $commitDate, ?CommitCommitterDetails $committerDetails)
-    {
+    public function __construct(
+        CommitterName $name, EmailAddress $email, CommitDate $commitDate, ?CommitCommitterDetails $committerDetails
+    ) {
         $this->name             = $name;
         $this->email            = $email;
         $this->commitDate       = $commitDate;
@@ -53,6 +54,15 @@ class CommitCommitter implements CommitCommitterInterface
     public function getCommitterDetails(): ?CommitCommitterDetails
     {
         return $this->committerDetails;
+    }
+
+    public function hasCommitterDetails(): bool
+    {
+        if (null === $this->committerDetails) {
+            return false;
+        }
+
+        return true;
     }
 
     public function serialize(): array

@@ -12,16 +12,16 @@ use DateTime;
  */
 class RepoUpdatedAt extends DateTime
 {
-    public function __toString(): string
-    {
-        return $this->format('c');
-    }
-
     public static function createFromFormat($format, $time, $object = null): self
     {
         $date = parent::createFromFormat($format, $time, $object);
 
         return new self($date->format('c'));
+    }
+
+    public function __toString(): string
+    {
+        return $this->format('c');
     }
 
     public function serialize(): string

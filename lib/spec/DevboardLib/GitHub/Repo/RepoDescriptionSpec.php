@@ -11,7 +11,9 @@ class RepoDescriptionSpec extends ObjectBehavior
 {
     public function let()
     {
-        $this->beConstructedWith($description = 'Language Savant. If your repository language is being reported incorrectly, send us a pull request!');
+        $this->beConstructedWith(
+            $description = 'Language Savant. If your repository language is being reported incorrectly, send us a pull request!'
+        );
     }
 
     public function it_is_initializable()
@@ -21,22 +23,30 @@ class RepoDescriptionSpec extends ObjectBehavior
 
     public function it_exposes_description()
     {
-        $this->getDescription()->shouldReturn('Language Savant. If your repository language is being reported incorrectly, send us a pull request!');
+        $this->getDescription()->shouldReturn(
+            'Language Savant. If your repository language is being reported incorrectly, send us a pull request!'
+        );
     }
 
     public function it_exposes_value()
     {
-        $this->getValue()->shouldReturn('Language Savant. If your repository language is being reported incorrectly, send us a pull request!');
+        $this->getValue()->shouldReturn(
+            'Language Savant. If your repository language is being reported incorrectly, send us a pull request!'
+        );
     }
 
     public function it_is_castable_to_string()
     {
-        $this->__toString()->shouldReturn('Language Savant. If your repository language is being reported incorrectly, send us a pull request!');
+        $this->__toString()->shouldReturn(
+            'Language Savant. If your repository language is being reported incorrectly, send us a pull request!'
+        );
     }
 
     public function it_can_be_serialized()
     {
-        $this->serialize()->shouldReturn('Language Savant. If your repository language is being reported incorrectly, send us a pull request!');
+        $this->serialize()->shouldReturn(
+            'Language Savant. If your repository language is being reported incorrectly, send us a pull request!'
+        );
     }
 
     public function it_can_be_deserialized()

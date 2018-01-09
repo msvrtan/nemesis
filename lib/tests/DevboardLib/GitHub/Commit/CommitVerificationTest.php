@@ -61,6 +61,16 @@ class CommitVerificationTest extends TestCase
         self::assertSame($this->payload, $this->sut->getPayload());
     }
 
+    public function testHasSignature()
+    {
+        self::assertTrue($this->sut->hasSignature());
+    }
+
+    public function testHasPayload()
+    {
+        self::assertTrue($this->sut->hasPayload());
+    }
+
     public function testSerialize()
     {
         $expected = [

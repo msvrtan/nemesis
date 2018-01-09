@@ -19,10 +19,10 @@ use DevboardLib\GitHub\User\UserLogin;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DevboardLib\GitHub\Commit\CommitAuthor
- * @group  todo
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+ * @covers \DevboardLib\GitHub\Commit\CommitAuthor
+ * @group  todo
  */
 class CommitAuthorTest extends TestCase
 {
@@ -77,6 +77,11 @@ class CommitAuthorTest extends TestCase
     public function testGetAuthorDetails()
     {
         self::assertSame($this->authorDetails, $this->sut->getAuthorDetails());
+    }
+
+    public function testHasAuthorDetails()
+    {
+        self::assertTrue($this->sut->hasAuthorDetails());
     }
 
     public function testSerialize()

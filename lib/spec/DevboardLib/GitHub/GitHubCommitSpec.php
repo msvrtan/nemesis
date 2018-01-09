@@ -36,7 +36,9 @@ class GitHubCommitSpec extends ObjectBehavior
         CommitApiUrl $apiUrl,
         CommitHtmlUrl $htmlUrl
     ) {
-        $this->beConstructedWith($sha, $message, $commitDate, $author, $committer, $tree, $parents, $verification, $apiUrl, $htmlUrl);
+        $this->beConstructedWith(
+            $sha, $message, $commitDate, $author, $committer, $tree, $parents, $verification, $apiUrl, $htmlUrl
+        );
     }
 
     public function it_is_initializable()
@@ -95,6 +97,11 @@ class GitHubCommitSpec extends ObjectBehavior
         $this->getHtmlUrl()->shouldReturn($htmlUrl);
     }
 
+    public function it_has_verification()
+    {
+        $this->hasVerification()->shouldReturn(true);
+    }
+
     public function it_can_be_serialized(
         CommitSha $sha,
         CommitMessage $message,
@@ -107,20 +114,20 @@ class GitHubCommitSpec extends ObjectBehavior
         CommitApiUrl $apiUrl,
         CommitHtmlUrl $htmlUrl
     ) {
-        $sha->serialize()->shouldBeCalled()->willReturn('sha');
-        $message->serialize()->shouldBeCalled()->willReturn('message');
-        $commitDate->serialize()->shouldBeCalled()->willReturn('2018-01-01T00:01:00+00:00');
+        $sha->serialize()->shouldBeCalled()->willReturn('e54c3c97b4024b4a9b270b62921c6b830d780bd3');
+        $message->serialize()->shouldBeCalled()->willReturn('A commit message');
+        $commitDate->serialize()->shouldBeCalled()->willReturn('2018-01-02T11:12:13+00:00');
         $author->serialize()->shouldBeCalled()->willReturn(
             [
-                'name'          => 'name',
-                'email'         => 'value',
-                'commitDate'    => '2018-01-01T00:01:00+00:00',
+                'name'          => 'Amy Johnson',
+                'email'         => 'amy@example.com',
+                'commitDate'    => '2018-01-02T11:12:13+00:00',
                 'authorDetails' => [
                     'userId'     => 1,
                     'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
+                    'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                     'htmlUrl'    => 'htmlUrl',
                     'apiUrl'     => 'apiUrl',
                     'siteAdmin'  => true,
@@ -129,66 +136,79 @@ class GitHubCommitSpec extends ObjectBehavior
         );
         $committer->serialize()->shouldBeCalled()->willReturn(
             [
-                'name'             => 'name',
-                'email'            => 'value',
-                'commitDate'       => '2018-01-01T00:01:00+00:00',
+                'name'             => 'Amy Johnson',
+                'email'            => 'amy@example.com',
+                'commitDate'       => '2018-01-02T11:12:13+00:00',
                 'committerDetails' => [
                     'userId'     => 1,
                     'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
+                    'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                     'htmlUrl'    => 'htmlUrl',
                     'apiUrl'     => 'apiUrl',
                     'siteAdmin'  => true,
                 ],
             ]
         );
-        $tree->serialize()->shouldBeCalled()->willReturn(['sha' => 'sha', 'apiUrl' => 'apiUrl']);
-        $parents->serialize()->shouldBeCalled()->willReturn([['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']]);
-        $verification->serialize()->shouldBeCalled()->willReturn(['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload']);
+        $tree->serialize()->shouldBeCalled()->willReturn(
+            ['sha' => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3', 'apiUrl' => 'apiUrl']
+        );
+        $parents->serialize()->shouldBeCalled()->willReturn(
+            [['sha' => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']]
+        );
+        $verification->serialize()->shouldBeCalled()->willReturn(
+            ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload']
+        );
         $apiUrl->serialize()->shouldBeCalled()->willReturn('apiUrl');
         $htmlUrl->serialize()->shouldBeCalled()->willReturn('htmlUrl');
         $this->serialize()->shouldReturn(
             [
-                'sha'        => 'sha',
-                'message'    => 'message',
-                'commitDate' => '2018-01-01T00:01:00+00:00',
+                'sha'        => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3',
+                'message'    => 'A commit message',
+                'commitDate' => '2018-01-02T11:12:13+00:00',
                 'author'     => [
-                    'name'          => 'name',
-                    'email'         => 'value',
-                    'commitDate'    => '2018-01-01T00:01:00+00:00',
+                    'name'          => 'Amy Johnson',
+                    'email'         => 'amy@example.com',
+                    'commitDate'    => '2018-01-02T11:12:13+00:00',
                     'authorDetails' => [
                         'userId'     => 1,
                         'login'      => 'value',
                         'type'       => 'type',
                         'avatarUrl'  => 'avatarUrl',
-                        'gravatarId' => 'id',
+                        'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                         'htmlUrl'    => 'htmlUrl',
                         'apiUrl'     => 'apiUrl',
                         'siteAdmin'  => true,
                     ],
                 ],
                 'committer' => [
-                    'name'             => 'name',
-                    'email'            => 'value',
-                    'commitDate'       => '2018-01-01T00:01:00+00:00',
+                    'name'             => 'Amy Johnson',
+                    'email'            => 'amy@example.com',
+                    'commitDate'       => '2018-01-02T11:12:13+00:00',
                     'committerDetails' => [
                         'userId'     => 1,
                         'login'      => 'value',
                         'type'       => 'type',
                         'avatarUrl'  => 'avatarUrl',
-                        'gravatarId' => 'id',
+                        'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                         'htmlUrl'    => 'htmlUrl',
                         'apiUrl'     => 'apiUrl',
                         'siteAdmin'  => true,
                     ],
                 ],
-                'tree'         => ['sha' => 'sha', 'apiUrl' => 'apiUrl'],
-                'parents'      => [['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']],
-                'verification' => ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload'],
-                'apiUrl'       => 'apiUrl',
-                'htmlUrl'      => 'htmlUrl',
+                'tree'    => ['sha' => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3', 'apiUrl' => 'apiUrl'],
+                'parents' => [
+                    ['sha' => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl'],
+                ],
+                'verification' => [
+                    'verified'  => true,
+                    'reason'    => 'reason',
+                    'signature' => 'signature',
+                    'payload'   => 'payload',
+                ],
+                'apiUrl'  => 'apiUrl',
+                'htmlUrl' => 'htmlUrl',
             ]
         );
     }
@@ -196,44 +216,51 @@ class GitHubCommitSpec extends ObjectBehavior
     public function it_can_be_deserialized()
     {
         $input = [
-            'sha'        => 'sha',
-            'message'    => 'message',
-            'commitDate' => '2018-01-01T00:01:00+00:00',
+            'sha'        => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3',
+            'message'    => 'A commit message',
+            'commitDate' => '2018-01-02T11:12:13+00:00',
             'author'     => [
-                'name'          => 'name',
-                'email'         => 'value',
-                'commitDate'    => '2018-01-01T00:01:00+00:00',
+                'name'          => 'Amy Johnson',
+                'email'         => 'amy@example.com',
+                'commitDate'    => '2018-01-02T11:12:13+00:00',
                 'authorDetails' => [
                     'userId'     => 1,
                     'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
+                    'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                     'htmlUrl'    => 'htmlUrl',
                     'apiUrl'     => 'apiUrl',
                     'siteAdmin'  => true,
                 ],
             ],
             'committer' => [
-                'name'             => 'name',
-                'email'            => 'value',
-                'commitDate'       => '2018-01-01T00:01:00+00:00',
+                'name'             => 'Amy Johnson',
+                'email'            => 'amy@example.com',
+                'commitDate'       => '2018-01-02T11:12:13+00:00',
                 'committerDetails' => [
                     'userId'     => 1,
                     'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
+                    'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                     'htmlUrl'    => 'htmlUrl',
                     'apiUrl'     => 'apiUrl',
                     'siteAdmin'  => true,
                 ],
             ],
-            'tree'         => ['sha' => 'sha', 'apiUrl' => 'apiUrl'],
-            'parents'      => [['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']],
-            'verification' => ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload'],
-            'apiUrl'       => 'apiUrl',
-            'htmlUrl'      => 'htmlUrl',
+            'tree'    => ['sha' => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3', 'apiUrl' => 'apiUrl'],
+            'parents' => [
+                ['sha' => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl'],
+            ],
+            'verification' => [
+                'verified'  => true,
+                'reason'    => 'reason',
+                'signature' => 'signature',
+                'payload'   => 'payload',
+            ],
+            'apiUrl'  => 'apiUrl',
+            'htmlUrl' => 'htmlUrl',
         ];
 
         $this->deserialize($input)->shouldReturnAnInstanceOf(GitHubCommit::class);

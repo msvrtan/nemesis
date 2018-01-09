@@ -11,7 +11,9 @@ class CommitHtmlUrlSpec extends ObjectBehavior
 {
     public function let()
     {
-        $this->beConstructedWith($htmlUrl = 'https://github.com/symfony/symfony-docs/commit/88065b04761ff810009f3379b46513640aa7dc47');
+        $this->beConstructedWith(
+            $htmlUrl = 'https://github.com/symfony/symfony-docs/commit/88065b04761ff810009f3379b46513640aa7dc47'
+        );
     }
 
     public function it_is_initializable()
@@ -21,22 +23,30 @@ class CommitHtmlUrlSpec extends ObjectBehavior
 
     public function it_exposes_html_url()
     {
-        $this->getHtmlUrl()->shouldReturn('https://github.com/symfony/symfony-docs/commit/88065b04761ff810009f3379b46513640aa7dc47');
+        $this->getHtmlUrl()->shouldReturn(
+            'https://github.com/symfony/symfony-docs/commit/88065b04761ff810009f3379b46513640aa7dc47'
+        );
     }
 
     public function it_exposes_value()
     {
-        $this->getValue()->shouldReturn('https://github.com/symfony/symfony-docs/commit/88065b04761ff810009f3379b46513640aa7dc47');
+        $this->getValue()->shouldReturn(
+            'https://github.com/symfony/symfony-docs/commit/88065b04761ff810009f3379b46513640aa7dc47'
+        );
     }
 
     public function it_is_castable_to_string()
     {
-        $this->__toString()->shouldReturn('https://github.com/symfony/symfony-docs/commit/88065b04761ff810009f3379b46513640aa7dc47');
+        $this->__toString()->shouldReturn(
+            'https://github.com/symfony/symfony-docs/commit/88065b04761ff810009f3379b46513640aa7dc47'
+        );
     }
 
     public function it_can_be_serialized()
     {
-        $this->serialize()->shouldReturn('https://github.com/symfony/symfony-docs/commit/88065b04761ff810009f3379b46513640aa7dc47');
+        $this->serialize()->shouldReturn(
+            'https://github.com/symfony/symfony-docs/commit/88065b04761ff810009f3379b46513640aa7dc47'
+        );
     }
 
     public function it_can_be_deserialized()

@@ -42,8 +42,12 @@ class CommitParentSpec extends ObjectBehavior
     public function it_can_be_serialized(CommitSha $sha, ParentApiUrl $apiUrl, ParentHtmlUrl $htmlUrl)
     {
         $sha->serialize()->shouldBeCalled()->willReturn('5246f51f550db504e76c98b641e3337570e84dd4');
-        $apiUrl->serialize()->shouldBeCalled()->willReturn('https://api.github.com/repos/symfony/symfony-docs/git/commits/5246f51f550db504e76c98b641e3337570e84dd4');
-        $htmlUrl->serialize()->shouldBeCalled()->willReturn('https://github.com/symfony/symfony-docs/commit/5246f51f550db504e76c98b641e3337570e84dd4');
+        $apiUrl->serialize()->shouldBeCalled()->willReturn(
+            'https://api.github.com/repos/symfony/symfony-docs/git/commits/5246f51f550db504e76c98b641e3337570e84dd4'
+        );
+        $htmlUrl->serialize()->shouldBeCalled()->willReturn(
+            'https://github.com/symfony/symfony-docs/commit/5246f51f550db504e76c98b641e3337570e84dd4'
+        );
         $this->serialize()->shouldReturn(
             [
                 'sha'     => '5246f51f550db504e76c98b641e3337570e84dd4',

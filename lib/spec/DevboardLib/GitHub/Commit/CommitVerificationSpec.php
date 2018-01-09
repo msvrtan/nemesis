@@ -47,6 +47,16 @@ class CommitVerificationSpec extends ObjectBehavior
         $this->getPayload()->shouldReturn($payload);
     }
 
+    public function it_has_signature()
+    {
+        $this->hasSignature()->shouldReturn(true);
+    }
+
+    public function it_has_payload()
+    {
+        $this->hasPayload()->shouldReturn(true);
+    }
+
     public function it_can_be_serialized(
         VerificationVerified $verified,
         VerificationReason $reason,
@@ -57,7 +67,9 @@ class CommitVerificationSpec extends ObjectBehavior
         $reason->serialize()->shouldBeCalled()->willReturn('reason');
         $signature->serialize()->shouldBeCalled()->willReturn('signature');
         $payload->serialize()->shouldBeCalled()->willReturn('payload');
-        $this->serialize()->shouldReturn(['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload']);
+        $this->serialize()->shouldReturn(
+            ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload']
+        );
     }
 
     public function it_can_be_deserialized()

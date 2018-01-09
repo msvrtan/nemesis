@@ -41,12 +41,12 @@ class GenerateAllDefinitionsTest extends SfTestCase
 
     public function testAllDefinitionsContentIsLoaded()
     {
-        self::assertCount(166, $this->provideDefinitionsContent());
+        self::assertCount(175, $this->provideDefinitionsContent());
     }
 
     public function testAllDefinitionsAreCreated()
     {
-        self::assertCount(166, $this->provideDefinitions());
+        self::assertCount(175, $this->provideDefinitions());
     }
 
     public function testTotalCountOfAllResults()
@@ -58,7 +58,7 @@ class GenerateAllDefinitionsTest extends SfTestCase
         }
 
         // Since there are no tests or specs for interfaces & traits, count is not 3x
-        self::assertEquals(429, $totalCount);
+        self::assertEquals(458, $totalCount);
     }
 
     public function testAllDefinitions()
@@ -84,7 +84,7 @@ class GenerateAllDefinitionsTest extends SfTestCase
         }
 
         // Since there are no tests or specs for interfaces & traits, count is not 3x
-        self::assertEquals(429, $totalCount);
+        self::assertEquals(458, $totalCount);
 
         if (true === $skipped) {
             $this->markTestIncomplete('Output was generated!');

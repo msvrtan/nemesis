@@ -43,8 +43,9 @@ class RepoEndpointsSpec extends ObjectBehavior
         $this->getSshUrl()->shouldReturn($sshUrl);
     }
 
-    public function it_can_be_serialized(RepoHtmlUrl $htmlUrl, RepoApiUrl $apiUrl, RepoGitUrl $gitUrl, RepoSshUrl $sshUrl)
-    {
+    public function it_can_be_serialized(
+        RepoHtmlUrl $htmlUrl, RepoApiUrl $apiUrl, RepoGitUrl $gitUrl, RepoSshUrl $sshUrl
+    ) {
         $htmlUrl->serialize()->shouldBeCalled()->willReturn('https://github.com/octocat/Hello-World');
         $apiUrl->serialize()->shouldBeCalled()->willReturn('https://api.github.com/repos/octocat/Hello-World');
         $gitUrl->serialize()->shouldBeCalled()->willReturn('git://github.com/octocat/Hello-World.git');

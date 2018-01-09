@@ -24,7 +24,7 @@ class Protection
         $this->requiredStatusChecks = $requiredStatusChecks;
     }
 
-    public function getEnabled(): bool
+    public function isEnabled(): bool
     {
         return $this->enabled;
     }
@@ -44,9 +44,6 @@ class Protection
 
     public static function deserialize(array $data): self
     {
-        return new self(
-            $data['enabled'],
-            RequiredStatusChecks::deserialize($data['requiredStatusChecks'])
-        );
+        return new self($data['enabled'], RequiredStatusChecks::deserialize($data['requiredStatusChecks']));
     }
 }

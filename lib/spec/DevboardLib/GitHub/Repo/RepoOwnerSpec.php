@@ -25,7 +25,9 @@ class RepoOwnerSpec extends ObjectBehavior
         AccountHtmlUrl $htmlUrl,
         AccountApiUrl $apiUrl
     ) {
-        $this->beConstructedWith($userId, $login, $type, $avatarUrl, $gravatarId, $htmlUrl, $apiUrl, $siteAdmin = false);
+        $this->beConstructedWith(
+            $userId, $login, $type, $avatarUrl, $gravatarId, $htmlUrl, $apiUrl, $siteAdmin = false
+        );
     }
 
     public function it_is_initializable()
@@ -68,9 +70,9 @@ class RepoOwnerSpec extends ObjectBehavior
         $this->getApiUrl()->shouldReturn($apiUrl);
     }
 
-    public function it_exposes_site_admin()
+    public function it_exposes_is_site_admin()
     {
-        $this->getSiteAdmin()->shouldReturn(false);
+        $this->isSiteAdmin()->shouldReturn(false);
     }
 
     public function it_can_be_serialized(

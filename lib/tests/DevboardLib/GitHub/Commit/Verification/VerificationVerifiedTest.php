@@ -25,9 +25,9 @@ class VerificationVerifiedTest extends TestCase
         $this->sut      = new VerificationVerified($this->verified);
     }
 
-    public function testGetVerified()
+    public function testIsVerified()
     {
-        self::assertSame($this->verified, $this->sut->getVerified());
+        self::assertSame($this->verified, $this->sut->isVerified());
     }
 
     public function testGetValue()

@@ -44,9 +44,6 @@ class RepoFullName
 
     public static function deserialize(array $data): self
     {
-        return new self(
-            AccountLogin::deserialize($data['owner']),
-            RepoName::deserialize($data['repoName'])
-        );
+        return new self(AccountLogin::deserialize($data['owner']), RepoName::deserialize($data['repoName']));
     }
 }

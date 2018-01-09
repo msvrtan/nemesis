@@ -14,8 +14,9 @@ use PhpSpec\ObjectBehavior;
 
 class CommitAuthorSpec extends ObjectBehavior
 {
-    public function let(AuthorName $name, EmailAddress $email, CommitDate $commitDate, CommitAuthorDetails $authorDetails)
-    {
+    public function let(
+        AuthorName $name, EmailAddress $email, CommitDate $commitDate, CommitAuthorDetails $authorDetails
+    ) {
         $this->beConstructedWith($name, $email, $commitDate, $authorDetails);
     }
 
@@ -45,8 +46,14 @@ class CommitAuthorSpec extends ObjectBehavior
         $this->getAuthorDetails()->shouldReturn($authorDetails);
     }
 
-    public function it_can_be_serialized(AuthorName $name, EmailAddress $email, CommitDate $commitDate, CommitAuthorDetails $authorDetails)
+    public function it_has_author_details()
     {
+        $this->hasAuthorDetails()->shouldReturn(true);
+    }
+
+    public function it_can_be_serialized(
+        AuthorName $name, EmailAddress $email, CommitDate $commitDate, CommitAuthorDetails $authorDetails
+    ) {
         $name->serialize()->shouldBeCalled()->willReturn('Jane Johnson');
         $email->serialize()->shouldBeCalled()->willReturn('jane@example.com');
         $commitDate->serialize()->shouldBeCalled()->willReturn('2018-01-02T20:21:22+00:00');

@@ -104,9 +104,9 @@ class CommitAuthorDetailsTest extends TestCase
         self::assertSame($this->apiUrl, $this->sut->getApiUrl());
     }
 
-    public function testGetSiteAdmin()
+    public function testIsSiteAdmin()
     {
-        self::assertSame($this->siteAdmin, $this->sut->getSiteAdmin());
+        self::assertSame($this->siteAdmin, $this->sut->isSiteAdmin());
     }
 
     public function testSerialize()

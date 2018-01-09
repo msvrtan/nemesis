@@ -19,10 +19,10 @@ use DevboardLib\GitHub\User\UserLogin;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DevboardLib\GitHub\Commit\CommitCommitter
- * @group  todo
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+ * @covers \DevboardLib\GitHub\Commit\CommitCommitter
+ * @group  todo
  */
 class CommitCommitterTest extends TestCase
 {
@@ -77,6 +77,11 @@ class CommitCommitterTest extends TestCase
     public function testGetCommitterDetails()
     {
         self::assertSame($this->committerDetails, $this->sut->getCommitterDetails());
+    }
+
+    public function testHasCommitterDetails()
+    {
+        self::assertTrue($this->sut->hasCommitterDetails());
     }
 
     public function testSerialize()

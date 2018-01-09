@@ -25,8 +25,10 @@ class CommitParentCollectionTest extends TestCase
 
     public function setUp()
     {
-        $this->elements = [new CommitParent(new CommitSha('sha'), new ParentApiUrl('apiUrl'), new ParentHtmlUrl('htmlUrl'))];
-        $this->sut      = new CommitParentCollection($this->elements);
+        $this->elements = [
+            new CommitParent(new CommitSha('sha'), new ParentApiUrl('apiUrl'), new ParentHtmlUrl('htmlUrl')),
+        ];
+        $this->sut = new CommitParentCollection($this->elements);
     }
 
     public function testGetElements()

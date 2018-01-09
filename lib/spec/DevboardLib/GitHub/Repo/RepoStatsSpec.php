@@ -12,7 +12,14 @@ class RepoStatsSpec extends ObjectBehavior
 {
     public function let(RepoSize $size)
     {
-        $this->beConstructedWith($networkCount = 11, $watchersCount = 12, $stargazersCount = 13, $subscribersCount = 14, $openIssuesCount = 15, $size);
+        $this->beConstructedWith(
+            $networkCount = 11,
+            $watchersCount = 12,
+            $stargazersCount = 13,
+            $subscribersCount = 14,
+            $openIssuesCount = 15,
+            $size
+        );
     }
 
     public function it_is_initializable()

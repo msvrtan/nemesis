@@ -46,9 +46,6 @@ class CommitTree implements CommitTreeInterface
 
     public static function deserialize(array $data): self
     {
-        return new self(
-            CommitSha::deserialize($data['sha']),
-            TreeApiUrl::deserialize($data['apiUrl'])
-        );
+        return new self(CommitSha::deserialize($data['sha']), TreeApiUrl::deserialize($data['apiUrl']));
     }
 }

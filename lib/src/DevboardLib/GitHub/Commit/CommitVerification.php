@@ -59,6 +59,24 @@ class CommitVerification
         return $this->payload;
     }
 
+    public function hasSignature(): bool
+    {
+        if (null === $this->signature) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function hasPayload(): bool
+    {
+        if (null === $this->payload) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function serialize(): array
     {
         if (null === $this->signature) {

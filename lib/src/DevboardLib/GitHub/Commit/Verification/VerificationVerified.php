@@ -18,7 +18,7 @@ class VerificationVerified
         $this->verified = $verified;
     }
 
-    public function getVerified(): bool
+    public function isVerified(): bool
     {
         return $this->verified;
     }

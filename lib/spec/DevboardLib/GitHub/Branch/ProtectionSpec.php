@@ -20,9 +20,9 @@ class ProtectionSpec extends ObjectBehavior
         $this->shouldHaveType(Protection::class);
     }
 
-    public function it_exposes_enabled()
+    public function it_exposes_is_enabled()
     {
-        $this->getEnabled()->shouldReturn(true);
+        $this->isEnabled()->shouldReturn(true);
     }
 
     public function it_exposes_required_status_checks(RequiredStatusChecks $requiredStatusChecks)
@@ -32,13 +32,23 @@ class ProtectionSpec extends ObjectBehavior
 
     public function it_can_be_serialized(RequiredStatusChecks $requiredStatusChecks)
     {
-        $requiredStatusChecks->serialize()->shouldBeCalled()->willReturn(['enforcementLevel' => 'enforcementLevel', 'contexts' => [1]]);
-        $this->serialize()->shouldReturn(['enabled' => true, 'requiredStatusChecks' => ['enforcementLevel' => 'enforcementLevel', 'contexts' => [1]]]);
+        $requiredStatusChecks->serialize()->shouldBeCalled()->willReturn(
+            ['enforcementLevel' => 'enforcementLevel', 'contexts' => [1]]
+        );
+        $this->serialize()->shouldReturn(
+            [
+                'enabled'              => true,
+                'requiredStatusChecks' => ['enforcementLevel' => 'enforcementLevel', 'contexts' => [1]],
+            ]
+        );
     }
 
     public function it_can_be_deserialized()
     {
-        $input = ['enabled' => true, 'requiredStatusChecks' => ['enforcementLevel' => 'enforcementLevel', 'contexts' => [1]]];
+        $input = [
+            'enabled'              => true,
+            'requiredStatusChecks' => ['enforcementLevel' => 'enforcementLevel', 'contexts' => [1]],
+        ];
 
         $this->deserialize($input)->shouldReturnAnInstanceOf(Protection::class);
     }

@@ -78,9 +78,9 @@ class GitHubRepoSpec extends ObjectBehavior
         $this->getOwner()->shouldReturn($owner);
     }
 
-    public function it_exposes_private()
+    public function it_exposes_is_private()
     {
-        $this->getPrivate()->shouldReturn(true);
+        $this->isPrivate()->shouldReturn(true);
     }
 
     public function it_exposes_default_branch(BranchName $defaultBranch)
@@ -88,9 +88,9 @@ class GitHubRepoSpec extends ObjectBehavior
         $this->getDefaultBranch()->shouldReturn($defaultBranch);
     }
 
-    public function it_exposes_fork()
+    public function it_exposes_is_fork()
     {
-        $this->getFork()->shouldReturn(true);
+        $this->isFork()->shouldReturn(true);
     }
 
     public function it_exposes_parent(RepoParent $parent)
@@ -118,9 +118,9 @@ class GitHubRepoSpec extends ObjectBehavior
         $this->getMirrorUrl()->shouldReturn($mirrorUrl);
     }
 
-    public function it_exposes_archived()
+    public function it_exposes_is_archived()
     {
-        $this->getArchived()->shouldReturn(true);
+        $this->isArchived()->shouldReturn(true);
     }
 
     public function it_exposes_endpoints(RepoEndpoints $endpoints)
@@ -136,6 +136,36 @@ class GitHubRepoSpec extends ObjectBehavior
     public function it_exposes_timestamps(RepoTimestamps $timestamps)
     {
         $this->getTimestamps()->shouldReturn($timestamps);
+    }
+
+    public function it_has_parent()
+    {
+        $this->hasParent()->shouldReturn(true);
+    }
+
+    public function it_has_description()
+    {
+        $this->hasDescription()->shouldReturn(true);
+    }
+
+    public function it_has_homepage()
+    {
+        $this->hasHomepage()->shouldReturn(true);
+    }
+
+    public function it_has_language()
+    {
+        $this->hasLanguage()->shouldReturn(true);
+    }
+
+    public function it_has_mirror_url()
+    {
+        $this->hasMirrorUrl()->shouldReturn(true);
+    }
+
+    public function it_has_archived()
+    {
+        $this->hasArchived()->shouldReturn(true);
     }
 
     public function it_can_be_serialized(
@@ -160,19 +190,23 @@ class GitHubRepoSpec extends ObjectBehavior
                 'login'      => 'value',
                 'type'       => 'type',
                 'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
+                'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                 'htmlUrl'    => 'htmlUrl',
                 'apiUrl'     => 'apiUrl',
                 'siteAdmin'  => true,
             ]
         );
-        $defaultBranch->serialize()->shouldBeCalled()->willReturn('name');
-        $parent->serialize()->shouldBeCalled()->willReturn(['id' => 1, 'fullName' => ['owner' => 'value', 'repoName' => 'name']]);
+        $defaultBranch->serialize()->shouldBeCalled()->willReturn('production');
+        $parent->serialize()->shouldBeCalled()->willReturn(
+            ['id' => 1, 'fullName' => ['owner' => 'value', 'repoName' => 'name']]
+        );
         $description->serialize()->shouldBeCalled()->willReturn('description');
         $homepage->serialize()->shouldBeCalled()->willReturn('homepage');
         $language->serialize()->shouldBeCalled()->willReturn('language');
         $mirrorUrl->serialize()->shouldBeCalled()->willReturn('mirrorUrl');
-        $endpoints->serialize()->shouldBeCalled()->willReturn(['htmlUrl' => 'htmlUrl', 'apiUrl' => 'apiUrl', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl']);
+        $endpoints->serialize()->shouldBeCalled()->willReturn(
+            ['htmlUrl' => 'htmlUrl', 'apiUrl' => 'apiUrl', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl']
+        );
         $stats->serialize()->shouldBeCalled()->willReturn(
             [
                 'networkCount'     => 1,
@@ -199,13 +233,13 @@ class GitHubRepoSpec extends ObjectBehavior
                     'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
+                    'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                     'htmlUrl'    => 'htmlUrl',
                     'apiUrl'     => 'apiUrl',
                     'siteAdmin'  => true,
                 ],
                 'private'       => true,
-                'defaultBranch' => 'name',
+                'defaultBranch' => 'production',
                 'fork'          => true,
                 'parent'        => ['id' => 1, 'fullName' => ['owner' => 'value', 'repoName' => 'name']],
                 'description'   => 'description',
@@ -213,8 +247,13 @@ class GitHubRepoSpec extends ObjectBehavior
                 'language'      => 'language',
                 'mirrorUrl'     => 'mirrorUrl',
                 'archived'      => true,
-                'endpoints'     => ['htmlUrl' => 'htmlUrl', 'apiUrl' => 'apiUrl', 'gitUrl' => 'gitUrl', 'sshUrl' => 'sshUrl'],
-                'stats'         => [
+                'endpoints'     => [
+                    'htmlUrl' => 'htmlUrl',
+                    'apiUrl'  => 'apiUrl',
+                    'gitUrl'  => 'gitUrl',
+                    'sshUrl'  => 'sshUrl',
+                ],
+                'stats' => [
                     'networkCount'     => 1,
                     'watchersCount'    => 1,
                     'stargazersCount'  => 1,
@@ -241,13 +280,13 @@ class GitHubRepoSpec extends ObjectBehavior
                 'login'      => 'value',
                 'type'       => 'type',
                 'avatarUrl'  => 'avatarUrl',
-                'gravatarId' => 'id',
+                'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                 'htmlUrl'    => 'htmlUrl',
                 'apiUrl'     => 'apiUrl',
                 'siteAdmin'  => true,
             ],
             'private'       => true,
-            'defaultBranch' => 'name',
+            'defaultBranch' => 'production',
             'fork'          => true,
             'parent'        => ['id' => 1, 'fullName' => ['owner' => 'value', 'repoName' => 'name']],
             'description'   => 'description',

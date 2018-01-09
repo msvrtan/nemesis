@@ -27,8 +27,9 @@ class CommitAuthor implements CommitAuthorInterface
     /** @var CommitAuthorDetails|null */
     private $authorDetails;
 
-    public function __construct(AuthorName $name, EmailAddress $email, CommitDate $commitDate, ?CommitAuthorDetails $authorDetails)
-    {
+    public function __construct(
+        AuthorName $name, EmailAddress $email, CommitDate $commitDate, ?CommitAuthorDetails $authorDetails
+    ) {
         $this->name          = $name;
         $this->email         = $email;
         $this->commitDate    = $commitDate;
@@ -53,6 +54,15 @@ class CommitAuthor implements CommitAuthorInterface
     public function getAuthorDetails(): ?CommitAuthorDetails
     {
         return $this->authorDetails;
+    }
+
+    public function hasAuthorDetails(): bool
+    {
+        if (null === $this->authorDetails) {
+            return false;
+        }
+
+        return true;
     }
 
     public function serialize(): array

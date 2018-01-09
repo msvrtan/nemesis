@@ -19,9 +19,9 @@ class VerificationVerifiedSpec extends ObjectBehavior
         $this->shouldHaveType(VerificationVerified::class);
     }
 
-    public function it_exposes_verified()
+    public function it_exposes_is_verified()
     {
-        $this->getVerified()->shouldReturn(true);
+        $this->isVerified()->shouldReturn(true);
     }
 
     public function it_exposes_value()

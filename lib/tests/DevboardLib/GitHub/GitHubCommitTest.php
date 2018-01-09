@@ -38,10 +38,10 @@ use DevboardLib\GitHub\User\UserLogin;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \DevboardLib\GitHub\GitHubCommit
- * @group  todo
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+ * @covers \DevboardLib\GitHub\GitHubCommit
+ * @group  todo
  */
 class GitHubCommitTest extends TestCase
 {
@@ -80,41 +80,51 @@ class GitHubCommitTest extends TestCase
 
     public function setUp()
     {
-        $this->sha        = new CommitSha('sha');
-        $this->message    = new CommitMessage('message');
-        $this->commitDate = new CommitDate('2018-01-01T00:01:00+00:00');
+        $this->sha        = new CommitSha('e54c3c97b4024b4a9b270b62921c6b830d780bd3');
+        $this->message    = new CommitMessage('A commit message');
+        $this->commitDate = new CommitDate('2018-01-02T11:12:13+00:00');
         $this->author     = new CommitAuthor(
-            new AuthorName('name'),
-            new EmailAddress('value'),
-            new CommitDate('2018-01-01T00:01:00+00:00'),
+            new AuthorName('Amy Johnson'),
+            new EmailAddress('amy@example.com'),
+            new CommitDate('2018-01-02T11:12:13+00:00'),
             new CommitAuthorDetails(
                 new UserId(1),
                 new UserLogin('value'),
                 new AccountType('type'),
                 new UserAvatarUrl('avatarUrl'),
-                new GravatarId('id'),
+                new GravatarId('205e460b479e2e5b48aec07710c08d50'),
                 new UserHtmlUrl('htmlUrl'),
                 new UserApiUrl('apiUrl'),
                 true
             )
         );
         $this->committer = new CommitCommitter(
-            new CommitterName('name'),
-            new EmailAddress('value'),
-            new CommitDate('2018-01-01T00:01:00+00:00'),
+            new CommitterName('Amy Johnson'),
+            new EmailAddress('amy@example.com'),
+            new CommitDate('2018-01-02T11:12:13+00:00'),
             new CommitCommitterDetails(
                 new UserId(1),
                 new UserLogin('value'),
                 new AccountType('type'),
                 new UserAvatarUrl('avatarUrl'),
-                new GravatarId('id'),
+                new GravatarId('205e460b479e2e5b48aec07710c08d50'),
                 new UserHtmlUrl('htmlUrl'),
                 new UserApiUrl('apiUrl'),
                 true
             )
         );
-        $this->tree         = new CommitTree(new CommitSha('sha'), new TreeApiUrl('apiUrl'));
-        $this->parents      = new CommitParentCollection([new CommitParent(new CommitSha('sha'), new ParentApiUrl('apiUrl'), new ParentHtmlUrl('htmlUrl'))]);
+        $this->tree = new CommitTree(
+            new CommitSha('e54c3c97b4024b4a9b270b62921c6b830d780bd3'), new TreeApiUrl('apiUrl')
+        );
+        $this->parents = new CommitParentCollection(
+            [
+                new CommitParent(
+                    new CommitSha('e54c3c97b4024b4a9b270b62921c6b830d780bd3'),
+                    new ParentApiUrl('apiUrl'),
+                    new ParentHtmlUrl('htmlUrl')
+                ),
+            ]
+        );
         $this->verification = new CommitVerification(
             new VerificationVerified(true),
             new VerificationReason('reason'),
@@ -187,47 +197,59 @@ class GitHubCommitTest extends TestCase
         self::assertSame($this->htmlUrl, $this->sut->getHtmlUrl());
     }
 
+    public function testHasVerification()
+    {
+        self::assertTrue($this->sut->hasVerification());
+    }
+
     public function testSerialize()
     {
         $expected = [
-            'sha'        => 'sha',
-            'message'    => 'message',
-            'commitDate' => '2018-01-01T00:01:00+00:00',
+            'sha'        => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3',
+            'message'    => 'A commit message',
+            'commitDate' => '2018-01-02T11:12:13+00:00',
             'author'     => [
-                'name'          => 'name',
-                'email'         => 'value',
-                'commitDate'    => '2018-01-01T00:01:00+00:00',
+                'name'          => 'Amy Johnson',
+                'email'         => 'amy@example.com',
+                'commitDate'    => '2018-01-02T11:12:13+00:00',
                 'authorDetails' => [
                     'userId'     => 1,
                     'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
+                    'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                     'htmlUrl'    => 'htmlUrl',
                     'apiUrl'     => 'apiUrl',
                     'siteAdmin'  => true,
                 ],
             ],
             'committer' => [
-                'name'             => 'name',
-                'email'            => 'value',
-                'commitDate'       => '2018-01-01T00:01:00+00:00',
+                'name'             => 'Amy Johnson',
+                'email'            => 'amy@example.com',
+                'commitDate'       => '2018-01-02T11:12:13+00:00',
                 'committerDetails' => [
                     'userId'     => 1,
                     'login'      => 'value',
                     'type'       => 'type',
                     'avatarUrl'  => 'avatarUrl',
-                    'gravatarId' => 'id',
+                    'gravatarId' => '205e460b479e2e5b48aec07710c08d50',
                     'htmlUrl'    => 'htmlUrl',
                     'apiUrl'     => 'apiUrl',
                     'siteAdmin'  => true,
                 ],
             ],
-            'tree'         => ['sha' => 'sha', 'apiUrl' => 'apiUrl'],
-            'parents'      => [['sha' => 'sha', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl']],
-            'verification' => ['verified' => true, 'reason' => 'reason', 'signature' => 'signature', 'payload' => 'payload'],
-            'apiUrl'       => 'apiUrl',
-            'htmlUrl'      => 'htmlUrl',
+            'tree'    => ['sha' => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3', 'apiUrl' => 'apiUrl'],
+            'parents' => [
+                ['sha' => 'e54c3c97b4024b4a9b270b62921c6b830d780bd3', 'apiUrl' => 'apiUrl', 'htmlUrl' => 'htmlUrl'],
+            ],
+            'verification' => [
+                'verified'  => true,
+                'reason'    => 'reason',
+                'signature' => 'signature',
+                'payload'   => 'payload',
+            ],
+            'apiUrl'  => 'apiUrl',
+            'htmlUrl' => 'htmlUrl',
         ];
 
         self::assertSame($expected, $this->sut->serialize());

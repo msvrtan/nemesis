@@ -36,7 +36,9 @@ class CommitTreeSpec extends ObjectBehavior
     public function it_can_be_serialized(CommitSha $sha, TreeApiUrl $apiUrl)
     {
         $sha->serialize()->shouldBeCalled()->willReturn('02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0');
-        $apiUrl->serialize()->shouldBeCalled()->willReturn('https://api.github.com/repos/baxterthehacker/public-repo/git/trees/02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0');
+        $apiUrl->serialize()->shouldBeCalled()->willReturn(
+            'https://api.github.com/repos/baxterthehacker/public-repo/git/trees/02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0'
+        );
         $this->serialize()->shouldReturn(
             [
                 'sha'    => '02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0',

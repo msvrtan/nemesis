@@ -27,8 +27,10 @@ class CommitTreeTest extends TestCase
     public function setUp()
     {
         $this->sha    = new CommitSha('02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0');
-        $this->apiUrl = new TreeApiUrl('https://api.github.com/repos/baxterthehacker/public-repo/git/trees/02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0');
-        $this->sut    = new CommitTree($this->sha, $this->apiUrl);
+        $this->apiUrl = new TreeApiUrl(
+            'https://api.github.com/repos/baxterthehacker/public-repo/git/trees/02b49ad0ba4f1acd9f06531b21e16a4ac5d341d0'
+        );
+        $this->sut = new CommitTree($this->sha, $this->apiUrl);
     }
 
     public function testGetSha()

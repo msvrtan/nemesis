@@ -30,10 +30,14 @@ class CommitParentTest extends TestCase
 
     public function setUp()
     {
-        $this->sha     = new CommitSha('5246f51f550db504e76c98b641e3337570e84dd4');
-        $this->apiUrl  = new ParentApiUrl('https://api.github.com/repos/symfony/symfony-docs/git/commits/5246f51f550db504e76c98b641e3337570e84dd4');
-        $this->htmlUrl = new ParentHtmlUrl('https://github.com/symfony/symfony-docs/commit/5246f51f550db504e76c98b641e3337570e84dd4');
-        $this->sut     = new CommitParent($this->sha, $this->apiUrl, $this->htmlUrl);
+        $this->sha    = new CommitSha('5246f51f550db504e76c98b641e3337570e84dd4');
+        $this->apiUrl = new ParentApiUrl(
+            'https://api.github.com/repos/symfony/symfony-docs/git/commits/5246f51f550db504e76c98b641e3337570e84dd4'
+        );
+        $this->htmlUrl = new ParentHtmlUrl(
+            'https://github.com/symfony/symfony-docs/commit/5246f51f550db504e76c98b641e3337570e84dd4'
+        );
+        $this->sut = new CommitParent($this->sha, $this->apiUrl, $this->htmlUrl);
     }
 
     public function testGetSha()

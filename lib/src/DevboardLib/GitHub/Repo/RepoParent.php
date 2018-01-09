@@ -42,9 +42,6 @@ class RepoParent
 
     public static function deserialize(array $data): self
     {
-        return new self(
-            RepoId::deserialize($data['id']),
-            RepoFullName::deserialize($data['fullName'])
-        );
+        return new self(RepoId::deserialize($data['id']), RepoFullName::deserialize($data['fullName']));
     }
 }
