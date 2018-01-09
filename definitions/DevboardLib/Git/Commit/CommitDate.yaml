@@ -11,4 +11,4 @@ definition:
       nullable: false
       hasDefault: false
       default: null
-      examples: ['2018-01-02 11:12:13']
+      examples: ['2018-01-02T11:12:13+00:00']

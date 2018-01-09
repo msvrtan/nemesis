@@ -1,0 +1,14 @@
+definition:
+  type: Interface
+  instanceOf: Devboard\GitHubBuild\Domain\Event\GitHubBuildEvent
+  parent: ~
+  constants: []
+  methods:
+    getBuildNumber:
+      type: getter
+      property:
+        name: buildNumber
+        instanceOf: int
+        nullable: false
+        hasDefault: false
+        default: ~

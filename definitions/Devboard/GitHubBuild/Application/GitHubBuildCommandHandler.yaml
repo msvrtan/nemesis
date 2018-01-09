@@ -1,0 +1,15 @@
+definition:
+  type: BroadwayCommandHandler
+  instanceOf: Devboard\GitHubBuild\Application\GitHubBuildCommandHandler
+  parent: Broadway\CommandHandling\SimpleCommandHandler
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    repository:
+      instanceOf: Devboard\GitHubBuild\Application\GitHubBuildRepository
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+  model: Devboard\GitHubBuild\Domain\GitHubBuildModel
+  modelId: Devboard\GitHubBuild\Core\GitHubBuildRootId

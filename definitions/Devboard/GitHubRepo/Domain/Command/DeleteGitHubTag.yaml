@@ -11,7 +11,7 @@ definition:
       hasDefault: false
       default: null
       examples: []
-    tagName:
+    name:
       instanceOf: DevboardLib\Git\Tag\TagName
       nullable: false
       hasDefault: false

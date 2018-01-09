@@ -1,0 +1,7 @@
+definition:
+  type: BroadwayEventSourcingRepository
+  instanceOf: Devboard\GitHubBuild\Application\GitHubBuildRepository
+  parent: Broadway\EventSourcing\EventSourcingRepository
+  interfaces: {  }
+  traits: {  }
+  entity: Devboard\GitHubBuild\Domain\GitHubBuildModel

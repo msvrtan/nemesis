@@ -5,7 +5,7 @@ definition:
   interfaces: {  }
   traits: {  }
   constructor:
-    branches:
+    elements:
       instanceOf: array
       nullable: false
       hasDefault: true
@@ -14,3 +14,4 @@ definition:
     instanceOf: Devboard\GitHubRepo\Domain\GitHubBranchEntity
     accessor: getName
     has: DevboardLib\Git\Branch\BranchName
+  serialization: false

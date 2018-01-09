@@ -14,3 +14,10 @@ definition:
       hasDefault: false
       default: null
       examples: ['0.1', '1.0', '1.2.3', '3.x']
+  methods:
+    getType:
+      type: custom
+      parameters: []
+      body:
+        - "return self::TYPE;"
+      returnType: string

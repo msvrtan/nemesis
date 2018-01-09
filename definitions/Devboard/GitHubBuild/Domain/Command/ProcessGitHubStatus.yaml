@@ -1,0 +1,25 @@
+definition:
+  type: BroadwayCommand
+  instanceOf: Devboard\GitHubBuild\Domain\Command\ProcessGitHubStatus
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    gitHubBuildRootId:
+      instanceOf: Devboard\GitHubBuild\Core\GitHubBuildRootId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['R0hCdWlsZFJvb3Q6MTIz']
+    commitSha:
+      instanceOf: DevboardLib\Git\Commit\CommitSha
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    status:
+      instanceOf: DevboardLib\GitHub\GitHubStatus
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []

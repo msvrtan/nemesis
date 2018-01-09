@@ -3,4 +3,20 @@ definition:
   instanceOf: Git\Reference\ReferenceName
   parent: ~
   constants: []
-  methods: []
+  methods:
+    serialize:
+      type: custom
+      parameters: []
+      body: []
+      returnType: string
+    deserialize:
+      type: custom
+      parameters:
+        name:
+          instanceOf: string
+          nullable: false
+          hasDefault: false
+          default: null
+          examples: []
+      body: []
+      static: true

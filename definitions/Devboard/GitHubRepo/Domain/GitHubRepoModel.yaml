@@ -30,6 +30,24 @@ definition:
       instanceOf: DevboardLib\GitHub\Repo\RepoStats
     initializedAt:
       instanceOf: DateTime
+  methods:
+    getAggregateRootId:
+      type: chainedgetter
+      calls:
+        name: __toString
+        type: getter
+        property:
+          name: id
+          instanceOf: string
+          nullable: false
+          hasDefault: false
+          default: ~
+      property:
+        name: id
+        instanceOf: string
+        nullable: false
+        hasDefault: false
+        default: ~
   children:
     branches:
       instanceOf: Devboard\GitHubRepo\Domain\GitHubBranchCollection

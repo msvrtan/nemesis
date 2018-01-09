@@ -1,0 +1,34 @@
+definition:
+  type: BroadwayEvent
+  instanceOf: Devboard\GitHubBuild\Domain\Event\GitHubBuildPassed
+  parent: null
+  interfaces:
+    - Devboard\GitHubBuild\Domain\Event\GitHubBuildEvent
+  traits: {  }
+  constructor:
+    buildId:
+      instanceOf: Devboard\GitHubBuild\Core\GitHubBuildId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    createdAt:
+      instanceOf: DateTime
+  methods:
+    getBuildStatus:
+      type: custom
+      parameters: []
+      body:
+        - "return BuildStatus::Passed();"
+      returnType: DevboardLib\GitHub\Build\BuildStatus
+    getBuildNumber:
+      type: chainedgetter
+      calls:
+        name: getBuildNumber
+        type: getter
+        property:
+          name: buildId
+          instanceOf: int
+          nullable: false
+          hasDefault: false
+          default: ~

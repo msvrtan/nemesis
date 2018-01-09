@@ -1,0 +1,46 @@
+definition:
+  type: BroadwayEvent
+  instanceOf: Devboard\GitHubBuild\Domain\Event\GitHubBuildCreated
+  parent: null
+  interfaces:
+    - Devboard\GitHubBuild\Domain\Event\GitHubBuildEvent
+  traits: {  }
+  constructor:
+    buildId:
+      instanceOf: Devboard\GitHubBuild\Core\GitHubBuildId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    referenceName:
+      instanceOf: Git\Reference\ReferenceName
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['master','0.1']
+    commit:
+      instanceOf: DevboardLib\GitHub\GitHubCommit
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    createdAt:
+      instanceOf: DateTime
+  methods:
+    getBuildStatus:
+      type: custom
+      parameters: []
+      body:
+        - "return BuildStatus::Created();"
+      returnType: DevboardLib\GitHub\Build\BuildStatus
+    getBuildNumber:
+      type: chainedgetter
+      calls:
+        name: getBuildNumber
+        type: getter
+        property:
+          name: buildId
+          instanceOf: int
+          nullable: false
+          hasDefault: false
+          default: ~

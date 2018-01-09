@@ -11,3 +11,5 @@ definition:
       hasDefault: false
       default: null
       examples: []
+  model: Devboard\GitHubRepo\Domain\GitHubRepoModel
+  modelId: Devboard\GitHubRepo\Core\GitHubRepoRootId

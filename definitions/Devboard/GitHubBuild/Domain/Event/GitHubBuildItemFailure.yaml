@@ -1,0 +1,57 @@
+definition:
+  type: BroadwayEvent
+  instanceOf: Devboard\GitHubBuild\Domain\Event\GitHubBuildItemFailure
+  parent: null
+  interfaces:
+    - Devboard\GitHubBuild\Domain\Event\GitHubBuildEvent
+    - Devboard\GitHubBuild\Domain\Event\GitHubBuildItemEvent
+  traits: {  }
+  constructor:
+    buildId:
+      instanceOf: Devboard\GitHubBuild\Core\GitHubBuildId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    status:
+      instanceOf: DevboardLib\GitHub\GitHubStatus
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    createdAt:
+      instanceOf: DateTime
+  methods:
+    getBuildNumber:
+      type: chainedgetter
+      calls:
+        name: getBuildNumber
+        type: getter
+        property:
+          name: buildId
+          instanceOf: int
+          nullable: false
+          hasDefault: false
+          default: ~
+    getContext:
+      type: chainedgetter
+      calls:
+        name: getContext
+        type: getter
+        property:
+          name: status
+          instanceOf: DevboardLib\GitHub\Status\StatusContext
+          nullable: false
+          hasDefault: false
+          default: ~
+    getState:
+      type: chainedgetter
+      calls:
+        name: getState
+        type: getter
+        property:
+          name: status
+          instanceOf: DevboardLib\GitHub\Status\StatusState
+          nullable: false
+          hasDefault: false
+          default: ~

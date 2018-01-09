@@ -1,0 +1,16 @@
+definition:
+  type: SimpleIdentifier
+  type1: TheaterRootId
+  instanceOf: Devboard\GitHubBuild\Core\GitHubBuildId
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  basedOn: DevboardLib\GitHub\Repo\RepoId
+  prefix: GHBuild
+  constructor:
+    encodedValue:
+      instanceOf: string
+      nullable: false
+      hasDefault: false
+      default: ~
+      examples: ['R0hCdWlsZDoxMjM6MQ==']

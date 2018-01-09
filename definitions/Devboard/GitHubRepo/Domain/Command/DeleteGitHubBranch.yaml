@@ -11,7 +11,7 @@ definition:
       hasDefault: false
       default: null
       examples: []
-    branchName:
+    name:
       instanceOf: DevboardLib\Git\Branch\BranchName
       nullable: false
       hasDefault: false

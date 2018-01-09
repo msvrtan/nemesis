@@ -14,3 +14,10 @@ definition:
       hasDefault: false
       default: null
       examples: ['master', 'trunk', 'dev', 'production']
+  methods:
+    getType:
+      type: custom
+      parameters: []
+      body:
+        - "return self::TYPE;"
+      returnType: string

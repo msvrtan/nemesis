@@ -1,0 +1,6 @@
+definition:
+  type: Interface
+  instanceOf: DevboardLib\GitHub\GitHubAccount
+  parent: null
+  constants: []
+  methods: []

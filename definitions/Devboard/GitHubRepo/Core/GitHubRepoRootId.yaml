@@ -1,8 +1,16 @@
 definition:
-  type: TheaterRootId
+  type: SimpleIdentifier
+  type1: TheaterRootId
   instanceOf: Devboard\GitHubRepo\Core\GitHubRepoRootId
   parent: null
   interfaces: {  }
   traits: {  }
   basedOn: DevboardLib\GitHub\Repo\RepoId
   prefix: GHRepoRoot
+  constructor:
+    encodedValue:
+      instanceOf: string
+      nullable: false
+      hasDefault: false
+      default: ~
+      examples: ['R0hSZXBvUm9vdDoxMjM=']

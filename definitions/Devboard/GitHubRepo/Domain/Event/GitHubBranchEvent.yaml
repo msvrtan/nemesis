@@ -3,4 +3,23 @@ definition:
   instanceOf: Devboard\GitHubRepo\Domain\Event\GitHubBranchEvent
   parent: ~
   constants: []
-  methods: []
+  methods:
+    getRepoId:
+      type: chainedgetter
+      calls:
+        name: getRepoId
+        type: getter
+        property:
+          name: id
+          instanceOf: DevboardLib\GitHub\Repo\RepoId
+          nullable: false
+          hasDefault: false
+          default: ~
+    getName:
+      type: getter
+      property:
+        name: name
+        instanceOf: DevboardLib\Git\Branch\BranchName
+        nullable: false
+        hasDefault: false
+        default: ~

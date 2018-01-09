@@ -1,5 +1,5 @@
 definition:
-  type: BroadwaySimpleEventSourcedEntity
+  type: BroadwayEventSourcedEntity
   instanceOf: Devboard\GitHubRepo\Domain\GitHubTagEntity
   parent: Broadway\EventSourcing\SimpleEventSourcedEntity
   interfaces: {  }
@@ -27,9 +27,19 @@ definition:
       instanceOf: DateTime
     updatedAt:
       instanceOf: DateTime
-    deletedAt:
+  properties:
+    deleted:
       instanceOf: bool
       nullable: false
       hasDefault: true
       default: false
       examples: [false, true]
+  methods:
+    getName:
+      type: getter
+      property:
+        name: name
+        instanceOf: DevboardLib\Git\Tag\TagName
+        nullable: false
+        hasDefault: false
+        default: ~

@@ -12,7 +12,7 @@ definition:
       hasDefault: false
       default: null
       examples: []
-    tagName:
+    name:
       instanceOf: DevboardLib\Git\Tag\TagName
       nullable: false
       hasDefault: false
@@ -26,3 +26,15 @@ definition:
       examples: []
     updatedAt:
       instanceOf: DateTime
+  methods:
+    getRepoId:
+      type: chainedgetter
+      calls:
+        name: getRepoId
+        type: getter
+        property:
+          name: id
+          instanceOf: DevboardLib\GitHub\Repo\RepoId
+          nullable: false
+          hasDefault: false
+          default: ~

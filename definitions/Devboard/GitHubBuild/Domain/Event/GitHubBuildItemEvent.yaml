@@ -1,0 +1,22 @@
+definition:
+  type: Interface
+  instanceOf: Devboard\GitHubBuild\Domain\Event\GitHubBuildItemEvent
+  parent: ~
+  constants: []
+  methods:
+    getBuildNumber:
+      type: getter
+      property:
+        name: buildNumber
+        instanceOf: int
+        nullable: false
+        hasDefault: false
+        default: ~
+    getContext:
+      type: getter
+      property:
+        name: status
+        instanceOf: DevboardLib\GitHub\Status\StatusContext
+        nullable: false
+        hasDefault: false
+        default: ~

@@ -1,0 +1,13 @@
+definition:
+  type: BroadwayCommand
+  instanceOf: Devboard\GitHubBuild\Domain\Command\InitializeGitHubBuild
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    gitHubBuildRootId:
+      instanceOf: Devboard\GitHubBuild\Core\GitHubBuildRootId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['R0hCdWlsZFJvb3Q6MTIz']

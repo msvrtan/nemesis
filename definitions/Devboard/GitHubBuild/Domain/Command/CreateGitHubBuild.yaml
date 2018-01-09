@@ -1,0 +1,25 @@
+definition:
+  type: BroadwayCommand
+  instanceOf: Devboard\GitHubBuild\Domain\Command\CreateGitHubBuild
+  parent: null
+  interfaces: {  }
+  traits: {  }
+  constructor:
+    gitHubBuildRootId:
+      instanceOf: Devboard\GitHubBuild\Core\GitHubBuildRootId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['R0hCdWlsZFJvb3Q6MTIz']
+    referenceName:
+      instanceOf: Git\Reference\ReferenceName
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: ['master','0.1']
+    commit:
+      instanceOf: DevboardLib\GitHub\GitHubCommit
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []

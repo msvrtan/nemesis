@@ -1,0 +1,15 @@
+definition:
+  type: BroadwayEvent
+  instanceOf: Devboard\GitHubBuild\Domain\Event\GitHubBuildInitialized
+  parent: null
+  interfaces: { }
+  traits: {  }
+  constructor:
+    buildRootId:
+      instanceOf: Devboard\GitHubBuild\Core\GitHubBuildRootId
+      nullable: false
+      hasDefault: false
+      default: null
+      examples: []
+    initializedAt:
+      instanceOf: DateTime

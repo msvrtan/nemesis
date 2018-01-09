@@ -20,3 +20,37 @@ definition:
       examples: []
     createdAt:
       instanceOf: DateTime
+  methods:
+    getRepoId:
+      type: chainedgetter
+      calls:
+        name: getRepoId
+        type: getter
+        property:
+          name: id
+          instanceOf: DevboardLib\GitHub\Repo\RepoId
+          nullable: false
+          hasDefault: false
+          default: ~
+    getName:
+      type: chainedgetter
+      calls:
+        name: getName
+        type: getter
+        property:
+          name: branch
+          instanceOf: DevboardLib\Git\Branch\BranchName
+          nullable: false
+          hasDefault: false
+          default: ~
+    getCommit:
+      type: chainedgetter
+      calls:
+        name: getCommit
+        type: getter
+        property:
+          name: branch
+          instanceOf: DevboardLib\GitHub\GitHubCommit
+          nullable: false
+          hasDefault: false
+          default: ~
