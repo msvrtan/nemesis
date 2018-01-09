@@ -36,6 +36,7 @@ class GenerateAllFilesFromDefinitionCliCommand extends BaseGenerateFilesFromDefi
                 }
             } catch (Throwable $e) {
                 $this->io->writeln($e->getMessage());
+                $this->io->writeln($e->getTraceAsString());
             }
         }
 
